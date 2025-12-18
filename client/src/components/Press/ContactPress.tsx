@@ -1,0 +1,93 @@
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone, User } from "lucide-react";
+
+export default function PressContactPress() {
+  return (
+    <section className="py-20 md:py-32 bg-white">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#8B1538] mb-4">
+            Contact presse
+          </h2>
+          <p className="text-xl text-[#3A3A3C] max-w-3xl mx-auto">
+            Pour toute demande d'interview ou d'information complémentaire
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl mx-auto"
+        >
+          <Card className="border-none shadow-2xl">
+            <CardContent className="p-8">
+              <div className="flex items-start gap-6 mb-8">
+                <div className="w-20 h-20 rounded-full bg-[#8B1538]/10 flex items-center justify-center flex-shrink-0">
+                  <User className="w-10 h-10 text-[#8B1538]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-[#8B1538] mb-2">
+                    Service Communication
+                  </h3>
+                  <p className="text-[#3A3A3C]">
+                    Relations Presse & Médias
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#8B1538]/10 flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-[#8B1538]" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#707070] mb-1">Email</p>
+                    <a
+                      href="mailto:presse@rishom-group.com"
+                      className="text-lg font-semibold text-[#8B1538] hover:underline"
+                      data-testid="link-press-email"
+                    >
+                      presse@rishom-group.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#8B1538]/10 flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-[#8B1538]" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#707070] mb-1">Téléphone</p>
+                    <a
+                      href="tel:+22670000000"
+                      className="text-lg font-semibold text-[#8B1538] hover:underline"
+                      data-testid="link-press-phone"
+                    >
+                      +226 70 00 00 00
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <p className="text-sm text-[#707070]">
+                  Délai de réponse : sous 24h ouvrées<br />
+                  Disponibilité pour interviews : sur rendez-vous
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

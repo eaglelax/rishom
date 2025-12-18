@@ -1,0 +1,102 @@
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Image, FileText, Video, Download } from "lucide-react";
+
+const mediaAssets = [
+  {
+    icon: Image,
+    title: "Logos & Chartes graphiques",
+    description: "Logos haute résolution du groupe et des entités, chartes de couleurs et typographies.",
+    size: "15 MB",
+    files: "12 fichiers",
+  },
+  {
+    icon: Image,
+    title: "Photos officielles",
+    description: "Banque d'images des installations, équipes, projets et événements.",
+    size: "85 MB",
+    files: "120 photos",
+  },
+  {
+    icon: Video,
+    title: "Vidéos institutionnelles",
+    description: "Films corporate, témoignages, reportages sur nos projets.",
+    size: "250 MB",
+    files: "8 vidéos",
+  },
+  {
+    icon: FileText,
+    title: "Dossiers de presse",
+    description: "Présentation complète du groupe, fiches entités, données clés.",
+    size: "8 MB",
+    files: "5 dossiers",
+  },
+];
+
+export default function PressMediaKit() {
+  return (
+    <section className="py-20 md:py-32 bg-[#F5F1E8]">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#8B1538] mb-4">
+            Kit média
+          </h2>
+          <p className="text-xl text-[#3A3A3C] max-w-3xl mx-auto">
+            Ressources visuelles et documentaires pour les journalistes et médias
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {mediaAssets.map((asset, index) => {
+            const Icon = asset.icon;
+            return (
+              <motion.div
+                key={asset.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-none">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-14 h-14 rounded-lg bg-[#8B1538]/10 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-7 h-7 text-[#8B1538]" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">
+                          {asset.title}
+                        </h3>
+                        <p className="text-[#3A3A3C] mb-4">{asset.description}</p>
+                        <div className="flex items-center gap-4 text-sm text-[#707070] mb-4">
+                          <span>{asset.files}</span>
+                          <span>•</span>
+                          <span>{asset.size}</span>
+                        </div>
+                        <Button
+                          size="sm"
+                          className="bg-[#8B1538] text-white hover:bg-[#6B1028] font-semibold"
+                          data-testid={`download-media-${index}`}
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Télécharger
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
