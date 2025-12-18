@@ -1,0 +1,339 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Calendar, TrendingUp, Award, Users, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Notre Histoire</h1>
+        <p className="text-xl max-w-2xl">De l'ambition d'un homme à un groupe multi-sectoriel qui façonne l'avenir de l'Afrique de l'Ouest.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const OriginSection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Les Origines (2010-2015)</h2>
+          <p className="text-[#3A3A3C] mb-4">
+            Tout commence en 2010 avec la création de <strong>Rishom BTP & Fournitures (RBF)</strong> par Alassane Rishom, entrepreneur visionnaire burkinabè. Parti de rien avec un simple dépôt de matériaux de construction à Ouagadougou, il identifie rapidement une opportunité : le secteur du BTP est en pleine croissance mais manque cruellement de fournisseurs fiables.
+          </p>
+          <p className="text-[#3A3A3C] mb-4">
+            En 5 ans, RBF devient une référence au Burkina Faso grâce à trois piliers : qualité des produits, respect des délais et service client irréprochable. Le chiffre d'affaires passe de 50 millions FCFA en 2010 à 2,5 milliards FCFA en 2015.
+          </p>
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="font-bold text-[#8B1538] mb-3">Chiffres clés 2010-2015</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#8B1538] mr-2 mt-0.5 flex-shrink-0" />
+                <span>CA : 50M → 2,5 Mds FCFA</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#8B1538] mr-2 mt-0.5 flex-shrink-0" />
+                <span>Employés : 5 → 120</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#8B1538] mr-2 mt-0.5 flex-shrink-0" />
+                <span>Points de vente : 1 → 4</span>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="bg-white p-8 rounded-lg shadow-lg"
+        >
+          <Calendar className="w-12 h-12 text-[#8B1538] mb-4" />
+          <h3 className="text-2xl font-bold text-[#3A3A3C] mb-4">Dates clés</h3>
+          <div className="space-y-4">
+            <div className="border-l-4 border-[#8B1538] pl-4">
+              <div className="font-bold text-[#8B1538]">2010</div>
+              <div className="text-sm text-[#3A3A3C]">Création de RBF, 1er dépôt à Ouagadougou</div>
+            </div>
+            <div className="border-l-4 border-[#8B1538] pl-4">
+              <div className="font-bold text-[#8B1538]">2012</div>
+              <div className="text-sm text-[#3A3A3C]">Ouverture agence Bobo-Dioulasso</div>
+            </div>
+            <div className="border-l-4 border-[#8B1538] pl-4">
+              <div className="font-bold text-[#8B1538]">2014</div>
+              <div className="text-sm text-[#3A3A3C]">Lancement service location d'engins</div>
+            </div>
+            <div className="border-l-4 border-[#8B1538] pl-4">
+              <div className="font-bold text-[#8B1538]">2015</div>
+              <div className="text-sm text-[#3A3A3C]">1er milliard FCFA de CA annuel</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const ExpansionSection = () => (
+  <section className="py-20 bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">L'Expansion Stratégique (2016-2019)</h2>
+      <div className="grid md:grid-cols-2 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-8 rounded-lg"
+        >
+          <div className="flex items-center mb-4">
+            <div className="w-12 h-12 bg-[#8B1538] text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+              2016
+            </div>
+            <h3 className="text-xl font-bold text-[#3A3A3C]">Création de RIC</h3>
+          </div>
+          <p className="text-[#3A3A3C] mb-3">
+            Fort du succès de RBF, Alassane Rishom crée <strong>Rishom Invest & Conseil (RIC)</strong> pour accompagner les entrepreneurs ouest-africains. RIC propose audit, conseil stratégique et accompagnement de projets.
+          </p>
+          <p className="text-sm text-[#B8956A] font-semibold">Premier client : restructuration d'une PME agro-alimentaire sénégalaise</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-8 rounded-lg"
+        >
+          <div className="flex items-center mb-4">
+            <div className="w-12 h-12 bg-[#058B5E] text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+              2017
+            </div>
+            <h3 className="text-xl font-bold text-[#3A3A3C]">Création de REV'I</h3>
+          </div>
+          <p className="text-[#3A3A3C] mb-3">
+            Conscient des enjeux de sécurité alimentaire, Alassane lance <strong>Rishom Elevage & Valorisation (REV'I)</strong>. Première ferme pilote de 200 hectares à Bama pour production agricole et élevage moderne.
+          </p>
+          <p className="text-sm text-[#B8956A] font-semibold">Objectif : produire local et réduire les importations alimentaires</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-8 rounded-lg"
+        >
+          <div className="flex items-center mb-4">
+            <div className="w-12 h-12 bg-[#2E5A9C] text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+              2018
+            </div>
+            <h3 className="text-xl font-bold text-[#3A3A3C]">Création de RBA</h3>
+          </div>
+          <p className="text-[#3A3A3C] mb-3">
+            Pour pallier le manque de compétences qualifiées, création de <strong>Rishom Business Academy (RBA)</strong> en partenariat avec l'Université de Ouagadougou. Premiers programmes : BTS Comptabilité et formations courtes en management.
+          </p>
+          <p className="text-sm text-[#B8956A] font-semibold">150 étudiants dès la première année</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-8 rounded-lg"
+        >
+          <div className="flex items-center mb-4">
+            <div className="w-12 h-12 bg-[#8B1538] text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+              2019
+            </div>
+            <h3 className="text-xl font-bold text-[#3A3A3C]">Création du Groupe Rishom</h3>
+          </div>
+          <p className="text-[#3A3A3C] mb-3">
+            Formalisation de la holding <strong>Groupe Rishom</strong> pour piloter les 4 entités. Définition d'une vision commune : <em>"Bâtir l'Afrique de demain"</em>. CA consolidé du groupe : 8 milliards FCFA.
+          </p>
+          <p className="text-sm text-[#B8956A] font-semibold">450 employés directs, 1 200 emplois indirects</p>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const ConsolidationSection = () => (
+  <section className="py-20 bg-[#3A3A3C] text-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold mb-12 text-center">Consolidation & Rayonnement (2020-2024)</h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg"
+        >
+          <h3 className="text-xl font-bold mb-3">2020-2021</h3>
+          <p className="text-sm mb-3">Résilience face à la COVID-19. Digitalisation des formations RBA, e-commerce REV'I, maintien de l'activité RBF grâce aux marchés publics.</p>
+          <div className="text-[#B8956A] font-semibold text-sm">CA 2021 : 12 Mds FCFA</div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg"
+        >
+          <h3 className="text-xl font-bold mb-3">2022</h3>
+          <p className="text-sm mb-3">Expansion régionale : ouverture bureaux RIC à Abidjan et Dakar. REV'I inaugure unité de transformation agro-alimentaire (purée de tomate, riz étuvé).</p>
+          <div className="text-[#B8956A] font-semibold text-sm">Présence dans 3 pays</div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg"
+        >
+          <h3 className="text-xl font-bold mb-3">2023-2024</h3>
+          <p className="text-sm mb-3">Certification ISO 9001 pour RBF, Label RSE pour REV'I, accréditation internationale pour RBA. Lancement programme de bourses pour 100 jeunes défavorisés.</p>
+          <div className="text-[#B8956A] font-semibold text-sm">CA 2024 : 18 Mds FCFA (prévision)</div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const TimelineSection = () => {
+  const milestones = [
+    { year: "2010", event: "Création RBF", color: "#C74634" },
+    { year: "2012", event: "Expansion régionale RBF", color: "#C74634" },
+    { year: "2015", event: "1er milliard FCFA", color: "#8B1538" },
+    { year: "2016", event: "Création RIC", color: "#8B1538" },
+    { year: "2017", event: "Création REV'I", color: "#058B5E" },
+    { year: "2018", event: "Création RBA", color: "#2E5A9C" },
+    { year: "2019", event: "Formalisation Groupe Rishom", color: "#8B1538" },
+    { year: "2022", event: "Expansion CEDEAO", color: "#8B1538" },
+    { year: "2024", event: "18 Mds FCFA CA", color: "#B8956A" }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Chronologie</h2>
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#B8956A] hidden md:block"></div>
+          <div className="space-y-12">
+            {milestones.map((milestone, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+              >
+                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:text-right md:pr-8" : "md:text-left md:pl-8"}`}>
+                  <div className="bg-white p-4 rounded-lg shadow-lg inline-block">
+                    <div className="font-bold text-xl" style={{ color: milestone.color }}>{milestone.year}</div>
+                    <div className="text-[#3A3A3C]">{milestone.event}</div>
+                  </div>
+                </div>
+                <div className="hidden md:flex w-2/12 justify-center">
+                  <div className="w-5 h-5 rounded-full" style={{ backgroundColor: milestone.color }}></div>
+                </div>
+                <div className="w-full md:w-5/12"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const StatsSection = () => {
+  const stats = [
+    { value: "14", label: "Années d'existence" },
+    { value: "4", label: "Entités opérationnelles" },
+    { value: "850+", label: "Employés directs" },
+    { value: "18 Mds", label: "FCFA de CA (2024)" }
+  ];
+
+  return (
+    <section className="py-20 bg-[#8B1538] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-xl">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const VisionSection = () => (
+  <section className="py-20 bg-white">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Award className="w-16 h-16 text-[#8B1538] mx-auto mb-6" />
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Notre Vision pour l'Avenir</h2>
+      <p className="text-xl text-[#3A3A3C] mb-8">
+        D'ici 2030, le Groupe Rishom ambitionne de devenir un acteur incontournable en Afrique de l'Ouest avec une présence dans 10 pays, 2 000 employés et un CA de 50 milliards FCFA. Notre engagement reste le même : contribuer au développement durable du continent africain.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          className="bg-[#8B1538] text-white hover:bg-[#3A3A3C] font-semibold text-lg py-6 px-8"
+          data-testid="button-join-adventure"
+        >
+          Rejoindre l'Aventure
+        </Button>
+        <Button 
+          variant="outline"
+          className="border-2 border-[#8B1538] text-[#8B1538] hover:bg-[#8B1538] hover:text-white font-semibold text-lg py-6 px-8"
+          data-testid="button-discover-entities"
+        >
+          Découvrir Nos Entités
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
+export default function History() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <OriginSection />
+      <ExpansionSection />
+      <ConsolidationSection />
+      <TimelineSection />
+      <StatsSection />
+      <VisionSection />
+      <Footer />
+    </div>
+  );
+}
