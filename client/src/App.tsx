@@ -13,6 +13,7 @@ import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import News from "@/pages/News";
 import NewsDetail from "@/pages/NewsDetail";
+import Contact from "@/pages/Contact";
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/projets" component={Projects} />
       <Route path="/actualites" component={News} />
       <Route path="/actualites/:id" component={NewsDetail} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );
