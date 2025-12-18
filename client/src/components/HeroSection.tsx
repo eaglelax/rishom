@@ -4,6 +4,27 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, Pause, Play } from "lucide-react";
 import { Link } from "wouter";
 
+import heroRbfConstruction from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
+import heroRbfWarehouse from "@assets/generated_images/rbf_warehouse_burkina_faso.png";
+import heroRicConsulting from "@assets/generated_images/ric_consulting_meeting_burkina.png";
+import heroRicTraining from "@assets/generated_images/ric_training_session_burkina.png";
+import heroReviAgriculture from "@assets/generated_images/revi_rice_agriculture_burkina.png";
+import heroReviLivestock from "@assets/generated_images/revi_poultry_farm_burkina.png";
+import heroRbaCampus from "@assets/generated_images/rba_campus_ouagadougou_burkina.png";
+import heroRbaClassroom from "@assets/generated_images/rba_classroom_burkina_faso.png";
+import heroGroupInnovation from "@assets/generated_images/innovation_lab_ouagadougou_burkina.png";
+import heroGroupTeam from "@assets/generated_images/rishom_team_photo_burkina.png";
+import heroGroupCommunity from "@assets/generated_images/rishom_csr_tree_planting_burkina.png";
+import heroGroupInfrastructure from "@assets/generated_images/rishom_complex_aerial_ouagadougou.png";
+import heroRbfEquipment from "@assets/generated_images/rbf_construction_equipment_fleet.png";
+import heroRicData from "@assets/generated_images/ric_data_analyst_burkinabe_woman.png";
+import heroReviProcessing from "@assets/generated_images/revi_food_processing_burkina.png";
+import heroReviMarket from "@assets/generated_images/revi_market_store_ouagadougou.png";
+import heroRbaComputerLab from "@assets/generated_images/rba_computer_lab_burkina.png";
+import heroRbaGraduation from "@assets/generated_images/rba_graduation_ceremony_burkina.png";
+import heroGroupFuture from "@assets/generated_images/burkinabe_entrepreneur_futuristic_vision.png";
+import heroGroupCelebration from "@assets/generated_images/rishom_team_celebration_burkina.png";
+
 interface CarouselSlide {
   id: number;
   image: string;
@@ -18,7 +39,7 @@ interface CarouselSlide {
 const carouselSlides: CarouselSlide[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
+    image: heroRbfConstruction,
     imageDescription: "Chantier de construction moderne à Ouagadougou avec ouvriers burkinabè en gilets orange et casques blancs travaillant sur un immeuble de 5 étages. Au premier plan, une grue jaune RBF, des sacs de ciment empilés. Architecture contemporaine avec façade vitrée. Ciel bleu, lumière naturelle éclatante.",
     entity: "RBF",
     entityColor: "#C74634",
@@ -28,7 +49,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80",
+    image: heroRbfWarehouse,
     imageDescription: "Entrepôt RBF spacieux et organisé avec hauts rayonnages métalliques remplis de matériaux de construction (sacs de ciment, fer à béton, tuyaux PVC). Au premier plan, chariot élévateur jaune RBF conduit par un employé burkinabè en combinaison bleue. Éclairage LED moderne.",
     entity: "RBF",
     entityColor: "#C74634",
@@ -38,7 +59,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80",
+    image: heroRicConsulting,
     imageDescription: "Salle de réunion moderne avec grande table en bois clair. Équipe RIC diverse (3 consultants burkinabè en tenue business casual) présentant des graphiques de croissance sur écran interactif à des clients entrepreneurs. Tableaux blancs avec diagrammes stratégiques.",
     entity: "RIC",
     entityColor: "#8B1538",
@@ -48,7 +69,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80",
+    image: heroRicTraining,
     imageDescription: "Session de formation RIC dans salle équipée moderne. Formateur burkinabè debout devant tableau blanc interactif, expliquant concepts business à 12 participants attentifs (entrepreneurs et managers burkinabè). Participants avec laptops ouverts, prenant notes.",
     entity: "RIC",
     entityColor: "#8B1538",
@@ -58,7 +79,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&q=80",
+    image: heroReviAgriculture,
     imageDescription: "Vaste champ de riz vert éclatant à perte de vue sous ciel bleu burkinabè. Au premier plan, agriculteurs burkinabè (2 hommes, 1 femme) en tenue de travail et chapeaux de paille, souriant, inspectant plants de riz à maturité. Système d'irrigation moderne visible.",
     entity: "REV'I",
     entityColor: "#058B5E",
@@ -68,7 +89,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=1920&q=80",
+    image: heroReviLivestock,
     imageDescription: "Ferme d'élevage moderne REV'I avec poulailler climatisé en arrière-plan. Au premier plan, éleveur burkinabè en blouse blanche tenant plateau d'œufs frais dorés. Poules pondeuses en bonne santé dans enclos propre et spacieux. Bâtiments agricoles contemporains.",
     entity: "REV'I",
     entityColor: "#058B5E",
@@ -78,7 +99,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 7,
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=1920&q=80",
+    image: heroRbaCampus,
     imageDescription: "Campus RBA moderne à Ouagadougou. Bâtiment principal en architecture contemporaine (verre et béton clair), pelouses vertes entretenues, palmiers, allées pavées. Étudiants burkinabè (mix hommes/femmes, 18-25 ans) en tenue décontractée marchant avec sacs à dos.",
     entity: "RBA",
     entityColor: "#2E5A9C",
@@ -88,7 +109,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 8,
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
+    image: heroRbaClassroom,
     imageDescription: "Salle de classe RBA high-tech avec 25 étudiants burkinabè attentifs (diversité hommes/femmes) devant ordinateurs portables. Professeur burkinabè en chemise élégante expliquant concept au tableau interactif digital. Salle climatisée lumineuse, tables modulables.",
     entity: "RBA",
     entityColor: "#2E5A9C",
@@ -98,7 +119,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 9,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80",
+    image: heroGroupInnovation,
     imageDescription: "Rishom Innovation Lab : open space moderne avec jeunes ingénieurs burkinabè (4 personnes, mix hommes/femmes) travaillant sur prototypes technologiques. Écrans multiples affichant code et designs 3D. Tableaux blancs couverts de schémas et post-its colorés.",
     entity: "GROUPE",
     entityColor: "#8B1538",
@@ -108,7 +129,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 10,
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80",
+    image: heroGroupTeam,
     imageDescription: "Photo de groupe corporate : 20 employés du Groupe Rishom (mix managers et opérationnels, toutes entités) debout devant siège social moderne. Diversité ethnique burkinabè (Mossi, Peul, Gourmantché, etc.), équilibre hommes/femmes, tenues professionnelles élégantes.",
     entity: "GROUPE",
     entityColor: "#8B1538",
@@ -118,7 +139,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 11,
-    image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=1920&q=80",
+    image: heroGroupCommunity,
     imageDescription: "Action RSE Rishom : équipe de volontaires Rishom (10 personnes en t-shirts verts logo Groupe) plantant arbres avec villageois burkinabè (femmes, hommes, enfants) dans village rural. Jeunes plants d'arbres alignés, arrosoirs, bêches. Sourires, entraide.",
     entity: "GROUPE",
     entityColor: "#058B5E",
@@ -128,7 +149,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 12,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+    image: heroGroupInfrastructure,
     imageDescription: "Vue aérienne spectaculaire par drone : complexe industriel Groupe Rishom à Ouagadougou. Plusieurs bâtiments modernes (entrepôts RBF, usine REV'I, campus RBA, bureaux RIC) organisés autour d'espaces verts. Panneaux solaires sur tous les toits.",
     entity: "GROUPE",
     entityColor: "#B8956A",
@@ -138,7 +159,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 13,
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80",
+    image: heroRbfEquipment,
     imageDescription: "Parc d'engins RBF impressionnant : 5 machines de chantier alignées (bulldozer, pelleteuse, rouleau compresseur, grue mobile, chargeuse) toutes jaunes flambant neuves avec logo RBF. Opérateurs burkinabè fiers debout devant leurs machines en tenue sécurité orange.",
     entity: "RBF",
     entityColor: "#C74634",
@@ -148,7 +169,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 14,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
+    image: heroRicData,
     imageDescription: "Analyste RIC burkinabè (femme, 30 ans, lunettes, tenue professionnelle) devant double écran affichant dashboards colorés avec graphiques et KPIs d'entreprise. Bureau moderne épuré, plante verte, tasse de café. Concentration intense.",
     entity: "RIC",
     entityColor: "#8B1538",
@@ -158,7 +179,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 15,
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1920&q=80",
+    image: heroReviProcessing,
     imageDescription: "Unité de transformation REV'I : chaîne de production moderne où employées burkinabè (5 femmes en blouses blanches, charlottes) conditionnent purée de tomate dans boîtes de conserve. Équipements inox étincelants, contrôle qualité strict.",
     entity: "REV'I",
     entityColor: "#058B5E",
@@ -168,7 +189,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 16,
-    image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=80",
+    image: heroReviMarket,
     imageDescription: "Boutique REV'I Market moderne et accueillante : rayons bien fournis avec produits REV'I (riz, œufs, légumes frais, purées de tomate, confitures). Cliente burkinabè élégante choisissant produits, vendeuse souriante en tablier vert logo REV'I conseillant.",
     entity: "REV'I",
     entityColor: "#058B5E",
@@ -178,7 +199,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 17,
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1920&q=80",
+    image: heroRbaComputerLab,
     imageDescription: "Salle informatique RBA dernier cri : 30 postes iMac alignés où étudiants burkinabè (mix hommes/femmes) codent ou créent designs graphiques. Écrans multiples, clavier/souris sans fil. Superviseur circulant entre rangs. Salle climatisée.",
     entity: "RBA",
     entityColor: "#2E5A9C",
@@ -188,7 +209,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 18,
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80",
+    image: heroRbaGraduation,
     imageDescription: "Cérémonie de remise de diplômes RBA : 50 diplômés burkinabè en toge noire et toque, tenant diplômes, souriant fièrement. Familles applaudissant. Scène avec bannière RBA, podium, fleurs. Grande salle moderne décorée. Émotion, fierté, accomplissement.",
     entity: "RBA",
     entityColor: "#2E5A9C",
@@ -198,7 +219,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 19,
-    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1920&q=80",
+    image: heroGroupFuture,
     imageDescription: "Montage artistique moderne : jeune entrepreneur burkinabè (25 ans, costume élégant) tenant tablette affichant projections holographiques futuristes (graphiques 3D, carte CEDEAO interactive, innovations). Fond de Ouagadougou moderne avec buildings, ciel crépusculaire.",
     entity: "GROUPE",
     entityColor: "#8B1538",
@@ -208,7 +229,7 @@ const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 20,
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80",
+    image: heroGroupCelebration,
     imageDescription: "Moment festif corporate : équipe multiculturelle Groupe Rishom (30 personnes) levant mains en l'air en célébration dans open space moderne décoré (ballons, bannières succès). Diversité ethnique, générations, postes. Joie collective, confettis, trophée au centre.",
     entity: "GROUPE",
     entityColor: "#B8956A",
