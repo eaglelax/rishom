@@ -26,6 +26,7 @@ import Cookies from "@/pages/Cookies";
 import RBF from "@/pages/RBF";
 import RBFEquipment from "@/pages/RBFEquipment";
 import RBFRental from "@/pages/RBFRental";
+import RBFMaterials from "@/pages/RBFMaterials";
 import RIC from "@/pages/RIC";
 import REVI from "@/pages/REVI";
 import RBA from "@/pages/RBA";
@@ -60,6 +61,7 @@ function Router() {
       <Route path="/rbf" component={RBF} />
       <Route path="/rbf/equipements" component={RBFEquipment} />
       <Route path="/rbf/location" component={RBFRental} />
+      <Route path="/rbf/materiaux" component={RBFMaterials} />
       <Route path="/ric" component={RIC} />
       <Route path="/revi" component={REVI} />
       <Route path="/rba" component={RBA} />
