@@ -1,0 +1,239 @@
+import React from 'react';
+import TopBar from '../../components/TopBar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import { motion } from 'framer-motion';
+import { Star, Quote, TrendingUp, Award } from 'lucide-react';
+
+const HeroSection = () => (
+  <section className="relative h-[50vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Témoignages Producteurs & Partenaires</h1>
+        <p className="text-xl max-w-2xl mx-auto">Découvre comment REV'I transforme l'agriculture burkinabè.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      name: 'Boureima Ouédraogo',
+      profile: 'Producteur de riz',
+      location: 'Bama, Balé',
+      rating: 5,
+      service: 'Contrat de production',
+      comment: 'Avant de travailler avec REV\'I, je vendais mon riz à des intermédiaires qui dictaient les prix. Maintenant, j\'ai un contrat clair avec un prix garanti. En plus, ils m\'ont formé aux nouvelles techniques et m\'ont fourni des semences améliorées. Mon rendement est passé de 3 à 5 tonnes par hectare.',
+      results: 'Rendement +67%, revenus x2',
+      image: '/images/producer-boureima.jpg'
+    },
+    {
+      name: 'Mariam Traoré',
+      profile: 'Maraîchère',
+      location: 'Loumbila, Plateau Central',
+      rating: 5,
+      service: 'Formation + équipements',
+      comment: 'J\'ai participé à la formation sur le maraîchage intensif. REV\'I nous a aidées à installer un système de goutte-à-goutte. Aujourd\'hui, je produis toute l\'année, même en saison sèche. Mes tomates et oignons sont achetés directement par REV\'I Market.',
+      results: 'Production x3, autonomie financière',
+      image: '/images/producer-mariam.jpg'
+    },
+    {
+      name: 'Hamidou Sankara',
+      profile: 'Éleveur de poulets',
+      location: 'Koudougou, Boulkiemdé',
+      rating: 5,
+      service: 'Fourniture d\'aliments',
+      comment: 'Les aliments pour volailles REV\'I sont de qualité et le prix est stable. Mes poulets grandissent vite et je n\'ai presque pas de pertes. L\'équipe technique passe régulièrement pour des conseils. C\'est rassurant.',
+      results: 'Taux de mortalité -40%, croissance optimale',
+      image: '/images/producer-hamidou.jpg'
+    },
+    {
+      name: 'Fatimata Sawadogo',
+      profile: 'Présidente coopérative féminine',
+      location: 'Namentenga',
+      rating: 5,
+      service: 'Projet autonomisation',
+      comment: 'Grâce au projet REV\'I/ONU Femmes, nos 45 membres ont été formées au petit élevage et au maraîchage. Nous avons reçu des chèvres et du matériel. Aujourd\'hui, chaque femme gagne entre 50 000 et 100 000 FCFA par mois. Nos enfants vont à l\'école.',
+      results: '45 femmes autonomes, scolarisation +100%',
+      image: '/images/producer-fatimata.jpg'
+    },
+    {
+      name: 'Jean-Baptiste Kaboré',
+      profile: 'Restaurateur',
+      location: 'Ouagadougou',
+      rating: 5,
+      service: 'Approvisionnement B2B',
+      comment: 'Je commande mes légumes, viandes et œufs chez REV\'I chaque semaine. Livraison ponctuelle, produits frais et traçables. Mes clients apprécient la qualité. Le rapport qualité-prix est imbattable.',
+      results: 'Qualité constante, clients fidélisés',
+      image: '/images/client-jeanbaptiste.jpg'
+    },
+    {
+      name: 'Aïcha Compaoré',
+      profile: 'Gérante supérette',
+      location: 'Bobo-Dioulasso',
+      rating: 4,
+      service: 'Distribution produits transformés',
+      comment: 'Les produits transformés REV\'I se vendent bien : riz, farine, purée de tomate. Mes clients aiment la marque locale et le packaging est professionnel. J\'aimerais juste plus de variétés.',
+      results: 'CA produits REV\'I : 25% du total épicerie',
+      image: '/images/client-aicha.jpg'
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Paroles de Producteurs & Clients</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg relative"
+            >
+              <Quote className="absolute top-4 right-4 w-12 h-12 text-[#058B5E] opacity-10" />
+              <div className="flex items-start mb-4">
+                <div className="w-16 h-16 rounded-full bg-[#058B5E] flex items-center justify-center text-white font-bold text-xl mr-4 flex-shrink-0">
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#3A3A3C]">{testimonial.name}</h3>
+                  <p className="text-[#058B5E] font-semibold">{testimonial.profile}</p>
+                  <p className="text-[#3A3A3C] text-sm">{testimonial.location}</p>
+                </div>
+              </div>
+              <div className="flex mb-3">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-[#B8956A] fill-current" />
+                ))}
+              </div>
+              <div className="inline-block bg-[#F5F1E8] text-[#058B5E] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                {testimonial.service}
+              </div>
+              <p className="text-[#3A3A3C] mb-4 italic">"{testimonial.comment}"</p>
+              <div className="border-t border-[#B8956A]/20 pt-4">
+                <div className="flex items-start">
+                  <TrendingUp className="w-5 h-5 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-[#3A3A3C]">
+                    <span className="font-semibold">Impact : </span>{testimonial.results}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const StatsSection = () => {
+  const stats = [
+    { value: '1 200+', label: 'Producteurs partenaires' },
+    { value: '92%', label: 'Satisfaction globale' },
+    { value: '8 500 T', label: 'Production collectée/an' },
+    { value: '4,7/5', label: 'Note moyenne' }
+  ];
+
+  return (
+    <section className="py-20 bg-[#058B5E] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-xl">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AwardsSection = () => (
+  <section className="py-20 bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Reconnaissances</h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 text-[#058B5E] mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">Prix Innovation Agricole 2023</h3>
+          <p className="text-sm text-[#3A3A3C]">Ministère de l'Agriculture</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 text-[#058B5E] mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">Label RSE Agri-business 2024</h3>
+          <p className="text-sm text-[#3A3A3C]">Chambre de Commerce</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-[#F5F1E8] p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 text-[#058B5E] mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">Meilleur Projet Femmes Rurales</h3>
+          <p className="text-sm text-[#3A3A3C]">ONU Femmes 2023</p>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const CTASection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Devenir Producteur Partenaire ?</h2>
+      <p className="text-xl text-[#3A3A3C] mb-8">
+        Rejoins notre réseau de producteurs et bénéficie d'un accompagnement complet pour développer ton activité.
+      </p>
+      <button className="bg-[#058B5E] text-white py-4 px-8 rounded-lg hover:bg-[#3A3A3C] transition-colors font-semibold text-lg">
+        Candidater comme Producteur
+      </button>
+    </div>
+  </section>
+);
+
+const Testimonials = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <TestimonialsSection />
+      <StatsSection />
+      <AwardsSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+};
+
+export default Testimonials;

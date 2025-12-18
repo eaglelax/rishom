@@ -1,0 +1,298 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Tractor, Lightbulb, Users, TrendingUp, CheckCircle2, Calendar } from "lucide-react";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Projets Agricoles Structurants</h1>
+        <p className="text-xl max-w-2xl">Initiatives pour moderniser l'agriculture burkinabè et renforcer la sécurité alimentaire.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const OngoingProjectsSection = () => {
+  const projects = [
+    {
+      icon: <Tractor className="w-12 h-12" />,
+      name: "Mécanisation agricole pour 500 producteurs",
+      location: "Région des Hauts-Bassins",
+      duration: "2024-2026",
+      budget: "2,5 milliards FCFA",
+      partners: "BAD, Ministère Agriculture",
+      objectives: [
+        "Acquisition de 50 tracteurs et équipements",
+        "Formation de 500 producteurs",
+        "Création de 5 CUMA (Coopératives d'Utilisation de Matériel Agricole)",
+        "Augmentation de 40% des surfaces cultivées"
+      ],
+      status: "En cours - Phase 1/3",
+      progress: 35
+    },
+    {
+      icon: <Lightbulb className="w-12 h-12" />,
+      name: "Fermes pilotes agro-écologiques",
+      location: "3 régions (Centre, Cascades, Boucle du Mouhoun)",
+      duration: "2023-2025",
+      budget: "800 millions FCFA",
+      partners: "GIZ, ONG locales",
+      objectives: [
+        "3 fermes de démonstration (50 ha chacune)",
+        "Techniques d'agroforesterie et compostage",
+        "Formation de 200 agriculteurs/an",
+        "Production de semences bio"
+      ],
+      status: "En cours - Phase 2/3",
+      progress: 65
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      name: "Autonomisation des femmes rurales",
+      location: "Province du Namentenga",
+      duration: "2024-2027",
+      budget: "500 millions FCFA",
+      partners: "ONU Femmes, PNUD",
+      objectives: [
+        "Appui à 300 groupements féminins",
+        "Maraîchage et petit élevage",
+        "Accès au microcrédit",
+        "Alphabétisation et formation gestion"
+      ],
+      status: "Démarrage - Phase 1/3",
+      progress: 15
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets en Cours</h2>
+        <div className="space-y-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="flex flex-col md:flex-row items-start gap-4 mb-4">
+                <div className="text-[#058B5E]">{project.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-[#3A3A3C] mb-2">{project.name}</h3>
+                  <div className="grid md:grid-cols-2 gap-3 text-sm mb-4">
+                    <div>
+                      <span className="font-semibold text-[#3A3A3C]">Localisation : </span>
+                      <span className="text-[#3A3A3C]">{project.location}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-[#3A3A3C]">Durée : </span>
+                      <span className="text-[#3A3A3C]">{project.duration}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-[#3A3A3C]">Budget : </span>
+                      <span className="text-[#058B5E] font-bold">{project.budget}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-[#3A3A3C]">Partenaires : </span>
+                      <span className="text-[#3A3A3C]">{project.partners}</span>
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-[#3A3A3C] mb-2">Objectifs :</h4>
+                    <ul className="grid md:grid-cols-2 gap-2">
+                      {project.objectives.map((obj, idx) => (
+                        <li key={idx} className="flex items-start text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-[#3A3A3C]">{obj}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="pt-4 border-t border-[#B8956A]/20">
+                    <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
+                      <span className="font-semibold text-[#3A3A3C]">{project.status}</span>
+                      <span className="text-[#058B5E] font-bold">{project.progress}%</span>
+                    </div>
+                    <div className="w-full bg-[#F5F1E8] rounded-full h-3">
+                      <div 
+                        className="bg-[#058B5E] h-3 rounded-full transition-all duration-500"
+                        style={{ width: `${project.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CompletedProjectsSection = () => {
+  const completed = [
+    {
+      name: "Construction de 10 magasins de stockage",
+      location: "Région du Centre-Ouest",
+      year: "2021-2023",
+      results: "2 500 tonnes de capacité, -30% pertes post-récolte"
+    },
+    {
+      name: "Électrification solaire de 15 forages",
+      location: "Province du Yatenga",
+      year: "2022-2023",
+      results: "600 ha irrigués, 250 producteurs bénéficiaires"
+    },
+    {
+      name: "Programme semences améliorées",
+      location: "Boucle du Mouhoun",
+      year: "2020-2022",
+      results: "800 producteurs formés, rendements +45%"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets Réalisés</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {completed.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-6 rounded-lg"
+            >
+              <div className="flex items-center mb-3">
+                <CheckCircle2 className="w-6 h-6 text-[#058B5E] mr-2" />
+                <span className="text-sm font-semibold text-[#B8956A]">{project.year}</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">{project.name}</h3>
+              <p className="text-sm text-[#3A3A3C] mb-3">{project.location}</p>
+              <div className="pt-3 border-t border-[#B8956A]/20">
+                <TrendingUp className="w-5 h-5 text-[#058B5E] inline mr-2" />
+                <span className="text-sm font-semibold text-[#058B5E]">{project.results}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ImpactSection = () => {
+  const impacts = [
+    { value: "1 200+", label: "Producteurs accompagnés" },
+    { value: "3 500 ha", label: "Surfaces aménagées" },
+    { value: "8 500 T", label: "Production additionnelle/an" },
+    { value: "45%", label: "Augmentation rendements" }
+  ];
+
+  return (
+    <section className="py-20 bg-[#058B5E] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">Impact Global</h2>
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          {impacts.map((impact, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl font-bold mb-2">{impact.value}</div>
+              <div className="text-xl">{impact.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const PipelineSection = () => {
+  const pipeline = [
+    {
+      name: "Unité de transformation mangues séchées",
+      status: "Étude de faisabilité",
+      launch: "T3 2025",
+      budget: "1,2 Mds FCFA"
+    },
+    {
+      name: "Ferme aquaponique moderne",
+      status: "Recherche financement",
+      launch: "T4 2025",
+      budget: "600 M FCFA"
+    },
+    {
+      name: "Plateforme e-commerce agro",
+      status: "Conception",
+      launch: "T2 2025",
+      budget: "150 M FCFA"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets à Venir</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {pipeline.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-lg"
+            >
+              <div className="inline-block bg-[#058B5E] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                {project.status}
+              </div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-4">{project.name}</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 text-[#058B5E] mr-2" />
+                  <span className="text-[#3A3A3C]">Lancement prévu : {project.launch}</span>
+                </div>
+                <div className="text-[#058B5E] font-bold">Budget : {project.budget}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default function REVIProjects() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <OngoingProjectsSection />
+      <CompletedProjectsSection />
+      <ImpactSection />
+      <PipelineSection />
+      <Footer />
+    </div>
+  );
+}

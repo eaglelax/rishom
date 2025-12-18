@@ -41,6 +41,10 @@ import REVI from "@/pages/REVI";
 import REVIAgriculture from "@/pages/REVIAgriculture";
 import REVILivestock from "@/pages/REVILivestock";
 import REVIProcessing from "@/pages/REVIProcessing";
+import REVIDistribution from "@/pages/REVIDistribution";
+import REVIProjects from "@/pages/REVIProjects";
+import REVITraining from "@/pages/REVITraining";
+import REVITestimonials from "@/pages/REVITestimonials";
 import RBA from "@/pages/RBA";
 
 // 404 Page
@@ -88,6 +92,10 @@ function Router() {
       <Route path="/revi/agriculture" component={REVIAgriculture} />
       <Route path="/revi/elevage" component={REVILivestock} />
       <Route path="/revi/transformation" component={REVIProcessing} />
+      <Route path="/revi/distribution" component={REVIDistribution} />
+      <Route path="/revi/projets" component={REVIProjects} />
+      <Route path="/revi/formation" component={REVITraining} />
+      <Route path="/revi/temoignages" component={REVITestimonials} />
       <Route path="/rba" component={RBA} />
 
       {/* 404 - Doit être en dernier */}

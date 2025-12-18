@@ -1,0 +1,288 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { GraduationCap, Users, Sprout, Award, CheckCircle2, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Formations Agricoles</h1>
+        <p className="text-xl max-w-2xl">Renforcement des capacités des producteurs pour une agriculture moderne et rentable.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const TrainingsSection = () => {
+  const trainings = [
+    {
+      icon: <Sprout className="w-12 h-12" />,
+      title: "Techniques culturales améliorées",
+      duration: "5 jours",
+      target: "Producteurs céréales & légumineuses",
+      modules: [
+        "Préparation du sol et semis",
+        "Gestion de l'eau et irrigation",
+        "Fertilisation raisonnée",
+        "Lutte intégrée contre les ravageurs",
+        "Récolte et post-récolte"
+      ],
+      format: "Théorie (40%) + Pratique terrain (60%)",
+      price: "Gratuit (subventionné)",
+      frequency: "4 sessions/an"
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      title: "Gestion d'exploitation agricole",
+      duration: "3 jours",
+      target: "Exploitants, responsables de fermes",
+      modules: [
+        "Comptabilité agricole simplifiée",
+        "Calcul des coûts de production",
+        "Gestion de trésorerie",
+        "Planification des cultures",
+        "Accès au financement"
+      ],
+      format: "Présentiel avec études de cas",
+      price: "25 000 FCFA/participant",
+      frequency: "6 sessions/an"
+    },
+    {
+      icon: <Award className="w-12 h-12" />,
+      title: "Agriculture biologique & certification",
+      duration: "4 jours",
+      target: "Producteurs bio, candidats à la certification",
+      modules: [
+        "Principes de l'agriculture biologique",
+        "Normes et cahiers des charges",
+        "Compostage et fertilisation naturelle",
+        "Biopesticides et bio-contrôle",
+        "Processus de certification"
+      ],
+      format: "Théorie + Visite ferme bio",
+      price: "35 000 FCFA/participant",
+      frequency: "3 sessions/an"
+    },
+    {
+      icon: <GraduationCap className="w-12 h-12" />,
+      title: "Mécanisation agricole",
+      duration: "3 jours",
+      target: "Conducteurs d'engins, mécaniciens",
+      modules: [
+        "Utilisation tracteurs et équipements",
+        "Entretien et maintenance de base",
+        "Réglages et optimisation",
+        "Sécurité au travail",
+        "Gestion de parc d'engins"
+      ],
+      format: "Pratique intensive sur matériel",
+      price: "40 000 FCFA/participant",
+      frequency: "4 sessions/an"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Catalogue de Formations</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {trainings.map((training, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="text-[#058B5E] mb-4">{training.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{training.title}</h3>
+              <div className="grid grid-cols-2 gap-3 text-sm mb-4">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Durée : </span>
+                  <span className="text-[#3A3A3C]">{training.duration}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Tarif : </span>
+                  <span className="text-[#058B5E] font-bold">{training.price}</span>
+                </div>
+              </div>
+              <p className="text-sm text-[#B8956A] font-semibold mb-4">Public : {training.target}</p>
+              <div className="mb-4">
+                <h4 className="font-semibold text-[#3A3A3C] mb-2">Programme :</h4>
+                <ul className="space-y-1">
+                  {training.modules.map((module, idx) => (
+                    <li key={idx} className="flex items-start text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-[#3A3A3C]">{module}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pt-4 border-t border-[#B8956A]/20 text-sm space-y-2">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Format : </span>
+                  <span className="text-[#3A3A3C]">{training.format}</span>
+                </div>
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 text-[#058B5E] mr-2" />
+                  <span className="text-[#3A3A3C]">{training.frequency}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ApproachSection = () => {
+  const approach = [
+    {
+      title: "Diagnostic des besoins",
+      description: "Enquête terrain auprès des producteurs pour identifier les lacunes"
+    },
+    {
+      title: "Contenu adapté",
+      description: "Modules conçus par des agronomes expérimentés, adaptés au contexte local"
+    },
+    {
+      title: "Pédagogie active",
+      description: "Alternance théorie/pratique, démonstrations, visites de fermes pilotes"
+    },
+    {
+      title: "Suivi post-formation",
+      description: "Accompagnement terrain pendant 6 mois, hotline technique"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Notre Approche Pédagogique</h2>
+        <div className="grid md:grid-cols-4 gap-6">
+          {approach.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 bg-[#058B5E] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                {index + 1}
+              </div>
+              <h3 className="text-lg font-bold text-[#3A3A3C] mb-2">{item.title}</h3>
+              <p className="text-sm text-[#3A3A3C]">{item.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ImpactSection = () => {
+  const stats = [
+    { value: "2 500+", label: "Producteurs formés" },
+    { value: "85%", label: "Taux de satisfaction" },
+    { value: "120", label: "Sessions organisées" },
+    { value: "+35%", label: "Augmentation rendements (moyenne)" }
+  ];
+
+  return (
+    <section className="py-20 bg-[#058B5E] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">Impact de Nos Formations</h2>
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-xl">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const RegistrationSection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <GraduationCap className="w-16 h-16 text-[#058B5E] mx-auto mb-6" />
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Inscription aux Formations</h2>
+      <p className="text-xl text-[#3A3A3C] mb-8">
+        Les inscriptions sont ouvertes toute l'année. Places limitées à 25 participants par session.
+      </p>
+      <div className="bg-white p-8 rounded-lg shadow-lg mb-8">
+        <h3 className="text-xl font-bold text-[#3A3A3C] mb-4">Conditions d'accès</h3>
+        <ul className="text-left space-y-2 max-w-2xl mx-auto">
+          <li className="flex items-start">
+            <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-3 mt-0.5 flex-shrink-0" />
+            <span>Être producteur actif ou employé d'exploitation agricole</span>
+          </li>
+          <li className="flex items-start">
+            <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-3 mt-0.5 flex-shrink-0" />
+            <span>Fiche d'inscription dûment remplie</span>
+          </li>
+          <li className="flex items-start">
+            <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-3 mt-0.5 flex-shrink-0" />
+            <span>Paiement à l'inscription (ou prise en charge par structure)</span>
+          </li>
+          <li className="flex items-start">
+            <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-3 mt-0.5 flex-shrink-0" />
+            <span>Engagement à participer à toutes les sessions</span>
+          </li>
+        </ul>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          className="bg-[#058B5E] text-white hover:bg-[#3A3A3C] font-semibold text-lg py-6 px-8"
+          data-testid="button-download-calendar"
+        >
+          Télécharger le Calendrier 2025
+        </Button>
+        <Button 
+          variant="outline"
+          className="border-2 border-[#058B5E] text-[#058B5E] hover:bg-[#058B5E] hover:text-white font-semibold text-lg py-6 px-8"
+          data-testid="button-register-online"
+        >
+          S'Inscrire en Ligne
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
+export default function REVITraining() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <TrainingsSection />
+      <ApproachSection />
+      <ImpactSection />
+      <RegistrationSection />
+      <Footer />
+    </div>
+  );
+}
