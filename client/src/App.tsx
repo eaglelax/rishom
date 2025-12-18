@@ -14,6 +14,8 @@ import Contact from "@/pages/Contact";
 import Careers from "@/pages/Careers";
 import Governance from "@/pages/Governance";
 import CSR from "@/pages/CSR";
+import Certifications from "@/pages/Certifications";
+import Partners from "@/pages/Partners";
 
 // Pages entités
 import RBF from "@/pages/RBF";
@@ -39,6 +41,8 @@ function Router() {
       <Route path="/carrieres" component={Careers} />
       <Route path="/gouvernance" component={Governance} />
       <Route path="/rse" component={CSR} />
+      <Route path="/certifications" component={Certifications} />
+      <Route path="/partenaires" component={Partners} />
 
       {/* Pages entités */}
       <Route path="/rbf" component={RBF} />
