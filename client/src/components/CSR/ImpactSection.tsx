@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Droplet, Tree, Award, Heart } from "lucide-react";
+import { TrendingUp, Users, Droplet, TreeDeciduous, Award, Heart } from "lucide-react";
 
 const impacts = [
   {
@@ -24,7 +24,7 @@ const impacts = [
     color: "#2E5A9C",
   },
   {
-    icon: Tree,
+    icon: TreeDeciduous,
     value: "50 000",
     label: "Arbres plantés",
     description: "programme de reforestation",
