@@ -54,6 +54,8 @@ import RBAAdmission from "@/pages/RBAAdmission";
 import RBACorporate from "@/pages/RBACorporate";
 import History from "@/pages/History";
 import Innovation from "@/pages/Innovation";
+import Investors from "@/pages/Investors";
+import Sustainability from "@/pages/Sustainability";
 
 // 404 Page
 import NotFound from "@/pages/not-found";
@@ -115,6 +117,8 @@ function Router() {
       {/* Holding - Pages institutionnelles */}
       <Route path="/histoire" component={History} />
       <Route path="/innovation" component={Innovation} />
+      <Route path="/investisseurs" component={Investors} />
+      <Route path="/developpement-durable" component={Sustainability} />
 
       {/* 404 - Doit être en dernier */}
       <Route component={NotFound} />

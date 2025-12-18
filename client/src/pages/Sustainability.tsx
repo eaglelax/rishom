@@ -1,0 +1,403 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Leaf, Droplet, Sun, Users, Recycle, Heart, TrendingUp, CheckCircle2, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Développement Durable</h1>
+        <p className="text-xl max-w-2xl">Notre engagement pour une croissance responsable, respectueuse de l'environnement et des communautés.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const CommitmentSection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <Leaf className="w-16 h-16 text-[#058B5E] mb-6" />
+          <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Notre Vision du Développement Durable</h2>
+          <p className="text-[#3A3A3C] mb-4">
+            Chez Groupe Rishom, le développement durable n'est pas une option, c'est une nécessité. Nous croyons fermement qu'une entreprise prospère doit contribuer positivement à la société et à l'environnement.
+          </p>
+          <p className="text-[#3A3A3C] mb-4">
+            Notre stratégie RSE s'articule autour de 3 piliers : <strong>Environnement</strong>, <strong>Social</strong> et <strong>Gouvernance</strong> (ESG), alignés sur les Objectifs de Développement Durable (ODD) des Nations Unies.
+          </p>
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="font-bold text-[#058B5E] mb-3">Nos Engagements 2024-2030</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                <span>Réduire de 40% nos émissions de CO2</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                <span>Atteindre 50% de femmes aux postes de direction</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                <span>Former gratuitement 5 000 jeunes défavorisés</span>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 gap-6"
+        >
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <Leaf className="w-12 h-12 text-[#058B5E] mx-auto mb-3" />
+            <h3 className="font-bold text-[#3A3A3C] mb-2">Environnement</h3>
+            <p className="text-sm text-[#3A3A3C]">Protection de la planète et gestion des ressources</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <Users className="w-12 h-12 text-[#8B1538] mx-auto mb-3" />
+            <h3 className="font-bold text-[#3A3A3C] mb-2">Social</h3>
+            <p className="text-sm text-[#3A3A3C]">Bien-être des employés et impact communautaire</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <Award className="w-12 h-12 text-[#2E5A9C] mx-auto mb-3" />
+            <h3 className="font-bold text-[#3A3A3C] mb-2">Gouvernance</h3>
+            <p className="text-sm text-[#3A3A3C]">Transparence, éthique et conformité</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <Heart className="w-12 h-12 text-[#C74634] mx-auto mb-3" />
+            <h3 className="font-bold text-[#3A3A3C] mb-2">Impact</h3>
+            <p className="text-sm text-[#3A3A3C]">Contribution aux ODD</p>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const EnvironmentSection = () => {
+  const actions = [
+    {
+      icon: <Sun className="w-12 h-12" />,
+      title: "Énergies renouvelables",
+      description: "Installation de 2 000 m2 de panneaux solaires sur nos sites",
+      impact: "30% de nos besoins énergétiques couverts par le solaire",
+      target: "50% d'ici 2027"
+    },
+    {
+      icon: <Droplet className="w-12 h-12" />,
+      title: "Gestion de l'eau",
+      description: "Systèmes de récupération d'eau de pluie, irrigation goutte-à-goutte",
+      impact: "40% d'économie d'eau sur nos fermes REV'I",
+      target: "-50% consommation d'ici 2026"
+    },
+    {
+      icon: <Recycle className="w-12 h-12" />,
+      title: "Économie circulaire",
+      description: "Recyclage des déchets de construction, compostage des déchets organiques",
+      impact: "60% de nos déchets valorisés",
+      target: "80% d'ici 2025"
+    },
+    {
+      icon: <Leaf className="w-12 h-12" />,
+      title: "Reforestation",
+      description: "Programme \"1 projet = 100 arbres plantés\"",
+      impact: "50 000 arbres plantés depuis 2020",
+      target: "200 000 arbres d'ici 2030"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Actions Environnementales</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {actions.map((action, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-8 rounded-lg"
+            >
+              <div className="text-[#058B5E] mb-4">{action.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{action.title}</h3>
+              <p className="text-[#3A3A3C] mb-4">{action.description}</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-start">
+                  <TrendingUp className="w-4 h-4 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Impact 2024 : </strong>{action.impact}</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Objectif : </strong>{action.target}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SocialSection = () => {
+  const initiatives = [
+    {
+      title: "Emploi local",
+      stat: "95%",
+      description: "De nos employés sont recrutés localement, contribuant au développement économique des régions"
+    },
+    {
+      title: "Formation continue",
+      stat: "40h",
+      description: "Moyenne de formation par employé et par an pour développer les compétences"
+    },
+    {
+      title: "Égalité H/F",
+      stat: "42%",
+      description: "De femmes dans nos effectifs (objectif 50% d'ici 2027)"
+    },
+    {
+      title: "Santé & sécurité",
+      stat: "0",
+      description: "Accident grave en 2023 grâce à notre politique stricte de prévention"
+    },
+    {
+      title: "Bourses d'études",
+      stat: "250",
+      description: "Jeunes bénéficiaires de nos bourses RBA depuis 2020"
+    },
+    {
+      title: "Accompagnement agriculteurs",
+      stat: "1 200",
+      description: "Producteurs accompagnés par REV'I (formation, intrants, débouchés)"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Impact Social</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {initiatives.map((initiative, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-lg text-center"
+            >
+              <div className="text-5xl font-bold text-[#8B1538] mb-3">{initiative.stat}</div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-3">{initiative.title}</h3>
+              <p className="text-sm text-[#3A3A3C]">{initiative.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CommunitySection = () => {
+  const projects = [
+    {
+      title: "Électrification rurale",
+      description: "Installation de mini-centrales solaires dans 5 villages",
+      beneficiaries: "2 500 personnes",
+      year: "2022-2023"
+    },
+    {
+      title: "Accès à l'eau potable",
+      description: "Construction de 10 forages équipés de pompes solaires",
+      beneficiaries: "5 000 personnes",
+      year: "2021-2024"
+    },
+    {
+      title: "Cantines scolaires",
+      description: "Fourniture gratuite de produits REV'I à 12 écoles rurales",
+      beneficiaries: "3 000 élèves",
+      year: "Depuis 2020"
+    },
+    {
+      title: "Alphabétisation femmes",
+      description: "Programme d'alphabétisation pour 300 femmes rurales/an",
+      beneficiaries: "900 femmes",
+      year: "2022-2024"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets Communautaires</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-6 rounded-lg"
+            >
+              <h3 className="text-xl font-bold text-[#8B1538] mb-3">{project.title}</h3>
+              <p className="text-[#3A3A3C] mb-3">{project.description}</p>
+              <div className="flex flex-wrap justify-between items-center text-sm gap-2">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Bénéficiaires : </span>
+                  <span className="text-[#058B5E] font-bold">{project.beneficiaries}</span>
+                </div>
+                <div className="text-[#B8956A]">{project.year}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CertificationsSection = () => (
+  <section className="py-20 bg-[#3A3A3C] text-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold mb-12 text-center">Certifications & Reconnaissances</h2>
+      <div className="grid md:grid-cols-4 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 mx-auto mb-4" />
+          <h3 className="font-bold mb-2">ISO 14001</h3>
+          <p className="text-sm">Management environnemental (RBF, 2023)</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 mx-auto mb-4" />
+          <h3 className="font-bold mb-2">Label RSE</h3>
+          <p className="text-sm">Chambre de Commerce BF (Groupe, 2024)</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 mx-auto mb-4" />
+          <h3 className="font-bold mb-2">Bio Certification</h3>
+          <p className="text-sm">Ecocert (REV'I produits bio, 2023)</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <Award className="w-12 h-12 mx-auto mb-4" />
+          <h3 className="font-bold mb-2">Prix Employeur</h3>
+          <p className="text-sm">Meilleur employeur Burkina (2023)</p>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const StatsSection = () => {
+  const stats = [
+    { value: "-25%", label: "Émissions CO2 depuis 2020" },
+    { value: "50 000", label: "Arbres plantés" },
+    { value: "5 000", label: "Bénéficiaires projets sociaux" },
+    { value: "95%", label: "Emplois locaux" }
+  ];
+
+  return (
+    <section className="py-20 bg-[#058B5E] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-xl">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CTASection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Leaf className="w-16 h-16 text-[#058B5E] mx-auto mb-6" />
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Rejoignez Notre Engagement</h2>
+      <p className="text-xl text-[#3A3A3C] mb-8">
+        Vous partagez nos valeurs ? Découvrez comment collaborer avec nous pour un avenir durable.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          className="bg-[#058B5E] text-white hover:bg-[#3A3A3C] font-semibold text-lg py-6 px-8"
+          data-testid="button-download-rse"
+        >
+          Télécharger le Rapport RSE
+        </Button>
+        <Button 
+          variant="outline"
+          className="border-2 border-[#058B5E] text-[#058B5E] hover:bg-[#058B5E] hover:text-white font-semibold text-lg py-6 px-8"
+          data-testid="button-contact-rse"
+        >
+          Devenir Partenaire
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
+export default function Sustainability() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <CommitmentSection />
+      <EnvironmentSection />
+      <SocialSection />
+      <CommunitySection />
+      <CertificationsSection />
+      <StatsSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+}

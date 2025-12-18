@@ -1,0 +1,424 @@
+CARROUSEL PAGE D'ACCUEIL (20 images - 5 secondes chacune)
+Images RBF (2 images)
+Image 1 - RBF Construction
+
+Nom fichier : hero-rbf-construction.jpg
+Description : Chantier de construction moderne à Ouagadougou avec ouvriers burkinabè en gilets orange et casques blancs travaillant sur un immeuble de 5 étages. Au premier plan, une grue jaune RBF, des sacs de ciment empilés. Architecture contemporaine avec façade vitrée. Ciel bleu, lumière naturelle éclatante. Ambiance professionnelle et dynamique.
+Texte overlay :
+RBF - Leader du BTP au Burkina Faso
+Matériaux de qualité • Location d'engins • Service premium
+Image 2 - RBF Entrepôt
+
+Nom fichier : hero-rbf-warehouse.jpg
+Description : Entrepôt RBF spacieux et organisé avec hauts rayonnages métalliques remplis de matériaux de construction (sacs de ciment, fer à béton, tuyaux PVC). Au premier plan, chariot élévateur jaune RBF conduit par un employé burkinabè en combinaison bleue. Éclairage LED moderne, sol béton impeccable. Panneau "RBF - Votre Partenaire Construction" visible.
+Texte overlay :
+RBF - 15 ans d'excellence
+4 agences • +500 chantiers livrés • Stock permanent
+Images RIC (2 images)
+Image 3 - RIC Conseil
+
+Nom fichier : hero-ric-consulting.jpg
+Description : Salle de réunion moderne avec grande table en bois clair. Équipe RIC diverse (3 consultants burkinabè en tenue business casual) présentant des graphiques de croissance sur écran interactif à des clients entrepreneurs. Tableaux blancs avec diagrammes stratégiques. Décor épuré, baies vitrées laissant entrer lumière naturelle. Ordinateurs portables, carnets de notes. Ambiance collaborative professionnelle.
+Texte overlay :
+RIC - Accélérateur de croissance
+Audit • Stratégie • Accompagnement projets
+Image 4 - RIC Formation
+
+Nom fichier : hero-ric-training.jpg
+Description : Session de formation RIC dans salle équipée moderne. Formateur burkinabè debout devant tableau blanc interactif, expliquant concepts business à 12 participants attentifs (entrepreneurs et managers burkinabè, mix hommes/femmes). Participants avec laptops ouverts, prenant notes. Murs blancs avec logo RIC, écran de projection, tables en U. Énergie positive, engagement visible.
+Texte overlay :
+RIC - Experts en développement d'entreprises
+80+ clients accompagnés • Présence CEDEAO
+Images REV'I (2 images)
+Image 5 - REV'I Agriculture
+
+Nom fichier : hero-revi-agriculture.jpg
+Description : Vaste champ de riz vert éclatant à perte de vue sous ciel bleu burkinabè. Au premier plan, agriculteurs burkinabè (2 hommes, 1 femme) en tenue de travail et chapeaux de paille, souriant, inspectant plants de riz à maturité. Système d'irrigation moderne visible (tuyaux goutte-à-goutte). Tracteur vert REV'I en arrière-plan. Ambiance prospère, agriculture moderne africaine.
+Texte overlay :
+REV'I - L'agriculture burkinabè réinventée
+Production locale • Qualité premium • Circuit court
+Image 6 - REV'I Élevage
+
+Nom fichier : hero-revi-livestock.jpg
+Description : Ferme d'élevage moderne REV'I avec poulailler climatisé en arrière-plan. Au premier plan, éleveur burkinabè en blouse blanche tenant plateau d'œufs frais dorés. Poules pondeuses en bonne santé dans enclos propre et spacieux. Bâtiments agricoles contemporains, panneaux solaires sur toits. Verdure environnante, baobabs au loin. Fierté du terroir africain modernisé.
+Texte overlay :
+REV'I - Du producteur à ton assiette
+12M œufs/an • 500 tonnes viande • Agriculture durable
+Images RBA (2 images)
+Image 7 - RBA Campus
+
+Nom fichier : hero-rba-campus.jpg
+Description : Campus RBA moderne à Ouagadougou. Bâtiment principal en architecture contemporaine (verre et béton clair), pelouses vertes entretenues, palmiers, allées pavées. Étudiants burkinabè (mix hommes/femmes, 18-25 ans) en tenue décontractée marchant avec sacs à dos et livres. Bancs extérieurs où certains étudient. Panneau "Rishom Business Academy - Excellence & Innovation". Ambiance studieuse dynamique.
+Texte overlay :
+RBA - Former les leaders africains de demain
+BTS • Licences • Masters • Formations pros
+Image 8 - RBA Salle de classe
+
+Nom fichier : hero-rba-classroom.jpg
+Description : Salle de classe RBA high-tech avec 25 étudiants burkinabè attentifs (diversité hommes/femmes) devant ordinateurs portables. Professeur burkinabè en chemise élégante expliquant concept au tableau interactif digital. Salle climatisée lumineuse, tables modulables, décor moderne épuré. Murs blancs avec citations inspirantes encadrées. Projecteur, vidéoconférence active. Énergie studieuse positive.
+Texte overlay :
+RBA - Pédagogie d'excellence
+3 500+ alumni • 87% taux d'insertion • Partenariat Université
+Images Groupe Rishom Vision (4 images)
+Image 9 - Innovation Lab
+
+Nom fichier : hero-group-innovation.jpg
+Description : Rishom Innovation Lab : open space moderne avec jeunes ingénieurs burkinabè (4 personnes, mix hommes/femmes) travaillant sur prototypes technologiques. Écrans multiples affichant code et designs 3D. Tableaux blancs couverts de schémas et post-its colorés. Matériel électronique, Arduino, imprimante 3D en action. Ambiance start-up africaine créative. Lumière naturelle, plantes vertes, mobilier design.
+Texte overlay :
+Innovation au cœur de notre ADN
+500M FCFA investis en R&D • 12 chercheurs • 8 projets actifs
+Image 10 - Équipe Multiculturelle
+
+Nom fichier : hero-group-team.jpg
+Description : Photo de groupe corporate : 20 employés du Groupe Rishom (mix managers et opérationnels, toutes entités) debout devant siège social moderne. Diversité ethnique burkinabè (Mossi, Peul, Gourmantché, etc.), équilibre hommes/femmes, tenues professionnelles élégantes. Au centre, leadership visible. Logo Rishom géant sur mur vitré derrière. Sourires, fierté, cohésion d'équipe. Architecture contemporaine africaine.
+Texte overlay :
+1 800 collaborateurs, 1 vision commune
+Bâtir l'Afrique de demain ensemble
+Image 11 - RSE Communauté
+
+Nom fichier : hero-group-community.jpg
+Description : Action RSE Rishom : équipe de volontaires Rishom (10 personnes en t-shirts verts logo Groupe) plantant arbres avec villageois burkinabè (femmes, hommes, enfants) dans village rural. Jeunes plants d'arbres alignés, arrosoirs, bêches. Sourires, entraide, enfants joyeux. Case traditionnelle en arrière-plan, baobab centenaire. Ciel bleu, terre ocre du Sahel. Impact social tangible.
+Texte overlay :
+Développement durable & Impact communautaire
+50 000 arbres plantés • 5 000 bénéficiaires • Label RSE 2024
+Image 12 - Infrastructures Modernes
+
+Nom fichier : hero-group-infrastructure.jpg
+Description : Vue aérienne spectaculaire par drone : complexe industriel Groupe Rishom à Ouagadougou. Plusieurs bâtiments modernes (entrepôts RBF, usine REV'I, campus RBA, bureaux RIC) organisés autour d'espaces verts. Panneaux solaires sur tous les toits. Parking moderne, camions aux couleurs des entités. Routes goudronnées impeccables. Ouaga moderne en toile de fond. Ambition africaine réalisée.
+Texte overlay :
+18 Milliards FCFA de CA en 2024
+4 entités • 6 pays • 450+ entreprises clientes
+Images Sectorielles Complémentaires (8 images)
+Image 13 - RBF Engins
+
+Nom fichier : hero-rbf-equipment.jpg
+Description : Parc d'engins RBF impressionnant : 5 machines de chantier alignées (bulldozer, pelleteuse, rouleau compresseur, grue mobile, chargeuse) toutes jaunes flambant neuves avec logo RBF. Opérateurs burkinabè fiers debout devant leurs machines en tenue sécurité orange. Fond de ciel bleu, terrain stabilisé. Puissance et professionnalisme.
+Texte overlay :
+RBF Location - Flotte moderne de 80+ engins
+Disponibilité immédiate • Opérateurs qualifiés
+Image 14 - RIC Data
+
+Nom fichier : hero-ric-data.jpg
+Description : Analyste RIC burkinabè (femme, 30 ans, lunettes, tenue professionnelle) devant double écran affichant dashboards colorés avec graphiques et KPIs d'entreprise. Bureau moderne épuré, plante verte, tasse de café. Concentration intense, doigts sur clavier. Ambiance tech moderne africaine. Data analytics pour PME.
+Texte overlay :
+RIC Data Analytics - Décisions éclairées par la donnée
+Prédictions • Tableaux de bord • Insights business
+Image 15 - REV'I Transformation
+
+Nom fichier : hero-revi-processing.jpg
+Description : Unité de transformation REV'I : chaîne de production moderne où employées burkinabè (5 femmes en blouses blanches, charlottes) conditionnent purée de tomate dans boîtes de conserve. Équipements inox étincelants, contrôle qualité strict, étiquetage automatisé. Hygiène irréprochable, certification ISO visible. Made in Burkina premium.
+Texte overlay :
+REV'I Industries - De la ferme à votre cuisine
+5 tonnes transformées/jour • Certification ISO 22000
+Image 16 - REV'I Market
+
+Nom fichier : hero-revi-market.jpg
+Description : Boutique REV'I Market moderne et accueillante : rayons bien fournis avec produits REV'I (riz, œufs, légumes frais, purées de tomate, confitures). Cliente burkinabè élégante choisissant produits, vendeuse souriante en tablier vert logo REV'I conseillant. Caisses modernes, éclairage LED, décoration épurée. Commerce local valorisé.
+Texte overlay :
+REV'I Market - 4 boutiques à Ouaga & Bobo
+Produits 100% burkinabè • Frais & traçables
+Image 17 - RBA Informatique
+
+Nom fichier : hero-rba-computer-lab.jpg
+Description : Salle informatique RBA dernier cri : 30 postes iMac alignés où étudiants burkinabè (mix hommes/femmes) codent ou créent designs graphiques. Écrans multiples, clavier/souris sans fil. Superviseur circulant entre rangs. Salle climatisée, murs blancs avec affiches tech inspirantes. Excellence technologique africaine.
+Texte overlay :
+RBA - Formation aux métiers du digital
+Marketing digital • Data • Développement web
+Image 18 - RBA Cérémonie
+
+Nom fichier : hero-rba-graduation.jpg
+Description : Cérémonie de remise de diplômes RBA : 50 diplômés burkinabè en toge noire et toque, tenant diplômes, souriant fièrement. Familles applaudissant. Scène avec bannière RBA, podium, fleurs. Grande salle moderne décorée. Émotion, fierté, accomplissement. Avenir radieux pour jeunesse africaine formée.
+Texte overlay :
+RBA - 3 500+ alumni qui réussissent
+87% emploi dans les 6 mois • Réseau solide
+Image 19 - Vision Futuriste
+
+Nom fichier : hero-group-future.jpg
+Description : Montage artistique moderne : jeune entrepreneur burkinabè (25 ans, costume élégant) tenant tablette affichant projections holographiques futuristes (graphiques 3D, carte CEDEAO interactive, innovations). Fond de Ouagadougou moderne avec buildings, ciel crépusculaire orangé. Aspiration, ambition africaine, transformation digitale. Esthétique Afrofuturisme.
+Texte overlay :
+Groupe Rishom - Vision 2030
+25 Mds FCFA CA • 10 pays CEDEAO • Leader régional
+Image 20 - Célébration Équipe
+
+Nom fichier : hero-group-celebration.jpg
+Description : Moment festif corporate : équipe multiculturelle Groupe Rishom (30 personnes) levant mains en l'air en célébration dans open space moderne décoré (ballons, bannières succès). Diversité ethnique, générations, postes. Joie collective, confettis, trophée au centre. Team building réussi. Esprit Rishom : excellence et convivialité africaine.
+Texte overlay :
+Rejoins une aventure humaine exceptionnelle
+Groupe Rishom recrute des talents • Candidature spontanée
+IMAGES PAGES SECONDAIRES
+Page À PROPOS
+about-headquarters.jpg : Siège social Groupe Rishom, immeuble moderne 4 étages en verre et béton clair, architecture contemporaine africaine. Logo Rishom géant sur façade. Parking avec véhicules de fonction. Palmiers, pelouse verte. Quartier d'affaires Ouaga 2000. Ciel bleu éclatant.
+
+about-leadership-team.jpg : Comité de direction Groupe Rishom (8 personnes) assis autour table de réunion ovale en bois précieux. Alassane Rishom au centre. Mix hommes/femmes, tenues business formelles. Écrans muraux, documents stratégiques. Lumière naturelle baies vitrées. Sérieux professionnel, leadership burkinabè.
+
+about-values-integrity.jpg : Poignée de main solide entre manager Rishom et partenaire commercial, tous deux burkinabè, devant contrat signé. Bureau moderne, stylos, sceaux. Confiance, transparence. Éthique business africaine.
+
+about-values-excellence.jpg : Employé RBF contrôlant qualité de matériaux avec instruments de mesure précis. Concentration, minutie. Processus qualité strict ISO. Excellence opérationnelle.
+
+about-values-innovation.jpg : Brainstorming créatif : équipe mixte devant tableau blanc couvert de schémas colorés et post-its. Énergie créative. Innovation collaborative africaine.
+
+Page GOUVERNANCE
+governance-board.jpg : Salle de conseil d'administration luxueuse : longue table en acajou, fauteuils en cuir. 12 membres du conseil (mix hommes/femmes, différentes ethnies burkinabè) en costume strict, dossiers ouverts. Présidence assurée. Gouvernance d'excellence.
+
+governance-compliance.jpg : Avocate burkinabè (35 ans, tailleur strict) consultant codes juridiques dans bibliothèque d'entreprise. Rangées de livres de droit. Ordinateur, balance de justice symbolique. Conformité réglementaire rigoureuse.
+
+Page RSE
+csr-environment.jpg : Installation panneaux solaires sur toit entrepôt RBF par techniciens burkinabè (3 hommes, gilets orange). Rangées de panneaux photovoltaïques brillants. Transition énergétique africaine. Engagement environnemental concret.
+
+csr-education.jpg : Classe scolaire rurale burkinabè : 40 élèves en uniformes (mix filles/garçons, 8-12 ans) assis à pupitres, levant mains enthousiastes. Enseignante souriante. Tableau noir avec leçons. Don REV'I visible (sacs riz, logo). Éducation soutenue.
+
+csr-water.jpg : Villageois burkinabè (femmes et enfants) autour de forage d'eau potable nouveau avec pompe solaire, marque "Don Groupe Rishom". Seaux remplis d'eau claire. Joie, soulagement. Accès eau vitale.
+
+Page CERTIFICATIONS
+certifications-iso.jpg : Certificat ISO 9001 encadré accroché au mur, avec médaille qualité. Main pointant fièrement le document. Logo RBF visible. Excellence certifiée.
+
+certifications-audit.jpg : Auditeur externe (homme blanc ou africain autre nationalité, 50 ans, costume) inspectant dossiers qualité avec responsable QSE Rishom (femme burkinabè, blouse blanche). Bureau rangé, classeurs étiquetés. Processus d'audit rigoureux.
+
+Page PARTENAIRES
+partners-signing.jpg : Cérémonie signature partenariat : Alassane Rishom et représentant BAD signant accord devant logos respectifs. Poignée de main protocolaire. Photographes. Partenariat stratégique international.
+
+partners-roundtable.jpg : Table ronde multi-partenaires : 15 personnes (institutions, entreprises, ONG) autour grande table ronde. Drapeaux Burkina Faso et organisations. Discussion constructive. Écosystème partenarial riche.
+
+Page PRESSE
+press-conference.jpg : Conférence de presse Groupe Rishom : Alassane Rishom au pupitre avec micros multiples (RTB, BF1, etc.). Journalistes burkinabè assis prenant notes. Écran affichant résultats financiers. Communication transparente.
+
+press-journalist.jpg : Journaliste burkinabè (femme, 30 ans) interviewant cadre Rishom avec caméra et micro. Tournage professionnel. Relation médias fluide.
+
+Page CARRIÈRES
+careers-interview.jpg : Entretien d'embauche : RH Rishom (femme burkinabè, 35 ans, tailleur) face à candidat jeune diplômé (homme, 24 ans, costume). Bureau moderne épuré. CV sur table. Processus recrutement bienveillant.
+
+careers-onboarding.jpg : Session d'intégration nouveaux employés : 10 nouvelles recrues Rishom (mix profils) écoutant présentation RH dans salle de formation. Welcome kit visible. Onboarding structuré.
+
+careers-teamwork.jpg : Équipe projet mixte travaillant ensemble autour table moderne avec laptops, documents, post-its. Collaboration dynamique. Esprit d'équipe Rishom palpable.
+
+Pages RBF
+rbf-construction-site.jpg : Chantier RBF actif : grue levant poutrelles métalliques, ouvriers coordonnant opération. Casques, gilets sécurité. Échafaudages, béton frais. Chantier organisé.
+
+rbf-materials-warehouse.jpg : Travée entrepôt RBF avec palettes de parpaings, sacs ciment empilés 3m de haut, bobines fer à béton. Éclairage industriel. Stock massif.
+
+rbf-crane-operator.jpg : Opérateur burkinabè dans cabine grue, manettes en main, casque radio. Vue plongeante sur chantier. Métier technique valorisé.
+
+rbf-cement-mixer.jpg : Camion toupie béton RBF (jaune flambant neuf) déversant béton frais sur dalle. Ouvriers guidant coulage. Action de chantier.
+
+rbf-safety-briefing.jpg : Briefing sécurité matinal : chef de chantier RBF expliquant consignes à 12 ouvriers rassemblés. Panneaux sécurité visibles. Culture prévention forte.
+
+rbf-quality-control.jpg : Technicien RBF testant résistance béton avec matériel de labo portable sur chantier. Blouse blanche, lunettes protection. Contrôle qualité terrain.
+
+Pages RIC
+ric-strategy-meeting.jpg : Consultants RIC (3 personnes) avec client CEO devant whiteboard couvert de diagrammes stratégiques (SWOT, Business Model Canvas). Brainstorming intense.
+
+ric-financial-analysis.jpg : Consultant RIC (homme, 40 ans, lunettes) analysant états financiers étalés sur grande table. Calculatrice, surligneurs, graphiques Excel. Expertise comptable.
+
+ric-presentation.jpg : Consultant RIC présentant recommandations stratégiques avec télécommande, pointant slide PowerPoint projeté. Audience de 8 managers attentifs. Présentation professionnelle.
+
+ric-workshop.jpg : Atelier collaboratif RIC : 15 participants (managers entreprise cliente) travaillant en sous-groupes sur flip charts. Post-its, marqueurs. Facilitation dynamique.
+
+Pages REV'I
+revi-rice-field.jpg : Rizière REV'I en phase de maturation : plants vert émeraude ondulant sous brise. Système irrigation goutte-à-goutte visible. Agriculteur inspectant épis. Agriculture prospère.
+
+revi-chicken-farm.jpg : Intérieur poulailler moderne REV'I : centaines de pondeuses dans cages propres à plusieurs niveaux. Système automatique d'alimentation et abreuvage. Employé collectant œufs. Élevage industriel propre.
+
+revi-greenhouse.jpg : Serre maraîchère REV'I high-tech : rangées de plants de tomates sur tuteurs. Irrigation automatique, capteurs climatiques. Employé (femme, 30 ans) récoltant tomates mûres dans cagette. Agriculture contrôlée.
+
+revi-tractor.jpg : Tracteur vert REV'I (marque moderne) labourant vaste champ. Conducteur burkinabè concentré. Terre retournée parfaite. Mécanisation agricole africaine.
+
+revi-harvest.jpg : Scène récolte joyeuse : équipe de 8 travailleurs agricoles (mix hommes/femmes, chapeaux paille) remplissant cagettes de légumes fraîchement cueillis. Sourires, abondance. Récolte prospère.
+
+revi-processing-line.jpg : Ligne de conditionnement REV'I : employées en tenue hygiène triant et emballant légumes sur convoyeur. Machines modernes, cadence soutenue. Transformation locale valorisée.
+
+revi-store-interior.jpg : Intérieur boutique REV'I Market : rayons colorés avec produits frais (fruits, légumes, viandes sous vide). Cliente choisissant produits. Vendeuse à caisse. Magasin propre moderne.
+
+Pages RBA
+rba-lecture-hall.jpg : Amphithéâtre RBA 200 places : étudiants assis gradins écoutant professeur burkinabè charismatique devant grand écran. Prise de notes active. Amphi moderne universitaire.
+
+rba-library.jpg : Bibliothèque RBA spacieuse : rangées d'étagères avec milliers de livres. Espaces de travail individuels avec lampes. Étudiants studieux lisant ou travaillant sur laptops. Silence studieux.
+
+rba-group-project.jpg : Salle de travaux pratiques RBA : groupe de 5 étudiants autour table préparant présentation, laptop, documents éparpillés. Collaboration intense, débat constructif. Pédagogie active.
+
+rba-presentation-student.jpg : Étudiant burkinabè (homme, 22 ans, costume) présentant projet de fin d'étude devant jury de 3 professeurs. PowerPoint projeté. Évaluation académique.
+
+rba-career-fair.jpg : Forum emploi RBA : stands entreprises partenaires. Étudiants en tenue professionnelle discutant avec recruteurs, CVs en main. Networking actif. Insertion professionnelle facilitée.
+
+rba-diploma-handover.jpg : Moment solennel : Directeur RBA remettant diplôme à étudiante souriante en toge. Applaudissements. Accomplissement académique célébré.
+
+Pages Projets
+projects-infrastructure.jpg : Projet infrastructure majeur : construction pont moderne sur fleuve. Structure métallique imposante, engins RBF multiples. Ampleur du projet visible.
+
+projects-agriculture.jpg : Projet agricole REV'I : aménagement périmètre irrigué avec canaux béton, bassins rétention. Transformation paysage rural. Développement durable.
+
+projects-before-after.jpg : Montage avant/après d'un projet Groupe Rishom : terrain vague vs complexe commercial flambant neuf. Impact transformation spectaculaire.
+
+Pages Actualités
+news-event.jpg : Événement d'entreprise Rishom : cocktail networking avec 50 invités (clients, partenaires, institutionnels). Buffet élégant, décoration soignée. Stands informatifs. Relations publiques.
+
+news-award-ceremony.jpg : Alassane Rishom recevant trophée "Entrepreneur de l'Année" des mains de Ministre burkinabè. Cérémonie officielle, drapeaux, photographes. Reconnaissance nationale.
+
+news-product-launch.jpg : Lancement nouveau produit REV'I : présentoir attractif avec échantillons. Journalistes et blogueurs dégustant produits. Marketing événementiel réussi.
+
+Pages Contact
+contact-reception.jpg : Réception Groupe Rishom moderne : hôtesse d'accueil burkinabè souriante derrière comptoir design. Logo Rishom mur arrière illuminé. Plantes vertes, fauteuils visiteurs confortables. Accueil chaleureux professionnel.
+
+contact-customer-service.jpg : Centre d'appels Rishom : 10 téléconseillers (mix H/F) avec casques micro devant écrans, répondant appels clients. Open space lumineux, ambiance concentrée bienveillante. Service client réactif.
+
+CONFIGURATION CARROUSEL (Code React)
+Copy// Dans HeroSection de Home.tsx, remplace le contenu par :
+
+const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    {
+      image: '/images/hero-rbf-construction.jpg',
+      title: 'RBF - Leader du BTP au Burkina Faso',
+      subtitle: 'Matériaux de qualité • Location d\'engins • Service premium'
+    },
+    {
+      image: '/images/hero-rbf-warehouse.jpg',
+      title: 'RBF - 15 ans d\'excellence',
+      subtitle: '4 agences • +500 chantiers livrés • Stock permanent'
+    },
+    {
+      image: '/images/hero-ric-consulting.jpg',
+      title: 'RIC - Accélérateur de croissance',
+      subtitle: 'Audit • Stratégie • Accompagnement projets'
+    },
+    {
+      image: '/images/hero-ric-training.jpg',
+      title: 'RIC - Experts en développement d\'entreprises',
+      subtitle: '80+ clients accompagnés • Présence CEDEAO'
+    },
+    {
+      image: '/images/hero-revi-agriculture.jpg',
+      title: 'REV\'I - L\'agriculture burkinabè réinventée',
+      subtitle: 'Production locale • Qualité premium • Circuit court'
+    },
+    {
+      image: '/images/hero-revi-livestock.jpg',
+      title: 'REV\'I - Du producteur à ton assiette',
+      subtitle: '12M œufs/an • 500 tonnes viande • Agriculture durable'
+    },
+    {
+      image: '/images/hero-rba-campus.jpg',
+      title: 'RBA - Former les leaders africains de demain',
+      subtitle: 'BTS • Licences • Masters • Formations pros'
+    },
+    {
+      image: '/images/hero-rba-classroom.jpg',
+      title: 'RBA - Pédagogie d\'excellence',
+      subtitle: '3 500+ alumni • 87% taux d\'insertion • Partenariat Université'
+    },
+    {
+      image: '/images/hero-group-innovation.jpg',
+      title: 'Innovation au cœur de notre ADN',
+      subtitle: '500M FCFA investis en R&D • 12 chercheurs • 8 projets actifs'
+    },
+    {
+      image: '/images/hero-group-team.jpg',
+      title: '1 800 collaborateurs, 1 vision commune',
+      subtitle: 'Bâtir l\'Afrique de demain ensemble'
+    },
+    {
+      image: '/images/hero-group-community.jpg',
+      title: 'Développement durable & Impact communautaire',
+      subtitle: '50 000 arbres plantés • 5 000 bénéficiaires • Label RSE 2024'
+    },
+    {
+      image: '/images/hero-group-infrastructure.jpg',
+      title: '18 Milliards FCFA de CA en 2024',
+      subtitle: '4 entités • 6 pays • 450+ entreprises clientes'
+    },
+    {
+      image: '/images/hero-rbf-equipment.jpg',
+      title: 'RBF Location - Flotte moderne de 80+ engins',
+      subtitle: 'Disponibilité immédiate • Opérateurs qualifiés'
+    },
+    {
+      image: '/images/hero-ric-data.jpg',
+      title: 'RIC Data Analytics - Décisions éclairées par la donnée',
+      subtitle: 'Prédictions • Tableaux de bord • Insights business'
+    },
+    {
+      image: '/images/hero-revi-processing.jpg',
+      title: 'REV\'I Industries - De la ferme à votre cuisine',
+      subtitle: '5 tonnes transformées/jour • Certification ISO 22000'
+    },
+    {
+      image: '/images/hero-revi-market.jpg',
+      title: 'REV\'I Market - 4 boutiques à Ouaga & Bobo',
+      subtitle: 'Produits 100% burkinabè • Frais & traçables'
+    },
+    {
+      image: '/images/hero-rba-computer-lab.jpg',
+      title: 'RBA - Formation aux métiers du digital',
+      subtitle: 'Marketing digital • Data • Développement web'
+    },
+    {
+      image: '/images/hero-rba-graduation.jpg',
+      title: 'RBA - 3 500+ alumni qui réussissent',
+      subtitle: '87% emploi dans les 6 mois • Réseau solide'
+    },
+    {
+      image: '/images/hero-group-future.jpg',
+      title: 'Groupe Rishom - Vision 2030',
+      subtitle: '25 Mds FCFA CA • 10 pays CEDEAO • Leader régional'
+    },
+    {
+      image: '/images/hero-group-celebration.jpg',
+      title: 'Rejoins une aventure humaine exceptionnelle',
+      subtitle: 'Groupe Rishom recrute des talents • Candidature spontanée'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // 5 secondes par slide
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="relative h-screen">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538]/80 to-[#3A3A3C]/80" />
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+          <div className="relative z-10 h-full flex items-center justify-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h1 className="text-6xl font-bold mb-6">{slide.title}</h1>
+                <p className="text-2xl">{slide.subtitle}</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      ))}
+      
+      {/* Indicateurs */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
