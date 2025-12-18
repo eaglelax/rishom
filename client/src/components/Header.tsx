@@ -6,13 +6,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: "À propos", href: "#about" },
-    { label: "Nos entités", href: "#entities" },
-    { label: "Nos métiers", href: "#services" },
-    { label: "Projets", href: "#projects" },
-    { label: "Actualités", href: "#news" },
-    { label: "Carrières", href: "#careers" },
-    { label: "Contact", href: "#contact" },
+    { label: "À propos", href: "/a-propos" },
+    { label: "Nos entités", href: "/#entities" },
+    { label: "Projets", href: "/projets" },
+    { label: "Actualités", href: "/actualites" },
+    { label: "Carrières", href: "/carrieres" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (

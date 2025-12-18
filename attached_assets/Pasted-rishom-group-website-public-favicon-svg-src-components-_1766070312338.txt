@@ -1,0 +1,85 @@
+rishom-group-website/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   ├── ui/               # Composants Shadcn (Button, Card, etc.)
+│   │   ├── TopBar.tsx
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── EntitiesGrid.tsx
+│   │   ├── StatsSection.tsx
+│   │   ├── NewsGrid.tsx
+│   │   ├── JoinUsSection.tsx
+│   │   ├── About/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── HistorySection.tsx
+│   │   │   ├── ValuesSection.tsx
+│   │   │   └── LeadershipSection.tsx
+│   │   ├── Projects/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── FilterSection.tsx
+│   │   │   └── ProjectsGrid.tsx
+│   │   ├── News/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── FeaturedArticle.tsx
+│   │   │   └── ArticlesList.tsx
+│   │   ├── NewsDetail/
+│   │   │   ├── ArticleHeader.tsx
+│   │   │   ├── ArticleContent.tsx
+│   │   │   └── RelatedArticles.tsx
+│   │   ├── Contact/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── ContactForm.tsx
+│   │   │   ├── MapSection.tsx
+│   │   │   └── EntitiesContact.tsx
+│   │   ├── Careers/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── BenefitsSection.tsx
+│   │   │   ├── OpenPositions.tsx
+│   │   │   └── SpontaneousApplication.tsx
+│   │   ├── RBF/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── ServicesSection.tsx
+│   │   │   ├── ProductsSection.tsx
+│   │   │   ├── WhyChooseSection.tsx
+│   │   │   ├── ProjectsSection.tsx
+│   │   │   └── ContactSection.tsx
+│   │   ├── RIC/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── ServicesSection.tsx
+│   │   │   ├── ProcessSection.tsx
+│   │   │   └── InvestmentSection.tsx
+│   │   ├── REVI/
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── SectorsSection.tsx
+│   │   │   ├── ValueChainSection.tsx
+│   │   │   └── ImpactSection.tsx
+│   │   └── RBA/
+│   │       ├── HeroSection.tsx
+│   │       ├── ProgramsSection.tsx
+│   │       ├── AdvantagesSection.tsx
+│   │       └── SuccessStoriesSection.tsx
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── About.tsx
+│   │   ├── Projects.tsx
+│   │   ├── News.tsx
+│   │   ├── NewsDetail.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Careers.tsx
+│   │   ├── RBF.tsx
+│   │   ├── RIC.tsx
+│   │   ├── REVI.tsx
+│   │   ├── RBA.tsx
+│   │   └── NotFound.tsx
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── index.css
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── tailwind.config.js

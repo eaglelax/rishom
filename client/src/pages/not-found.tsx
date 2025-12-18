@@ -1,21 +1,102 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Home, ArrowLeft } from "lucide-react";
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">404 Page Not Found</h1>
-          </div>
+    <div className="min-h-screen flex flex-col">
+      <TopBar />
+      <Header />
+      
+      <main className="flex-1 flex items-center justify-center bg-gradient-to-br from-[#8B1538]/10 to-[#F5F1E8]">
+        <div className="container mx-auto px-4 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-2xl mx-auto"
+          >
+            {/* 404 Large */}
+            <div className="mb-8">
+              <span className="text-[200px] md:text-[300px] font-bold text-[#8B1538]/20 leading-none">
+                404
+              </span>
+            </div>
 
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
-          </p>
-        </CardContent>
-      </Card>
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold text-[#8B1538] mb-6">
+              Page non trouvée
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl text-[#3A3A3C] mb-12">
+              Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+            </p>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-[#8B1538] text-white hover:bg-[#C4526D] font-semibold px-8 py-6 rounded-full group"
+                onClick={() => window.history.back()}
+                data-testid="button-go-back"
+              >
+                <ArrowLeft className="mr-2 w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                Page précédente
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#8B1538] text-[#8B1538] hover:bg-[#8B1538] hover:text-white font-semibold px-8 py-6 rounded-full group"
+                onClick={() => window.location.href = "/"}
+                data-testid="button-go-home"
+              >
+                <Home className="mr-2 w-5 h-5" />
+                Retour à l'accueil
+              </Button>
+            </div>
+
+            {/* Quick Links */}
+            <div className="mt-16 pt-8 border-t border-[#8B1538]/20">
+              <p className="text-[#707070] mb-6">Liens rapides :</p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="/a-propos"
+                  className="text-[#8B1538] hover:underline font-semibold"
+                >
+                  À propos
+                </a>
+                <span className="text-[#707070]">•</span>
+                <a
+                  href="/projets"
+                  className="text-[#8B1538] hover:underline font-semibold"
+                >
+                  Projets
+                </a>
+                <span className="text-[#707070]">•</span>
+                <a
+                  href="/actualites"
+                  className="text-[#8B1538] hover:underline font-semibold"
+                >
+                  Actualités
+                </a>
+                <span className="text-[#707070]">•</span>
+                <a
+                  href="/contact"
+                  className="text-[#8B1538] hover:underline font-semibold"
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }

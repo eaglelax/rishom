@@ -43,7 +43,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#about"
+                  href="/a-propos"
                   className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
                 >
                   À propos
@@ -51,7 +51,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#entities"
+                  href="/#entities"
                   className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
                 >
                   Nos entités
@@ -59,7 +59,15 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#news"
+                  href="/projets"
+                  className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
+                >
+                  Projets
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/actualites"
                   className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
                 >
                   Actualités
@@ -67,7 +75,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#careers"
+                  href="/carrieres"
                   className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
                 >
                   Carrières
@@ -75,7 +83,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="text-white/70 hover:text-[#8B1538] transition-colors text-sm"
                 >
                   Contact
@@ -159,9 +167,22 @@ export default function Footer() {
       {/* Copyright */}
       <div className="bg-[#8B1538] py-4">
         <div className="container mx-auto px-4">
-          <p className="text-center text-white text-sm">
-            © {new Date().getFullYear()} Groupe Rishom. Tous droits réservés.
-          </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-center text-white text-sm">
+              © {new Date().getFullYear()} Groupe Rishom. Tous droits réservés.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <a href="/mentions-legales" className="text-white/80 hover:text-white transition-colors">
+                Mentions légales
+              </a>
+              <a href="/politique-confidentialite" className="text-white/80 hover:text-white transition-colors">
+                Confidentialité
+              </a>
+              <a href="/cookies" className="text-white/80 hover:text-white transition-colors">
+                Cookies
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
