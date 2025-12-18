@@ -1,0 +1,119 @@
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Users, Leaf, Heart, GraduationCap } from "lucide-react";
+
+const pillars = [
+  {
+    icon: Users,
+    title: "Social",
+    color: "#2E5A9C",
+    commitments: [
+      "Création de 2000+ emplois locaux",
+      "Égalité hommes-femmes (40% de femmes)",
+      "Programmes de formation continue",
+      "Protection sociale pour tous les employés",
+      "Conditions de travail sécurisées",
+    ],
+  },
+  {
+    icon: Leaf,
+    title: "Environnemental",
+    color: "#058B5E",
+    commitments: [
+      "Réduction de 30% des émissions CO2 d'ici 2030",
+      "100% d'énergie renouvelable sur nos sites d'ici 2028",
+      "Gestion responsable des déchets",
+      "Préservation de la biodiversité",
+      "Économie circulaire dans nos processus",
+    ],
+  },
+  {
+    icon: Heart,
+    title: "Communautaire",
+    color: "#C74634",
+    commitments: [
+      "Soutien à 50 projets communautaires par an",
+      "Partenariats avec 30 ONG locales",
+      "Programmes d'accès à l'eau potable",
+      "Soutien à l'éducation (200 bourses/an)",
+      "Initiatives santé dans les zones rurales",
+    ],
+  },
+  {
+    icon: GraduationCap,
+    title: "Éducation",
+    color: "#8B1538",
+    commitments: [
+      "Formation de 1000 jeunes par an via RBA",
+      "Partenariats avec universités locales",
+      "Programmes d'apprentissage en entreprise",
+      "Sensibilisation aux métiers techniques",
+      "Bourses d'excellence pour étudiants méritants",
+    ],
+  },
+];
+
+export default function CSRPillarsSection() {
+  return (
+    <section className="py-20 md:py-32 bg-white">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#8B1538] mb-4">
+            Nos 4 piliers RSE
+          </h2>
+          <p className="text-xl text-[#3A3A3C] max-w-3xl mx-auto">
+            Une stratégie globale pour un impact positif durable
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+            return (
+              <motion.div
+                key={pillar.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-none">
+                  <CardHeader className="flex flex-row items-start gap-4">
+                    <div
+                      className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: `${pillar.color}15` }}
+                    >
+                      <Icon className="w-8 h-8" style={{ color: pillar.color }} />
+                    </div>
+                    <CardTitle className="text-3xl pt-3" style={{ color: pillar.color }}>
+                      {pillar.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {pillar.commitments.map((commitment, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div
+                            className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                            style={{ backgroundColor: pillar.color }}
+                          />
+                          <span className="text-[#3A3A3C]">{commitment}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
