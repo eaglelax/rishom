@@ -1,0 +1,207 @@
+import React from 'react';
+import TopBar from '../../components/TopBar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import { motion } from 'framer-motion';
+import { Target, Compass, Rocket, Users, CheckCircle2, ArrowRight } from 'lucide-react';
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('/images/strategy-hero.jpg')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Conseil Stratégique</h1>
+        <p className="text-xl max-w-2xl">Définition de ta vision, positionnement concurrentiel et feuille de route pour accélérer ta croissance.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const ServicesSection = () => {
+  const services = [
+    {
+      icon: <Target className="w-12 h-12" />,
+      title: 'Stratégie d\'entreprise',
+      description: 'Vision, mission, valeurs, objectifs stratégiques à 3-5 ans',
+      output: 'Plan stratégique complet'
+    },
+    {
+      icon: <Compass className="w-12 h-12" />,
+      title: 'Positionnement marché',
+      description: 'Analyse concurrentielle, différenciation, proposition de valeur',
+      output: 'Stratégie de positionnement'
+    },
+    {
+      icon: <Rocket className="w-12 h-12" />,
+      title: 'Développement commercial',
+      description: 'Stratégie de croissance, nouveaux marchés, diversification',
+      output: 'Plan de développement'
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      title: 'Transformation organisationnelle',
+      description: 'Restructuration, conduite du changement, digitalisation',
+      output: 'Feuille de route transformation'
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Nos Domaines d'Intervention</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-[#8B1538] mb-4">{service.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{service.title}</h3>
+              <p className="text-[#3A3A3C] mb-4">{service.description}</p>
+              <div className="text-[#B8956A] font-semibold">→ {service.output}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ApproachSection = () => {
+  const phases = [
+    {
+      phase: 'Phase 1 - Diagnostic',
+      duration: '2-3 semaines',
+      activities: ['Analyse de l\'existant', 'Étude de marché', 'Benchmark concurrentiel', 'Diagnostic SWOT']
+    },
+    {
+      phase: 'Phase 2 - Conception',
+      duration: '3-4 semaines',
+      activities: ['Définition de la vision', 'Axes stratégiques', 'Modèle économique', 'Objectifs chiffrés']
+    },
+    {
+      phase: 'Phase 3 - Planification',
+      duration: '2-3 semaines',
+      activities: ['Plan d\'action détaillé', 'Jalons et KPI', 'Allocation des ressources', 'Budget prévisionnel']
+    },
+    {
+      phase: 'Phase 4 - Déploiement',
+      duration: '3-12 mois',
+      activities: ['Accompagnement mise en œuvre', 'Pilotage des actions', 'Ajustements', 'Reporting mensuel']
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Notre Approche</h2>
+        <div className="space-y-8">
+          {phases.map((phase, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-8 rounded-lg"
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <h3 className="text-2xl font-bold text-[#3A3A3C] mb-2 md:mb-0">{phase.phase}</h3>
+                <span className="text-[#8B1538] font-semibold">{phase.duration}</span>
+              </div>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {phase.activities.map((activity, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 text-[#8B1538] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#3A3A3C]">{activity}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CaseStudiesSection = () => {
+  const cases = [
+    {
+      client: 'Agro-industrie (Burkina Faso)',
+      challenge: 'Diversification vers l\'export',
+      solution: 'Stratégie d\'internationalisation, certification bio, partenariats distributeurs',
+      results: '+150% CA export en 2 ans, 3 nouveaux marchés (UE, Maghreb, CEDEAO)'
+    },
+    {
+      client: 'Start-up Fintech (Côte d\'Ivoire)',
+      challenge: 'Scalabilité et levée de fonds',
+      solution: 'Refonte du business model, pitch deck investisseurs, stratégie de croissance',
+      results: 'Levée de 500M FCFA, passage de 5K à 50K utilisateurs'
+    },
+    {
+      client: 'Groupe de distribution (Sénégal)',
+      challenge: 'Transformation digitale',
+      solution: 'Roadmap digitale, e-commerce, CRM, supply chain 4.0',
+      results: '30% des ventes en ligne, -20% coûts opérationnels'
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#3A3A3C] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">Cas Clients</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {cases.map((caseStudy, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white/10 backdrop-blur p-6 rounded-lg"
+            >
+              <h3 className="text-xl font-bold mb-3 text-[#B8956A]">{caseStudy.client}</h3>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <span className="font-semibold">Enjeu : </span>{caseStudy.challenge}
+                </div>
+                <div>
+                  <span className="font-semibold">Solution : </span>{caseStudy.solution}
+                </div>
+                <div className="border-t border-white/20 pt-3">
+                  <span className="font-semibold text-[#B8956A]">Résultats : </span>{caseStudy.results}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Strategy = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <ServicesSection />
+      <ApproachSection />
+      <CaseStudiesSection />
+      <Footer />
+    </div>
+  );
+};
+
+export default Strategy;
