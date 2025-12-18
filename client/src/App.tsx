@@ -34,6 +34,9 @@ import RIC from "@/pages/RIC";
 import RICAudit from "@/pages/RICAudit";
 import RICStrategy from "@/pages/RICStrategy";
 import RICProjectManagement from "@/pages/RICProjectManagement";
+import RICMarketResearch from "@/pages/RICMarketResearch";
+import RICTraining from "@/pages/RICTraining";
+import RICTestimonials from "@/pages/RICTestimonials";
 import REVI from "@/pages/REVI";
 import RBA from "@/pages/RBA";
 
@@ -75,6 +78,9 @@ function Router() {
       <Route path="/ric/audit" component={RICAudit} />
       <Route path="/ric/strategie" component={RICStrategy} />
       <Route path="/ric/projets" component={RICProjectManagement} />
+      <Route path="/ric/etudes" component={RICMarketResearch} />
+      <Route path="/ric/formation" component={RICTraining} />
+      <Route path="/ric/temoignages" component={RICTestimonials} />
       <Route path="/revi" component={REVI} />
       <Route path="/rba" component={RBA} />
 

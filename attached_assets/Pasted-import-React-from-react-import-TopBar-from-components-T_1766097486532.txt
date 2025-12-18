@@ -1,0 +1,213 @@
+import React from 'react';
+import TopBar from '../../components/TopBar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import { motion } from 'framer-motion';
+import { GraduationCap, Users, Briefcase, Award, CheckCircle2, Clock } from 'lucide-react';
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('/images/training-hero.jpg')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Formation Conseil</h1>
+        <p className="text-xl max-w-2xl">Renforce les compétences de tes équipes avec nos formations sur-mesure en management et stratégie.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const TrainingsSection = () => {
+  const trainings = [
+    {
+      icon: <Briefcase className="w-12 h-12" />,
+      title: 'Management stratégique',
+      description: 'Vision, planification stratégique, pilotage de la performance',
+      duration: '3 jours',
+      audience: 'Dirigeants, cadres supérieurs',
+      price: '450 000 FCFA/participant'
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      title: 'Management d\'équipe',
+      description: 'Leadership, motivation, gestion des conflits, délégation',
+      duration: '2 jours',
+      audience: 'Managers, chefs de service',
+      price: '300 000 FCFA/participant'
+    },
+    {
+      icon: <GraduationCap className="w-12 h-12" />,
+      title: 'Gestion de projet',
+      description: 'Méthodologie, planification, suivi, outils (MS Project, Gantt)',
+      duration: '3 jours',
+      audience: 'Chefs de projet, coordinateurs',
+      price: '400 000 FCFA/participant'
+    },
+    {
+      icon: <Award className="w-12 h-12" />,
+      title: 'Business development',
+      description: 'Prospection, négociation commerciale, stratégie de vente',
+      duration: '2 jours',
+      audience: 'Commerciaux, business developers',
+      price: '350 000 FCFA/participant'
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Nos Formations</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {trainings.map((training, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="text-[#8B1538] mb-4">{training.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{training.title}</h3>
+              <p className="text-[#3A3A3C] mb-4">{training.description}</p>
+              <div className="space-y-2 text-sm mb-4">
+                <div className="flex items-center">
+                  <Clock className="w-4 h-4 text-[#B8956A] mr-2" />
+                  <span><strong>Durée :</strong> {training.duration}</span>
+                </div>
+                <div className="flex items-start">
+                  <Users className="w-4 h-4 text-[#B8956A] mr-2 mt-0.5" />
+                  <span><strong>Public :</strong> {training.audience}</span>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#B8956A]/20">
+                <span className="text-[#8B1538] font-bold text-xl">{training.price}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
+};
+
+const CustomTrainingSection = () => {
+  const features = [
+    'Diagnostic des besoins en formation',
+    'Programme sur-mesure adapté à ton contexte',
+    'Formateurs experts avec expérience terrain',
+    'Pédagogie active : cas pratiques, mises en situation',
+    'Support de formation et outils opérationnels',
+    'Suivi post-formation et coaching',
+    'Inter-entreprises ou intra-entreprise',
+    'Tarifs dégressifs pour groupes'
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Formation Sur-Mesure</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex items-start"
+            >
+              <CheckCircle2 className="w-6 h-6 text-[#8B1538] mr-3 flex-shrink-0 mt-1" />
+              <span className="text-[#3A3A3C]">{feature}</span>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <button className="bg-[#8B1538] text-white py-4 px-8 rounded-lg hover:bg-[#3A3A3C] transition-colors font-semibold text-lg">
+            Demander un Programme Sur-Mesure
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ThemesSection = () => {
+  const themes = [
+    { category: 'Stratégie & Management', topics: ['Vision & planification stratégique', 'Pilotage de la performance', 'Change management', 'Innovation & transformation'] },
+    { category: 'Finance & Gestion', topics: ['Analyse financière', 'Contrôle de gestion', 'Business plan', 'Levée de fonds'] },
+    { category: 'Marketing & Vente', topics: ['Marketing stratégique', 'Marketing digital', 'Techniques de vente', 'Fidélisation client'] },
+    { category: 'Ressources Humaines', topics: ['Recrutement & intégration', 'Évaluation de performance', 'Gestion des talents', 'Droit du travail'] }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Thématiques de Formation</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {themes.map((theme, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-lg"
+            >
+              <h3 className="text-xl font-bold text-[#8B1538] mb-4">{theme.category}</h3>
+              <ul className="space-y-2">
+                {theme.topics.map((topic, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 text-[#8B1538] mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#3A3A3C]">{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CertificationSection = () => (
+  <section className="py-20 bg-[#8B1538] text-white">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Award className="w-16 h-16 mx-auto mb-6" />
+      <h2 className="text-4xl font-bold mb-6">Certification & Attestation</h2>
+      <p className="text-xl mb-8">Toutes nos formations donnent lieu à une attestation de participation. Certaines formations peuvent être certifiantes (en partenariat avec RBA).</p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <button className="bg-white text-[#8B1538] py-3 px-8 rounded-lg font-semibold hover:bg-[#F5F1E8] transition-colors">
+          Catalogue de Formations
+        </button>
+        <button className="border-2 border-white text-white py-3 px-8 rounded-lg font-semibold hover:bg-white hover:text-[#8B1538] transition-colors">
+          Demander un Devis
+        </button>
+      </div>
+    </div>
+  </section>
+);
+
+const Training = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <TrainingsSection />
+      <CustomTrainingSection />
+      <ThemesSection />
+      <CertificationSection />
+      <Footer />
+    </div>
+  );
+};
+
+export default Training;
