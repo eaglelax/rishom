@@ -20,6 +20,7 @@ import Press from "@/pages/Press";
 import FAQ from "@/pages/FAQ";
 import LegalNotice from "@/pages/LegalNotice";
 import Privacy from "@/pages/Privacy";
+import Cookies from "@/pages/Cookies";
 
 // Pages entités
 import RBF from "@/pages/RBF";
@@ -51,6 +52,7 @@ function Router() {
       <Route path="/faq" component={FAQ} />
       <Route path="/mentions-legales" component={LegalNotice} />
       <Route path="/politique-confidentialite" component={Privacy} />
+      <Route path="/cookies" component={Cookies} />
 
       {/* Pages entités */}
       <Route path="/rbf" component={RBF} />
