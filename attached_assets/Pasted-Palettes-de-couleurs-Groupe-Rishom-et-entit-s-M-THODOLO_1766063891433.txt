@@ -1,0 +1,327 @@
+Palettes de couleurs - Groupe Rishom et entités
+MÉTHODOLOGIE DE SÉLECTION
+Principes appliqués :
+
+Psychologie des couleurs selon secteur d'activité
+Différenciation visuelle entre entités
+Cohérence familiale via bordeaux RIC (pivot)
+Conformité tendances 2025 (Mocha Mousse, Future Dusk, Aurora gradients)
+Contraste WCAG 2.2 (accessibilité web)
+Reproduction fiable print/digital
+1. GROUPE RISHOM (HOLDING)
+Palette principale
+Couleur	Code HEX	Pantone	CMJN	RVB	Usage
+Rouge Bordeaux	#8B1538	202 C	C20 M100 Y80 K30	R139 G21 B56	Couleur signature, autorité
+Gris Anthracite	#3A3A3C	Cool Gray 11 C	C65 M58 Y56 K48	R58 G58 B60	Sobriété, professionnalisme
+Or Bronze	#B8956A	4645 C	C30 M40 Y60 K10	R184 G149 B106	Excellence, prestige (accent)
+Blanc Pur	#FFFFFF	-	C0 M0 Y0 K0	R255 G255 B255	Respiration, clarté
+Noir Profond	#1A1A1A	Black 6 C	C70 M65 Y64 K74	R26 G26 B26	Texte, contraste maximum
+Palette secondaire (digital)
+Couleur	Code HEX	Usage
+Bordeaux Clair	#C4526D	Hover buttons, backgrounds légers
+Gris Moyen	#707070	Textes secondaires, bordures
+Crème	#F5F1E8	Fonds sections, respiration
+Ratios d'utilisation recommandés
+60% : Blanc + Crème (espaces, respiration)
+30% : Gris anthracite (structure, textes)
+10% : Bordeaux + Or (impacts visuels, CTA)
+Combinaisons validées
+Web - Hero section :
+
+Fond : Gris anthracite #3A3A3C
+Titre : Blanc #FFFFFF
+Sous-titre : Crème #F5F1E8
+CTA : Bordeaux #8B1538 avec texte blanc
+Print - Papeterie :
+
+Logo : Bordeaux + Gris anthracite
+Texte corps : Noir #1A1A1A
+Accents : Or bronze #B8956A
+Signalétique :
+
+Fond : Blanc ou Gris clair
+Logo/Texte : Bordeaux dominant
+2. RISHOM BURKINA FASO (RBF)
+Palette principale
+Couleur	Code HEX	Pantone	CMJN	RVB	Usage
+Rouge Brique	#C74634	180 C	C10 M85 Y85 K5	R199 G70 B52	Énergie, puissance, équipements
+Gris Acier	#4A5568	431 C	C60 M48 Y38 K15	R74 G85 B104	Métal, robustesse, industrie
+Jaune Sécurité	#FDB913	1235 C	C0 M30 Y95 K0	R253 G185 B19	Signalétique chantier, visibilité
+Noir Carbone	#2D2D2D	Black 6 C	C68 M63 Y62 K68	R45 G45 B45	Texte, solidité
+Blanc	#FFFFFF	-	C0 M0 Y0 K0	R255 G255 B255	Clarté
+Palette secondaire
+Couleur	Code HEX	Usage
+Orange Brûlé	#D46835	Hover, transitions
+Gris Ciment	#D4D4D4	Fonds, séparateurs
+Jaune Pâle	#FFF4D6	Highlights, info boxes
+Ratios d'utilisation
+50% : Blanc + Gris ciment (espaces)
+30% : Gris acier (structure)
+15% : Rouge brique (identité forte)
+5% : Jaune sécurité (accents, urgence)
+Combinaisons validées
+Web - Catalogue véhicules :
+
+Fond cartes : Blanc #FFFFFF
+Bordures : Gris acier #4A5568
+Prix/CTA : Rouge brique #C74634
+Badges disponibilité : Jaune #FDB913 avec texte noir
+Marquage véhicules :
+
+Base carrosserie : Blanc ou couleur véhicule
+Logo : Rouge brique + Gris acier
+Bandeau : Jaune sécurité + Noir carbone (contraste max)
+Print - Brochure :
+
+Couverture : Rouge brique dominant
+Intérieur : Blanc avec accents gris acier
+Tableaux tarifs : Jaune pâle en fond
+Lien famille Rishom
+Rouge brique = dérivé chaleureux du bordeaux RIC
+Gris acier = écho au gris anthracite Groupe
+3. RISHOM INVESTMENT & CONSULTING (RIC)
+Palette principale (RÉFÉRENCE PIVOT)
+Couleur	Code HEX	Pantone	CMJN	RVB	Usage
+Bordeaux	#8B1538	202 C	C20 M100 Y80 K30	R139 G21 B56	COULEUR SIGNATURE famille
+Gris Charbon	#4D4D4D	Cool Gray 11 C	C60 M52 Y51 K32	R77 G77 B77	Sobriété, conseil
+Blanc Cassé	#F8F8F8	-	C0 M0 Y2 K3	R248 G248 G248	Élégance, respiration
+Or Discret	#A88860	4505 C	C35 M45 Y65 K15	R168 G136 B96	Prestige subtil (optionnel)
+Noir	#000000	Black C	C0 M0 Y0 K100	R0 G0 B0	Texte corporate
+Palette secondaire
+Couleur	Code HEX	Usage
+Bordeaux Clair	#B8365D	Hover, liens
+Gris Perle	#E5E5E5	Séparateurs, fonds légers
+Crème	#FAF7F2	Sections alternées
+Ratios d'utilisation
+70% : Blanc cassé + Crème (minimalisme)
+20% : Gris charbon (structure, textes)
+10% : Bordeaux (impacts décisionnels, CTA)
+Combinaisons validées
+Web - Page d'accueil :
+
+Fond principal : Blanc cassé #F8F8F8
+Sections alternées : Crème #FAF7F2
+Titres : Bordeaux #8B1538
+Texte corps : Gris charbon #4D4D4D
+CTA : Bordeaux plein avec texte blanc
+Print - Carte de visite :
+
+Recto : Blanc avec logo bordeaux + gris
+Verso : Bordeaux plein avec texte blanc/or
+Finition : Vernis sélectif sur logo (effet premium)
+Rapports d'audit :
+
+Couverture : Bordeaux + gris charbon + blanc
+Pages internes : Blanc avec accents bordeaux (graphiques, titres)
+Tableaux : Fond crème avec bordures gris
+Pourquoi ce bordeaux est le pivot
+Justification psychologique :
+
+Sérieux financier : Pas de rouge vif (trop agressif)
+Élégance : Bordeaux = vin, luxe discret, maturité
+Différenciation : Rare dans conseil (dominé par bleu marine)
+Mémorabilité : Signature visuelle forte
+Déclinabilité : Se marie avec toutes couleurs entités
+4. REV'I (AGRO-BUSINESS)
+Palette principale
+Couleur	Code HEX	Pantone	CMJN	RVB	Usage
+Vert Émeraude	#058B5E	341 C	C85 M15 Y70 K0	R5 G139 B94	Nature, croissance, agriculture
+Bleu Aqua	#1B98A8	7711 C	C75 M25 Y35 K0	R27 G152 B168	Eau, pisciculture
+Terre Brune	#8B6F47	4635 C	C35 M50 Y70 K30	R139 G111 B71	Sol, authenticité
+Bordeaux Accent	#8B1538	202 C	C20 M100 Y80 K30	R139 G21 B56	Lien famille Rishom (détails)
+Blanc Naturel	#FFFEF7	-	C0 M0 Y5 K0	R255 G254 B247	Pureté, fraîcheur
+Palette secondaire
+Couleur	Code HEX	Usage
+Vert Clair	#8BC34A	Backgrounds légers, plantes
+Bleu Ciel	#E3F2F7	Sections eau, pisciculture
+Beige Sable	#E8DCC4	Sections agriculture, terre
+Orange Doux	#FF9F43	Fruits, soleil (accent chaleureux)
+Ratios d'utilisation
+50% : Blanc naturel + Beige sable (espaces)
+25% : Vert émeraude (identité primaire)
+15% : Bleu aqua (pisciculture)
+8% : Terre brune (agriculture)
+2% : Bordeaux (détails lien Groupe)
+Combinaisons validées
+Web - Section Agriculture :
+
+Fond : Beige sable #E8DCC4
+Cartes produits : Blanc naturel
+Titres : Vert émeraude #058B5E
+Texte : Terre brune #8B6F47
+CTA : Vert émeraude plein
+Web - Section Pisciculture :
+
+Fond : Bleu ciel #E3F2F7
+Cartes : Blanc naturel
+Titres : Bleu aqua #1B98A8
+CTA : Bleu aqua plein
+Web - Section Eau potable :
+
+Fond : Blanc naturel
+Accents : Bleu aqua dominant
+Badges certifications : Vert clair
+Packaging produits :
+
+Fruits/Légumes : Étiquettes blanc naturel + vert émeraude + orange doux
+Eau potable : Bleu aqua + blanc
+Aliments bétail : Terre brune + vert + blanc
+Logo REV'I : Vert émeraude avec détail bordeaux discret
+Print - Brochure RSE :
+
+Palette complète terre + eau + végétal
+Bordeaux en signature Groupe (dernière page)
+Lien famille Rishom
+Bordeaux intégré en micro-détail logo (point, accent) ou signature
+Terre brune = tonalité chaude compatible bordeaux
+Différenciation totale vs autres entités (seule à dominante verte)
+5. RISHOM BUSINESS ACADEMY (RBA)
+Palette principale
+Couleur	Code HEX	Pantone	CMJN	RVB	Usage
+Bleu Royal	#2E5A9C	2945 C	C85 M65 Y20 K5	R46 G90 B156	Confiance, intelligence, savoir
+Bordeaux Académique	#8B1538	202 C	C20 M100 Y80 K30	R139 G21 B56	Lien Groupe, prestige
+Orange Dynamique	#F97316	165 C	C0 M65 Y90 K0	R249 G115 B22	Énergie, jeunesse, action
+Gris Ardoise	#475569	432 C	C62 M50 Y40 K20	R71 G85 B105	Sérieux, stabilité
+Blanc	#FFFFFF	-	C0 M0 Y0 K0	R255 G255 B255	Clarté pédagogique
+Palette secondaire
+Couleur	Code HEX	Usage
+Bleu Clair	#DBEAFE	Backgrounds sections, info boxes
+Orange Pâle	#FED7AA	Highlights, badges
+Gris Perle	#F1F5F9	Fonds alternés
+Vert Succès	#10B981	Indicateurs progression, taux insertion
+Ratios d'utilisation
+55% : Blanc + Gris perle (lisibilité)
+25% : Bleu royal (identité académique)
+12% : Orange dynamique (CTAs, énergie)
+8% : Bordeaux (autorité, certifications)
+Combinaisons validées
+Web - Page d'accueil :
+
+Hero : Bleu royal dégradé vers bleu clair
+Titre : Blanc
+CTA primaire : Orange dynamique
+CTA secondaire : Bordeaux (prestige)
+Chiffres clés : Orange pour stats, Vert pour taux insertion
+Web - Catalogue formations :
+
+Cartes formations : Blanc avec bordure bleue
+Badges thématiques : Orange (Management), Bleu (IT), Bordeaux (Certifications), Gris (Techniques)
+Prix : Bleu royal bold
+CTA inscription : Orange plein
+Web - Section Certifications :
+
+Fond : Gris perle
+Logos certificateurs : Couleurs originales préservées
+Encadré prestige : Bordeaux + or (finition premium)
+Print - Certificats de formation :
+
+Bordure : Bleu royal + Bordeaux entrelacés
+Logo RBA : Bleu + bordeaux
+Texte principal : Gris ardoise
+Signatures : Bleu royal
+Sceau : Or + bordeaux (prestige)
+Print - Supports pédagogiques :
+
+Couverture : Bleu royal + orange (dynamisme)
+Intérieur : Blanc avec codes couleurs thématiques
+Schémas : Bleu (théorie) + Orange (pratique)
+Broderie textiles (polos formateurs) :
+
+Logo : Bleu royal + bordeaux (2 fils)
+Ou version monochrome bleu (économie)
+Lien famille Rishom
+Bordeaux présent en couleur secondaire (autorité académique)
+Usage bordeaux renforcé sur diplômes/certifications (prestige)
+Bleu royal différencie fortement vs autres entités
+Orange = énergie unique à RBA (jeunesse, transformation)
+6. PALETTE TRANSVERSALE SITE WEB
+Couleurs système (UI)
+Fonction	Couleur	Code HEX	Usage
+Succès	Vert	#10B981	Messages confirmation, validations
+Erreur	Rouge vif	#EF4444	Erreurs formulaires, alertes
+Avertissement	Jaune	#F59E0B	Warnings, infos importantes
+Information	Bleu ciel	#3B82F6	Tooltips, info-bulles
+Neutre	Gris	#6B7280	Textes secondaires, désactivé
+Dégradés tendance 2025
+Groupe Rishom - Hero premium :
+
+Copybackground: linear-gradient(135deg, #8B1538 0%, #3A3A3C 100%);
+/* Bordeaux vers anthracite */
+RBF - Énergie industrielle :
+
+Copybackground: linear-gradient(135deg, #C74634 0%, #4A5568 100%);
+/* Rouge brique vers acier */
+RIC - Élégance sobre :
+
+Copybackground: linear-gradient(180deg, #8B1538 0%, #4D4D4D 100%);
+/* Bordeaux vers charbon */
+REV'I - Nature vivante :
+
+Copybackground: linear-gradient(135deg, #058B5E 0%, #1B98A8 100%);
+/* Vert émeraude vers aqua */
+RBA - Énergie académique :
+
+Copybackground: linear-gradient(135deg, #2E5A9C 0%, #F97316 100%);
+/* Bleu royal vers orange */
+MATRICE DE COMPATIBILITÉ COULEURS
+Test de contraste WCAG 2.2 (accessibilité AA minimum)
+Combinaison	Ratio	Statut	Usage
+Bordeaux #8B1538 / Blanc	8.2:1	✅ AAA	Texte, CTA
+Bleu royal #2E5A9C / Blanc	6.1:1	✅ AA+	Texte, titres
+Vert émeraude #058B5E / Blanc	4.8:1	✅ AA	Texte moyen/large
+Rouge brique #C74634 / Blanc	4.2:1	✅ AA	CTA, titres
+Orange dynamique #F97316 / Noir	5.3:1	✅ AA+	CTA, accents
+Gris charbon #4D4D4D / Blanc	9.5:1	✅ AAA	Texte corps
+Tous les couples couleur/fond respectent les normes d'accessibilité.
+
+GUIDE D'APPLICATION PAR SUPPORT
+Digital (Web/App)
+Fonds :
+
+Sections claires : Blanc, Crème, Gris perle
+Sections sombres : Anthracite, Charbon (mode sombre)
+Hero : Dégradés entité
+Textes :
+
+Titres H1 : Couleur entité (bordeaux, bleu, vert, rouge brique)
+Titres H2-H6 : Gris foncé ou couleur entité atténuée
+Corps : Noir #1A1A1A ou Gris foncé
+CTA (boutons) :
+
+Primaire : Couleur entité pleine + texte blanc
+Secondaire : Bordure couleur entité + texte couleur
+Hover : Assombrissement 15% couleur
+Print (Papeterie, Brochures)
+Groupe Rishom :
+
+Papier à en-tête : Blanc avec logo bordeaux + gris
+Cartes de visite : Bordeaux dominant, finition vernis sélectif
+Entités :
+
+Chaque entité : Couleur primaire + bordeaux en signature
+Certifications RBA : Bordeaux + or (prestige)
+Signalétique
+Extérieur :
+
+Fond : Blanc ou gris clair (visibilité)
+Logo + texte : Couleur entité dominante
+Ratio logo/texte : 60/40
+Intérieur :
+
+Wayfinding : Codes couleurs par zone (vert = agriculture REV'I, bleu = salles RBA)
+Textiles
+Broderie :
+
+Maximum 2-3 couleurs (coût)
+Préférer versions monochromes couleur primaire
+Bordeaux réservé direction/prestige
+SYNTHÈSE COMPARATIVE
+Entité	Couleur 1	Couleur 2	Couleur 3	Tempérament	Secteur
+Groupe	Bordeaux	Gris anthracite	Or	Autorité classique	Corporate
+RBF	Rouge brique	Gris acier	Jaune sécurité	Énergie industrielle	BTP/Location
+RIC	Bordeaux	Gris charbon	Blanc cassé	Élégance sobre	Conseil
+REV'I	Vert émeraude	Bleu aqua	Terre brune	Nature vivante	Agriculture
+RBA	Bleu royal	Orange	Bordeaux	Énergie académique	Formation
+Unité visuelle : Bordeaux présent partout (dominant ou accent) Différenciation : Couleurs primaires distinctes, aucune confusion possible
+
+Ces palettes garantissent cohérence familiale, différenciation métier et conformité aux standards 2025 d'accessibilité et de performance visuelle.
