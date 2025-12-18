@@ -1,0 +1,112 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Arial",
+      "count": 71
+    },
+    {
+      "family": "sans-serif",
+      "count": 69
+    },
+    {
+      "family": "Helvetica",
+      "count": 66
+    },
+    {
+      "family": "Inter",
+      "count": 60
+    },
+    {
+      "family": "Font Awesome 5 Free",
+      "count": 18
+    },
+    {
+      "family": "awb-icons",
+      "count": 5
+    },
+    {
+      "family": "montserrat_semibold",
+      "count": 3
+    },
+    {
+      "family": "sans-serif-light",
+      "count": 2
+    },
+    {
+      "family": "HelveticaNeue-Light",
+      "count": 2
+    },
+    {
+      "family": "Helvetica Neue Light",
+      "count": 2
+    }
+  ],
+  "colors": {
+    "primary": "#636772",
+    "accent": "#114991",
+    "background": "#FFFFFF",
+    "textPrimary": "#114991",
+    "link": "#114991"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Arial",
+      "heading": "Inter"
+    },
+    "fontStacks": {
+      "body": [
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ],
+      "heading": [
+        "Inter",
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Inter"
+      ]
+    },
+    "fontSizes": {
+      "h1": "85px",
+      "h2": "50px",
+      "body": "25px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "input": {
+      "background": "#FFFFFF",
+      "textColor": "#636772",
+      "borderColor": "#EBEBEB",
+      "borderRadius": "3px",
+      "borderRadiusCorners": {
+        "topLeft": "3px",
+        "topRight": "3px",
+        "bottomRight": "3px",
+        "bottomLeft": "3px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": null,
+    "favicon": "https://www.soletanche-bachy.com/wp-content/uploads/sites/18/2019/10/favicon.png",
+    "ogImage": null
+  },
+  "__framework_hints": [
+    "All in One SEO (AIOSEO) 4.9.1.1",
+    "bootstrap"
+  ],
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
