@@ -24,6 +24,7 @@ import Cookies from "@/pages/Cookies";
 
 // Pages entités
 import RBF from "@/pages/RBF";
+import RBFEquipment from "@/pages/RBFEquipment";
 import RIC from "@/pages/RIC";
 import REVI from "@/pages/REVI";
 import RBA from "@/pages/RBA";
@@ -56,6 +57,7 @@ function Router() {
 
       {/* Pages entités */}
       <Route path="/rbf" component={RBF} />
+      <Route path="/rbf/equipements" component={RBFEquipment} />
       <Route path="/ric" component={RIC} />
       <Route path="/revi" component={REVI} />
       <Route path="/rba" component={RBA} />
