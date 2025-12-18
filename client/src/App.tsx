@@ -49,6 +49,9 @@ import RBA from "@/pages/RBA";
 import RBAPrograms from "@/pages/RBAPrograms";
 import RBAProfessionalTraining from "@/pages/RBAProfessionalTraining";
 import RBADegreePrograms from "@/pages/RBADegreePrograms";
+import RBATestimonials from "@/pages/RBATestimonials";
+import RBAAdmission from "@/pages/RBAAdmission";
+import RBACorporate from "@/pages/RBACorporate";
 
 // 404 Page
 import NotFound from "@/pages/not-found";
@@ -103,6 +106,9 @@ function Router() {
       <Route path="/rba/programmes" component={RBAPrograms} />
       <Route path="/rba/formations-professionnelles" component={RBAProfessionalTraining} />
       <Route path="/rba/formations-diplomantes" component={RBADegreePrograms} />
+      <Route path="/rba/temoignages" component={RBATestimonials} />
+      <Route path="/rba/admission" component={RBAAdmission} />
+      <Route path="/rba/entreprises" component={RBACorporate} />
 
       {/* 404 - Doit être en dernier */}
       <Route component={NotFound} />
