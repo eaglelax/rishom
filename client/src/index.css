@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
+/* LIGHT MODE - Groupe Rishom Brand Colors */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
@@ -10,40 +10,40 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
   --background: 0 0% 100%;
-  --foreground: 210 85% 29%;
-  --border: 0 0% 92%;
-  --card: 0 0% 98%;
-  --card-foreground: 210 85% 29%;
-  --card-border: 0 0% 95%;
-  --sidebar: 0 0% 96%;
-  --sidebar-foreground: 210 85% 29%;
-  --sidebar-border: 0 0% 93%;
-  --sidebar-primary: 210 85% 29%;
+  --foreground: 240 2% 23%;
+  --border: 240 6% 90%;
+  --card: 40 30% 95%;
+  --card-foreground: 0 0% 10%;
+  --card-border: 40 20% 90%;
+  --sidebar: 40 30% 95%;
+  --sidebar-foreground: 240 2% 23%;
+  --sidebar-border: 40 20% 88%;
+  --sidebar-primary: 345 73% 33%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 90%;
-  --sidebar-accent-foreground: 210 85% 29%;
-  --sidebar-ring: 210 85% 29%;
-  --popover: 0 0% 94%;
-  --popover-foreground: 210 85% 29%;
-  --popover-border: 0 0% 91%;
-  --primary: 210 85% 29%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 88%;
-  --secondary-foreground: 210 85% 29%;
-  --muted: 0 0% 89%;
-  --muted-foreground: 210 10% 35%;
-  --accent: 210 8% 92%;
-  --accent-foreground: 210 85% 29%;
+  --sidebar-accent: 40 20% 88%;
+  --sidebar-accent-foreground: 240 2% 23%;
+  --sidebar-ring: 345 73% 33%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 2% 23%;
+  --popover-border: 240 6% 90%;
+  --primary: 345 73% 33%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 30% 92%;
+  --secondary-foreground: 240 2% 23%;
+  --muted: 40 20% 92%;
+  --muted-foreground: 0 0% 44%;
+  --accent: 33 30% 57%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 32%;
   --destructive-foreground: 0 0% 98%;
-  --input: 210 20% 75%;
-  --ring: 210 85% 29%;
-  --chart-1: 210 85% 29%;
-  --chart-2: 220 70% 35%;
-  --chart-3: 200 80% 32%;
-  --chart-4: 230 75% 38%;
-  --chart-5: 215 78% 33%;
-  --font-sans: Open Sans, sans-serif;
+  --input: 240 6% 90%;
+  --ring: 345 73% 33%;
+  --chart-1: 345 73% 33%;
+  --chart-2: 10 70% 40%;
+  --chart-3: 160 75% 30%;
+  --chart-4: 215 65% 38%;
+  --chart-5: 33 30% 57%;
+  --font-sans: Inter, Arial, Helvetica, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem;
@@ -102,31 +102,31 @@
   --sidebar: 0 0% 11%;
   --sidebar-foreground: 0 0% 98%;
   --sidebar-border: 0 0% 14%;
-  --sidebar-primary: 210 85% 45%;
+  --sidebar-primary: 345 73% 45%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 0 0% 15%;
   --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 210 85% 45%;
+  --sidebar-ring: 345 73% 45%;
   --popover: 0 0% 13%;
   --popover-foreground: 0 0% 98%;
   --popover-border: 0 0% 16%;
-  --primary: 210 85% 32%;
+  --primary: 345 73% 40%;
   --primary-foreground: 0 0% 98%;
   --secondary: 0 0% 17%;
   --secondary-foreground: 0 0% 98%;
   --muted: 0 0% 18%;
   --muted-foreground: 0 0% 70%;
-  --accent: 210 6% 16%;
+  --accent: 33 30% 45%;
   --accent-foreground: 0 0% 98%;
   --destructive: 0 84% 28%;
   --destructive-foreground: 0 0% 98%;
-  --input: 210 15% 30%;
-  --ring: 210 85% 45%;
-  --chart-1: 210 85% 65%;
-  --chart-2: 220 70% 70%;
-  --chart-3: 200 80% 68%;
-  --chart-4: 230 75% 72%;
-  --chart-5: 215 78% 67%;
+  --input: 0 0% 20%;
+  --ring: 345 73% 45%;
+  --chart-1: 345 73% 55%;
+  --chart-2: 10 70% 55%;
+  --chart-3: 160 75% 45%;
+  --chart-4: 215 65% 55%;
+  --chart-5: 33 30% 60%;
   --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.00);
   --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.00);
   --shadow-sm: 0px 2px 0px 0px hsl(0 0% 0% / 0.00), 0px 1px 2px -1px hsl(0 0% 0% / 0.00);
@@ -170,9 +170,93 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B1538;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C4526D;
+}
+
+/* Prose styling pour articles */
+.prose {
+  max-width: none;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.prose h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.prose blockquote {
+  font-style: italic;
+  margin: 2em 0;
+}
+
+/* Animations personnalisées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /**
