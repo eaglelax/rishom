@@ -27,6 +27,9 @@ import RBF from "@/pages/RBF";
 import RBFEquipment from "@/pages/RBFEquipment";
 import RBFRental from "@/pages/RBFRental";
 import RBFMaterials from "@/pages/RBFMaterials";
+import RBFMaintenance from "@/pages/RBFMaintenance";
+import RBFLogistics from "@/pages/RBFLogistics";
+import RBFTestimonials from "@/pages/RBFTestimonials";
 import RIC from "@/pages/RIC";
 import REVI from "@/pages/REVI";
 import RBA from "@/pages/RBA";
@@ -62,6 +65,9 @@ function Router() {
       <Route path="/rbf/equipements" component={RBFEquipment} />
       <Route path="/rbf/location" component={RBFRental} />
       <Route path="/rbf/materiaux" component={RBFMaterials} />
+      <Route path="/rbf/maintenance" component={RBFMaintenance} />
+      <Route path="/rbf/logistique" component={RBFLogistics} />
+      <Route path="/rbf/temoignages" component={RBFTestimonials} />
       <Route path="/ric" component={RIC} />
       <Route path="/revi" component={REVI} />
       <Route path="/rba" component={RBA} />

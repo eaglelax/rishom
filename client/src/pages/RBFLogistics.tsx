@@ -1,0 +1,172 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Truck, Package, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#C74634] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Logistique BTP</h1>
+        <p className="text-xl max-w-2xl">Solutions complètes de transport et logistique pour vos matériaux et équipements de chantier.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const ServicesSection = () => {
+  const services = [
+    {
+      icon: <Truck className="w-12 h-12" />,
+      title: "Transport de matériaux",
+      description: "Livraison de ciment, sable, graviers, fer à béton en vrac ou palettisé",
+      capacity: "Camions 10-30 tonnes"
+    },
+    {
+      icon: <Package className="w-12 h-12" />,
+      title: "Transport d'équipements",
+      description: "Convoi exceptionnel pour engins lourds, grues, containers",
+      capacity: "Jusqu'à 50 tonnes"
+    },
+    {
+      icon: <MapPin className="w-12 h-12" />,
+      title: "Gestion de stock",
+      description: "Entreposage sécurisé, gestion des flux, préparation de commandes",
+      capacity: "5 000 m² disponibles"
+    },
+    {
+      icon: <Clock className="w-12 h-12" />,
+      title: "Livraison express",
+      description: "Service d'urgence pour pièces détachées et matériaux manquants",
+      capacity: "Livraison sous 4h"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Nos Services Logistiques</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="text-[#C74634] mb-4">{service.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{service.title}</h3>
+              <p className="text-[#3A3A3C] mb-3">{service.description}</p>
+              <div className="text-[#B8956A] font-semibold">{service.capacity}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CoverageSection = () => {
+  const zones = [
+    { city: "Ouagadougou", delay: "24h", price: "Inclus" },
+    { city: "Bobo-Dioulasso", delay: "48h", price: "+15 000 FCFA" },
+    { city: "Koudougou", delay: "36h", price: "+10 000 FCFA" },
+    { city: "Ouahigouya", delay: "48h", price: "+12 000 FCFA" },
+    { city: "Fada N'Gourma", delay: "72h", price: "+18 000 FCFA" },
+    { city: "Autres villes", delay: "Sur devis", price: "Sur devis" }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Zone de Couverture</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-[#C74634] text-white">
+                <th className="p-4 text-left rounded-tl-lg">Ville</th>
+                <th className="p-4 text-left">Délai de livraison</th>
+                <th className="p-4 text-left rounded-tr-lg">Frais de port</th>
+              </tr>
+            </thead>
+            <tbody>
+              {zones.map((zone, index) => (
+                <tr key={index} className="border-b border-[#B8956A]/20 hover:bg-[#F5F1E8] transition-colors">
+                  <td className="p-4 font-semibold text-[#3A3A3C]">{zone.city}</td>
+                  <td className="p-4 text-[#3A3A3C]">{zone.delay}</td>
+                  <td className="p-4 text-[#C74634] font-semibold">{zone.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AdvantagesSection = () => {
+  const advantages = [
+    "Flotte moderne et entretenue",
+    "Chauffeurs formés et expérimentés",
+    "Assurance tous risques incluse",
+    "Suivi GPS en temps réel",
+    "Planning personnalisé",
+    "Tarifs dégressifs sur volume"
+  ];
+
+  return (
+    <section className="py-20 bg-[#3A3A3C] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">Pourquoi Choisir Notre Service ?</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {advantages.map((advantage, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex items-start"
+            >
+              <CheckCircle2 className="w-6 h-6 text-[#B8956A] mr-3 flex-shrink-0 mt-1" />
+              <span className="text-lg">{advantage}</span>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Button 
+            className="bg-[#C74634] text-white hover:bg-[#8B1538] font-semibold text-lg py-6 px-8"
+            data-testid="button-quote-transport"
+          >
+            Demander un Devis Transport
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default function RBFLogistics() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <ServicesSection />
+      <CoverageSection />
+      <AdvantagesSection />
+      <Footer />
+    </div>
+  );
+}
