@@ -1,0 +1,89 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "sans-serif",
+      "count": 74
+    },
+    {
+      "family": "Lora",
+      "count": 52
+    },
+    {
+      "family": "Poppins",
+      "count": 22
+    },
+    {
+      "family": "Ultimate-Icons",
+      "count": 2
+    }
+  ],
+  "colors": {
+    "primary": "#D01A19",
+    "accent": "#E4201F",
+    "background": "#EFEFEF",
+    "textPrimary": "#E4201F",
+    "link": "#E4201F"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Lora",
+      "heading": "Poppins"
+    },
+    "fontStacks": {
+      "body": [
+        "Lora",
+        "sans-serif"
+      ],
+      "heading": [
+        "Poppins",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Poppins",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "36px",
+      "h2": "40px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "6px"
+  },
+  "components": {},
+  "images": {
+    "logo": "https://www.centraldiesel.com/wp-content/uploads/2025/08/perkins-logo.png",
+    "favicon": "https://www.centraldiesel.com/wp-content/uploads/2017/09/cropped-central-diesel-favicon-32x32.png",
+    "ogImage": null
+  },
+  "__framework_hints": [
+    "WordPress 6.8.3"
+  ],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 21,
+    "reasoning": "Heuristic fallback: Moderate indicators: in header, no link (brand logos usually link to homepage, penalty), header location, visible, alt matches logo/brand, src contains logo, reasonable size. Score: 63. May benefit from LLM validation.",
+    "confidence": 0.5
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
