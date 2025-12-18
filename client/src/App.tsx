@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import RBF from "@/pages/RBF";
 import RIC from "@/pages/RIC";
 import REVI from "@/pages/REVI";
+import RBA from "@/pages/RBA";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/rbf" component={RBF} />
       <Route path="/ric" component={RIC} />
       <Route path="/revi" component={REVI} />
+      <Route path="/rba" component={RBA} />
       <Route component={NotFound} />
     </Switch>
   );
