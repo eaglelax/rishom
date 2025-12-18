@@ -17,6 +17,7 @@ import CSR from "@/pages/CSR";
 import Certifications from "@/pages/Certifications";
 import Partners from "@/pages/Partners";
 import Press from "@/pages/Press";
+import FAQ from "@/pages/FAQ";
 
 // Pages entités
 import RBF from "@/pages/RBF";
@@ -45,6 +46,7 @@ function Router() {
       <Route path="/certifications" component={Certifications} />
       <Route path="/partenaires" component={Partners} />
       <Route path="/presse" component={Press} />
+      <Route path="/faq" component={FAQ} />
 
       {/* Pages entités */}
       <Route path="/rbf" component={RBF} />
