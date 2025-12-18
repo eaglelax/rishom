@@ -10,6 +10,7 @@ import RIC from "@/pages/RIC";
 import REVI from "@/pages/REVI";
 import RBA from "@/pages/RBA";
 import About from "@/pages/About";
+import Projects from "@/pages/Projects";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/revi" component={REVI} />
       <Route path="/rba" component={RBA} />
       <Route path="/a-propos" component={About} />
+      <Route path="/projets" component={Projects} />
       <Route component={NotFound} />
     </Switch>
   );
