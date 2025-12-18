@@ -6,20 +6,22 @@ import EntitiesGrid from "@/components/EntitiesGrid";
 import StatsSection from "@/components/StatsSection";
 import NewsGrid from "@/components/NewsGrid";
 import JoinUsSection from "@/components/JoinUsSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <TopBar />
       <Header />
-      <HeroSection />
-      <AboutSection />
-      <EntitiesGrid />
-      <StatsSection />
-      <NewsGrid />
-      <JoinUsSection />
-      
-      {/* Footer will be added here */}
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <EntitiesGrid />
+        <StatsSection />
+        <NewsGrid />
+        <JoinUsSection />
+      </main>
+      <Footer />
     </div>
   );
 }
