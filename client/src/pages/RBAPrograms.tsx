@@ -1,0 +1,258 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { BookOpen, Briefcase, Award, Clock, CheckCircle2, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#2E5A9C] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Nos Programmes de Formation</h1>
+        <p className="text-xl max-w-2xl">Des parcours adaptés à vos besoins, du perfectionnement professionnel aux diplômes reconnus.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const ProgramsOverviewSection = () => {
+  const categories = [
+    {
+      icon: <Briefcase className="w-12 h-12" />,
+      title: "Formations courtes",
+      description: "Perfectionnement professionnel et montée en compétences",
+      duration: "1 à 5 jours",
+      format: "Présentiel ou en ligne",
+      certification: "Attestation de formation",
+      target: "Professionnels en activité"
+    },
+    {
+      icon: <BookOpen className="w-12 h-12" />,
+      title: "Formations certifiantes",
+      description: "Parcours structurés avec certification professionnelle",
+      duration: "3 à 6 mois",
+      format: "Présentiel (soirs & week-ends)",
+      certification: "Certificat professionnel RBA",
+      target: "Salariés, entrepreneurs"
+    },
+    {
+      icon: <Award className="w-12 h-12" />,
+      title: "Formations diplômantes",
+      description: "Diplômes reconnus par l'État (BTS, Licence, Master)",
+      duration: "1 à 2 ans",
+      format: "Présentiel temps plein",
+      certification: "Diplôme d'État",
+      target: "Bacheliers, étudiants"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">3 Types de Parcours</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {categories.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="text-[#2E5A9C] mb-4">{category.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{category.title}</h3>
+              <p className="text-[#3A3A3C] mb-4">{category.description}</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-start">
+                  <Clock className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Durée :</strong> {category.duration}</span>
+                </div>
+                <div className="flex items-start">
+                  <Users className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Format :</strong> {category.format}</span>
+                </div>
+                <div className="flex items-start">
+                  <Award className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Certification :</strong> {category.certification}</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                  <span><strong>Public :</strong> {category.target}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DomainsSection = () => {
+  const domains = [
+    {
+      domain: "Management & Leadership",
+      programs: [
+        { name: "Management d'équipe", type: "Court", duration: "3 jours" },
+        { name: "Leadership transformationnel", type: "Certifiant", duration: "3 mois" },
+        { name: "Master Management des Organisations", type: "Diplômant", duration: "2 ans" }
+      ]
+    },
+    {
+      domain: "Finance & Comptabilité",
+      programs: [
+        { name: "Comptabilité pour non-comptables", type: "Court", duration: "2 jours" },
+        { name: "Contrôle de gestion", type: "Certifiant", duration: "4 mois" },
+        { name: "BTS Comptabilité et Gestion", type: "Diplômant", duration: "2 ans" }
+      ]
+    },
+    {
+      domain: "Marketing & Communication",
+      programs: [
+        { name: "Marketing digital", type: "Court", duration: "5 jours" },
+        { name: "Community Management", type: "Certifiant", duration: "3 mois" },
+        { name: "Licence Marketing & Communication", type: "Diplômant", duration: "1 an" }
+      ]
+    },
+    {
+      domain: "Ressources Humaines",
+      programs: [
+        { name: "Gestion de la paie", type: "Court", duration: "3 jours" },
+        { name: "Gestion des Talents", type: "Certifiant", duration: "4 mois" },
+        { name: "Master GRH", type: "Diplômant", duration: "2 ans" }
+      ]
+    },
+    {
+      domain: "Gestion de Projet",
+      programs: [
+        { name: "Fondamentaux gestion de projet", type: "Court", duration: "3 jours" },
+        { name: "Chef de projet certifié", type: "Certifiant", duration: "5 mois" },
+        { name: "Master Gestion de Projet", type: "Diplômant", duration: "2 ans" }
+      ]
+    },
+    {
+      domain: "Entrepreneuriat",
+      programs: [
+        { name: "Créer son entreprise", type: "Court", duration: "2 jours" },
+        { name: "Entrepreneuriat & Innovation", type: "Certifiant", duration: "6 mois" },
+        { name: "Licence Entrepreneuriat", type: "Diplômant", duration: "1 an" }
+      ]
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Domaines de Formation</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {domains.map((domain, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-6 rounded-lg"
+            >
+              <h3 className="text-xl font-bold text-[#2E5A9C] mb-4">{domain.domain}</h3>
+              <div className="space-y-3">
+                {domain.programs.map((program, idx) => (
+                  <div key={idx} className="bg-white p-3 rounded">
+                    <div className="flex flex-wrap justify-between items-start mb-1 gap-2">
+                      <span className="font-semibold text-[#3A3A3C] text-sm">{program.name}</span>
+                      <span className="text-xs bg-[#2E5A9C] text-white px-2 py-1 rounded">{program.type}</span>
+                    </div>
+                    <div className="text-xs text-[#B8956A]">{program.duration}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MethodologySection = () => {
+  const methods = [
+    "Pédagogie active : cas pratiques, mises en situation",
+    "Formateurs experts avec expérience terrain",
+    "Supports numériques et plateforme e-learning",
+    "Évaluation continue et examens finaux",
+    "Stages en entreprise (formations diplômantes)",
+    "Certification reconnue par l'État et les entreprises"
+  ];
+
+  return (
+    <section className="py-20 bg-[#2E5A9C] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">Notre Approche Pédagogique</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {methods.map((method, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex items-start"
+            >
+              <CheckCircle2 className="w-6 h-6 text-[#B8956A] mr-3 flex-shrink-0 mt-1" />
+              <span className="text-lg">{method}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CTASection = () => (
+  <section className="py-20 bg-[#F5F1E8]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 className="text-4xl font-bold text-[#3A3A3C] mb-6">Trouvez la Formation qui Vous Correspond</h2>
+      <p className="text-xl text-[#3A3A3C] mb-8">
+        Contactez nos conseillers pour un accompagnement personnalisé dans le choix de votre parcours.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          className="bg-[#2E5A9C] text-white hover:bg-[#3A3A3C] font-semibold text-lg py-6 px-8"
+          data-testid="button-download-catalog"
+        >
+          Télécharger le Catalogue Complet
+        </Button>
+        <Button 
+          variant="outline"
+          className="border-2 border-[#2E5A9C] text-[#2E5A9C] hover:bg-[#2E5A9C] hover:text-white font-semibold text-lg py-6 px-8"
+          data-testid="button-appointment"
+        >
+          Prendre Rendez-vous
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
+export default function RBAPrograms() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <ProgramsOverviewSection />
+      <DomainsSection />
+      <MethodologySection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+}

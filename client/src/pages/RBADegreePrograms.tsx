@@ -1,0 +1,333 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { GraduationCap, BookOpen, Award, CheckCircle2, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#2E5A9C] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Formations Diplômantes</h1>
+        <p className="text-xl max-w-2xl">Diplômes d'État reconnus (BTS, Licence, Master) en partenariat avec l'Université de Ouagadougou.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const BTSSection = () => {
+  const bts = [
+    {
+      title: "BTS Comptabilité et Gestion",
+      duration: "2 ans",
+      diploma: "Diplôme d'État",
+      modules: [
+        "Comptabilité générale & analytique",
+        "Gestion financière",
+        "Fiscalité",
+        "Droit des affaires",
+        "Contrôle de gestion",
+        "Système d'information comptable"
+      ],
+      admission: "Bac toutes séries",
+      internship: "8 semaines en 1ère année + 12 semaines en 2ème année",
+      career: "Assistant comptable, contrôleur de gestion junior, gestionnaire de paie",
+      fees: "750 000 FCFA/an"
+    },
+    {
+      title: "BTS Assistant de Manager",
+      duration: "2 ans",
+      diploma: "Diplôme d'État",
+      modules: [
+        "Communication professionnelle",
+        "Gestion administrative",
+        "Organisation d'événements",
+        "Bureautique avancée",
+        "Langues (anglais, français pro)",
+        "Gestion de projets"
+      ],
+      admission: "Bac toutes séries",
+      internship: "8 semaines en 1ère année + 12 semaines en 2ème année",
+      career: "Assistant de direction, chargé d'accueil, coordinateur administratif",
+      fees: "700 000 FCFA/an"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">BTS (Bac+2)</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {bts.map((program, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center mb-4">
+                <GraduationCap className="w-8 h-8 text-[#2E5A9C] mr-3" />
+                <div>
+                  <h3 className="text-2xl font-bold text-[#2E5A9C]">{program.title}</h3>
+                  <p className="text-sm text-[#B8956A]">{program.diploma}</p>
+                </div>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold text-[#3A3A3C] mb-2">Programme :</h4>
+                <ul className="grid grid-cols-2 gap-2">
+                  {program.modules.map((module, idx) => (
+                    <li key={idx} className="flex items-start text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-[#3A3A3C]">{module}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-2 text-sm mb-4">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Admission : </span>
+                  <span>{program.admission}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Stages : </span>
+                  <span>{program.internship}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Débouchés : </span>
+                  <span>{program.career}</span>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#B8956A]/20 text-2xl font-bold text-[#2E5A9C]">
+                {program.fees}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const LicenseSection = () => {
+  const licenses = [
+    {
+      title: "Licence Professionnelle Marketing & Communication",
+      duration: "1 an (après Bac+2)",
+      partner: "En partenariat avec l'Université de Ouagadougou",
+      specializations: ["Marketing digital", "Communication d'entreprise", "Relations publiques"],
+      admission: "BTS, DUT, L2 validée",
+      project: "Projet professionnel sur cas réel d'entreprise",
+      career: "Chef de produit junior, chargé de communication, community manager senior",
+      fees: "900 000 FCFA"
+    },
+    {
+      title: "Licence Professionnelle Entrepreneuriat & Innovation",
+      duration: "1 an (après Bac+2)",
+      partner: "En partenariat avec l'Université de Ouagadougou",
+      specializations: ["Création d'entreprise", "Business model innovation", "Financement & levée de fonds"],
+      admission: "BTS, DUT, L2 validée",
+      project: "Business plan complet + pitch investisseurs",
+      career: "Entrepreneur, chef de projet innovation, consultant start-up",
+      fees: "900 000 FCFA"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Licences Professionnelles (Bac+3)</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {licenses.map((program, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-8 rounded-lg"
+            >
+              <div className="flex items-center mb-4">
+                <Award className="w-8 h-8 text-[#2E5A9C] mr-3" />
+                <div>
+                  <h3 className="text-xl font-bold text-[#2E5A9C]">{program.title}</h3>
+                  <p className="text-xs text-[#B8956A]">{program.partner}</p>
+                </div>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold text-[#3A3A3C] mb-2">Spécialisations :</h4>
+                <ul className="space-y-1">
+                  {program.specializations.map((spec, idx) => (
+                    <li key={idx} className="flex items-start text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-[#3A3A3C]">{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-2 text-sm mb-4">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Admission : </span>
+                  <span>{program.admission}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Projet : </span>
+                  <span>{program.project}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Débouchés : </span>
+                  <span>{program.career}</span>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#B8956A]/20 text-2xl font-bold text-[#2E5A9C]">
+                {program.fees}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MasterSection = () => {
+  const masters = [
+    {
+      title: "Master Management des Organisations",
+      duration: "2 ans (après Licence)",
+      partner: "Diplôme Université de Ouagadougou délivré par RBA",
+      parcours: ["Management stratégique", "Gestion des ressources humaines", "Contrôle de gestion"],
+      research: "Mémoire de recherche appliquée (80 pages minimum)",
+      admission: "Licence en management, gestion, économie",
+      career: "Directeur des opérations, DRH, contrôleur de gestion senior, consultant",
+      fees: "1 200 000 FCFA/an"
+    },
+    {
+      title: "Master Gestion de Projet",
+      duration: "2 ans (après Licence)",
+      partner: "Diplôme Université de Ouagadougou délivré par RBA",
+      parcours: ["Project Management Office (PMO)", "Gestion de projets IT", "Gestion de projets de développement"],
+      research: "Mémoire de recherche appliquée (80 pages minimum)",
+      admission: "Licence en gestion, ingénierie, sciences",
+      career: "Chef de projet senior, PMO, consultant en gestion de projet",
+      fees: "1 200 000 FCFA/an"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Masters (Bac+5)</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {masters.map((program, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center mb-4">
+                <BookOpen className="w-8 h-8 text-[#2E5A9C] mr-3" />
+                <div>
+                  <h3 className="text-xl font-bold text-[#2E5A9C]">{program.title}</h3>
+                  <p className="text-xs text-[#B8956A]">{program.partner}</p>
+                </div>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold text-[#3A3A3C] mb-2">Parcours :</h4>
+                <ul className="space-y-1">
+                  {program.parcours.map((path, idx) => (
+                    <li key={idx} className="flex items-start text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-[#2E5A9C] mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-[#3A3A3C]">{path}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-2 text-sm mb-4">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Admission : </span>
+                  <span>{program.admission}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Recherche : </span>
+                  <span>{program.research}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Débouchés : </span>
+                  <span>{program.career}</span>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#B8956A]/20 text-2xl font-bold text-[#2E5A9C]">
+                {program.fees}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AdmissionInfoSection = () => (
+  <section className="py-20 bg-[#2E5A9C] text-white">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Calendar className="w-16 h-16 mx-auto mb-6" />
+      <h2 className="text-4xl font-bold mb-6">Rentrée Académique 2025-2026</h2>
+      <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white/10 backdrop-blur p-6 rounded-lg">
+          <h3 className="text-xl font-bold mb-2">Inscriptions</h3>
+          <p>Avril - Août 2025</p>
+        </div>
+        <div className="bg-white/10 backdrop-blur p-6 rounded-lg">
+          <h3 className="text-xl font-bold mb-2">Tests d'entrée</h3>
+          <p>15-30 Août 2025</p>
+        </div>
+        <div className="bg-white/10 backdrop-blur p-6 rounded-lg">
+          <h3 className="text-xl font-bold mb-2">Rentrée</h3>
+          <p>15 Septembre 2025</p>
+        </div>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          className="bg-white text-[#2E5A9C] hover:bg-[#F5F1E8] font-semibold text-lg py-6 px-8"
+          data-testid="button-apply-now"
+        >
+          Candidater Maintenant
+        </Button>
+        <Button 
+          variant="outline"
+          className="border-2 border-white text-white hover:bg-white hover:text-[#2E5A9C] font-semibold text-lg py-6 px-8"
+          data-testid="button-download-brochure"
+        >
+          Télécharger la Brochure
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
+export default function RBADegreePrograms() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <BTSSection />
+      <LicenseSection />
+      <MasterSection />
+      <AdmissionInfoSection />
+      <Footer />
+    </div>
+  );
+}

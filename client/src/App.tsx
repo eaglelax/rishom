@@ -46,6 +46,9 @@ import REVIProjects from "@/pages/REVIProjects";
 import REVITraining from "@/pages/REVITraining";
 import REVITestimonials from "@/pages/REVITestimonials";
 import RBA from "@/pages/RBA";
+import RBAPrograms from "@/pages/RBAPrograms";
+import RBAProfessionalTraining from "@/pages/RBAProfessionalTraining";
+import RBADegreePrograms from "@/pages/RBADegreePrograms";
 
 // 404 Page
 import NotFound from "@/pages/not-found";
@@ -97,6 +100,9 @@ function Router() {
       <Route path="/revi/formation" component={REVITraining} />
       <Route path="/revi/temoignages" component={REVITestimonials} />
       <Route path="/rba" component={RBA} />
+      <Route path="/rba/programmes" component={RBAPrograms} />
+      <Route path="/rba/formations-professionnelles" component={RBAProfessionalTraining} />
+      <Route path="/rba/formations-diplomantes" component={RBADegreePrograms} />
 
       {/* 404 - Doit être en dernier */}
       <Route component={NotFound} />
