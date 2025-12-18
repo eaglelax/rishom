@@ -38,6 +38,9 @@ import RICMarketResearch from "@/pages/RICMarketResearch";
 import RICTraining from "@/pages/RICTraining";
 import RICTestimonials from "@/pages/RICTestimonials";
 import REVI from "@/pages/REVI";
+import REVIAgriculture from "@/pages/REVIAgriculture";
+import REVILivestock from "@/pages/REVILivestock";
+import REVIProcessing from "@/pages/REVIProcessing";
 import RBA from "@/pages/RBA";
 
 // 404 Page
@@ -82,6 +85,9 @@ function Router() {
       <Route path="/ric/formation" component={RICTraining} />
       <Route path="/ric/temoignages" component={RICTestimonials} />
       <Route path="/revi" component={REVI} />
+      <Route path="/revi/agriculture" component={REVIAgriculture} />
+      <Route path="/revi/elevage" component={REVILivestock} />
+      <Route path="/revi/transformation" component={REVIProcessing} />
       <Route path="/rba" component={RBA} />
 
       {/* 404 - Doit être en dernier */}

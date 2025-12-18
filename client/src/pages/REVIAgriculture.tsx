@@ -1,0 +1,275 @@
+import TopBar from "@/components/TopBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Sprout, Sun, TrendingUp, MapPin } from "lucide-react";
+
+const HeroSection = () => (
+  <section className="relative h-[60vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Production Agricole Moderne</h1>
+        <p className="text-xl max-w-2xl">Cultures vivrières et cultures de rente avec des techniques modernes pour maximiser rendements et qualité.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const CropsSection = () => {
+  const crops = [
+    {
+      icon: <Sprout className="w-12 h-12" />,
+      category: "Céréales",
+      crops: ["Maïs", "Riz", "Sorgho", "Mil"],
+      production: "2 500 tonnes/an",
+      surface: "800 hectares"
+    },
+    {
+      icon: <Sprout className="w-12 h-12" />,
+      category: "Légumineuses",
+      crops: ["Niébé", "Arachide", "Soja", "Haricot"],
+      production: "1 200 tonnes/an",
+      surface: "450 hectares"
+    },
+    {
+      icon: <Sun className="w-12 h-12" />,
+      category: "Maraîchage",
+      crops: ["Tomate", "Oignon", "Chou", "Aubergine", "Piment"],
+      production: "3 800 tonnes/an",
+      surface: "200 hectares"
+    },
+    {
+      icon: <TrendingUp className="w-12 h-12" />,
+      category: "Cultures de rente",
+      crops: ["Sésame", "Cajou", "Karité", "Moringa"],
+      production: "800 tonnes/an",
+      surface: "600 hectares"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Nos Productions</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {crops.map((crop, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
+              <div className="text-[#058B5E] mb-4">{crop.icon}</div>
+              <h3 className="text-2xl font-bold text-[#3A3A3C] mb-3">{crop.category}</h3>
+              <div className="mb-4">
+                <h4 className="font-semibold text-[#3A3A3C] mb-2">Cultures :</h4>
+                <div className="flex flex-wrap gap-2">
+                  {crop.crops.map((c, idx) => (
+                    <span key={idx} className="bg-[#F5F1E8] text-[#058B5E] px-3 py-1 rounded-full text-sm font-semibold">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#B8956A]/20">
+                <div>
+                  <div className="text-sm text-[#3A3A3C]">Production annuelle</div>
+                  <div className="text-lg font-bold text-[#058B5E]">{crop.production}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-[#3A3A3C]">Surface cultivée</div>
+                  <div className="text-lg font-bold text-[#058B5E]">{crop.surface}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TechniquesSection = () => {
+  const techniques = [
+    {
+      title: "Irrigation moderne",
+      description: "Goutte-à-goutte, aspersion, bassins de rétention",
+      impact: "-40% consommation d'eau, +60% rendements"
+    },
+    {
+      title: "Agriculture de précision",
+      description: "Analyse de sol, fertilisation ciblée, rotation des cultures",
+      impact: "-30% intrants, +25% productivité"
+    },
+    {
+      title: "Semences améliorées",
+      description: "Variétés résistantes à la sécheresse et aux maladies",
+      impact: "+50% rendements, cycles plus courts"
+    },
+    {
+      title: "Agriculture biologique",
+      description: "Compost, biopesticides, certification bio en cours",
+      impact: "Valorisation +30%, export premium"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Techniques Modernes</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {techniques.map((tech, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-[#F5F1E8] p-6 rounded-lg"
+            >
+              <h3 className="text-xl font-bold text-[#058B5E] mb-3">{tech.title}</h3>
+              <p className="text-[#3A3A3C] mb-3">{tech.description}</p>
+              <div className="flex items-start">
+                <TrendingUp className="w-5 h-5 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm font-semibold text-[#B8956A]">{tech.impact}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SitesSection = () => {
+  const sites = [
+    {
+      name: "Ferme de Bama",
+      location: "Province des Balé",
+      surface: "1 200 hectares",
+      speciality: "Céréales & légumineuses",
+      equipment: "Irrigation par pivot, tracteurs, moissonneuses"
+    },
+    {
+      name: "Périmètre maraîcher de Loumbila",
+      location: "Plateau central",
+      surface: "80 hectares",
+      speciality: "Maraîchage intensif",
+      equipment: "Serres, goutte-à-goutte, chambres froides"
+    },
+    {
+      name: "Plantation de Banfora",
+      location: "Cascades",
+      surface: "400 hectares",
+      speciality: "Cultures de rente",
+      equipment: "Unité de transformation, séchoirs solaires"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#F5F1E8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Nos Sites de Production</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {sites.map((site, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-start mb-3">
+                <MapPin className="w-6 h-6 text-[#058B5E] mr-2 flex-shrink-0" />
+                <div>
+                  <h3 className="text-xl font-bold text-[#3A3A3C]">{site.name}</h3>
+                  <p className="text-sm text-[#B8956A]">{site.location}</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Surface : </span>
+                  <span className="text-[#3A3A3C]">{site.surface}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Spécialité : </span>
+                  <span className="text-[#3A3A3C]">{site.speciality}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-[#3A3A3C]">Équipements : </span>
+                  <span className="text-[#3A3A3C]">{site.equipment}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const PartnersSection = () => (
+  <section className="py-20 bg-[#058B5E] text-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold mb-12 text-center">Débouchés & Partenaires</h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <h3 className="text-2xl font-bold mb-3">Marché Local</h3>
+          <p className="mb-4">Supermarchés, restaurants, hôtels, cantines</p>
+          <div className="text-3xl font-bold text-[#B8956A]">60%</div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <h3 className="text-2xl font-bold mb-3">Transformation</h3>
+          <p className="mb-4">Unités REV'I, agro-industries partenaires</p>
+          <div className="text-3xl font-bold text-[#B8956A]">25%</div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur p-6 rounded-lg text-center"
+        >
+          <h3 className="text-2xl font-bold mb-3">Export</h3>
+          <p className="mb-4">CEDEAO, Union Européenne (bio)</p>
+          <div className="text-3xl font-bold text-[#B8956A]">15%</div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+export default function REVIAgriculture() {
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <CropsSection />
+      <TechniquesSection />
+      <SitesSection />
+      <PartnersSection />
+      <Footer />
+    </div>
+  );
+}
