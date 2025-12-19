@@ -46,10 +46,10 @@ export default function Header() {
       href: "/projets",
       dropdown: [
         { label: "Tous les projets", href: "/projets" },
-        { label: "Projets BTP", href: "/rbf" },
-        { label: "Projets Conseil", href: "/ric" },
+        { label: "Projets BTP", href: "/rbf/equipements" },
+        { label: "Projets Conseil", href: "/ric/projets" },
         { label: "Projets Agricoles", href: "/revi/projets" },
-        { label: "Formations", href: "/rba/programmes" },
+        { label: "Programmes de formation", href: "/rba/programmes" },
       ]
     },
     { 
@@ -58,7 +58,6 @@ export default function Header() {
       dropdown: [
         { label: "Toutes les actualités", href: "/actualites" },
         { label: "Communiqués de presse", href: "/presse" },
-        { label: "Événements", href: "/actualites" },
       ]
     },
     { label: "Carrières", href: "/carrieres" },
@@ -93,7 +92,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => (
               <div
-                key={item.href}
+                key={item.label}
                 className="relative"
                 onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
@@ -119,9 +118,9 @@ export default function Header() {
                       className="absolute top-full left-0 pt-2"
                     >
                       <div className="bg-white rounded-md shadow-xl border border-border min-w-[220px] py-2">
-                        {item.dropdown.map((subItem) => (
+                        {item.dropdown.map((subItem, subIndex) => (
                           <a
-                            key={subItem.href}
+                            key={`${item.label}-${subIndex}`}
                             href={subItem.href}
                             className="block px-4 py-2.5 text-sm text-[#3A3A3C] hover:bg-[#8B1538]/5 hover:text-[#8B1538] transition-colors"
                             data-testid={`nav-dropdown-${subItem.label.toLowerCase().replace(/\s+/g, '-')}`}
@@ -167,7 +166,7 @@ export default function Header() {
           <nav className="lg:hidden pb-4 border-t bg-white">
             <div className="flex flex-col gap-2 pt-4">
               {menuItems.map((item) => (
-                <div key={item.href}>
+                <div key={item.label}>
                   <a
                     href={item.href}
                     className="block text-[#3A3A3C] hover:text-[#8B1538] transition-colors font-medium py-2"
@@ -178,9 +177,9 @@ export default function Header() {
                   </a>
                   {item.dropdown && (
                     <div className="pl-4 border-l-2 border-[#8B1538]/20 ml-2 space-y-1">
-                      {item.dropdown.map((subItem) => (
+                      {item.dropdown.map((subItem, subIndex) => (
                         <a
-                          key={subItem.href}
+                          key={`mobile-${item.label}-${subIndex}`}
                           href={subItem.href}
                           className="block text-sm text-[#3A3A3C]/80 hover:text-[#8B1538] transition-colors py-1.5"
                           onClick={() => setIsMenuOpen(false)}
