@@ -57,6 +57,8 @@ import History from "@/pages/History";
 import Innovation from "@/pages/Innovation";
 import Investors from "@/pages/Investors";
 import Sustainability from "@/pages/Sustainability";
+import Leadership from "@/pages/Leadership";
+import OffresEmploi from "@/pages/Carrieres";
 
 // 404 Page
 import NotFound from "@/pages/not-found";
@@ -120,6 +122,8 @@ function Router() {
       <Route path="/innovation" component={Innovation} />
       <Route path="/investisseurs" component={Investors} />
       <Route path="/developpement-durable" component={Sustainability} />
+      <Route path="/equipe-direction" component={Leadership} />
+      <Route path="/offres-emploi" component={OffresEmploi} />
 
       {/* 404 - Doit être en dernier */}
       <Route component={NotFound} />

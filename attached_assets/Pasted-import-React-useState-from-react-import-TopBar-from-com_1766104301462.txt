@@ -1,0 +1,824 @@
+import React, { useState } from 'react';
+import TopBar from '../components/TopBar';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Briefcase, MapPin, Clock, DollarSign, Users, Filter, Search, ChevronDown, Send } from 'lucide-react';
+
+const HeroSection = () => (
+  <section className="relative h-[50vh] flex items-center">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] to-[#3A3A3C] opacity-95" />
+    <div className="absolute inset-0 bg-[url('/images/jobs-hero.jpg')] bg-cover bg-center mix-blend-overlay" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-bold mb-6">Rejoins Notre Équipe</h1>
+        <p className="text-xl max-w-2xl">Construis ta carrière dans un groupe en pleine croissance qui façonne l'avenir de l'Afrique.</p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const FilterSection = ({ filters, setFilters, jobs }) => {
+  const entities = ['Toutes', 'RBF', 'RIC', 'REV\'I', 'RBA', 'Groupe'];
+  const contracts = ['Tous', 'CDI', 'CDD', 'Stage', 'Alternance'];
+  const locations = ['Toutes', 'Ouagadougou', 'Bobo-Dioulasso', 'Abidjan', 'Dakar'];
+
+  return (
+    <section className="py-8 bg-[#F5F1E8] sticky top-0 z-30 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#B8956A]" />
+            <input
+              type="text"
+              placeholder="Rechercher un poste..."
+              value={filters.search}
+              onChange={(e) => setFilters({...filters, search: e.target.value})}
+              className="w-full pl-10 pr-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+            />
+          </div>
+
+          <select
+            value={filters.entity}
+            onChange={(e) => setFilters({...filters, entity: e.target.value})}
+            className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538] appearance-none bg-white"
+          >
+            {entities.map(entity => (
+              <option key={entity} value={entity}>{entity}</option>
+            ))}
+          </select>
+
+          <select
+            value={filters.contract}
+            onChange={(e) => setFilters({...filters, contract: e.target.value})}
+            className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538] appearance-none bg-white"
+          >
+            {contracts.map(contract => (
+              <option key={contract} value={contract}>{contract}</option>
+            ))}
+          </select>
+
+          <select
+            value={filters.location}
+            onChange={(e) => setFilters({...filters, location: e.target.value})}
+            className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538] appearance-none bg-white"
+          >
+            {locations.map(location => (
+              <option key={location} value={location}>{location}</option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="mt-4 text-center text-sm text-[#3A3A3C]">
+          <strong>{jobs.length}</strong> offres disponibles
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const JobCard = ({ job, onClick }) => {
+  const entityColors = {
+    'RBF': '#C74634',
+    'RIC': '#8B1538',
+    'REV\'I': '#058B5E',
+    'RBA': '#2E5A9C',
+    'Groupe': '#8B1538'
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}
+      className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+      onClick={() => onClick(job)}
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-1">
+          <span 
+            className="inline-block px-3 py-1 rounded-full text-white text-xs font-bold mb-3"
+            style={{ backgroundColor: entityColors[job.entity] }}
+          >
+            {job.entity}
+          </span>
+          <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">{job.title}</h3>
+          <p className="text-[#B8956A] font-semibold">{job.department}</p>
+        </div>
+        <div className="text-right">
+          <span className="inline-block bg-[#F5F1E8] text-[#8B1538] px-3 py-1 rounded-full text-xs font-semibold">
+            {job.contract}
+          </span>
+        </div>
+      </div>
+
+      <p className="text-[#3A3A3C] text-sm mb-4 line-clamp-2">{job.summary}</p>
+
+      <div className="grid grid-cols-2 gap-3 text-sm text-[#3A3A3C]">
+        <div className="flex items-center">
+          <MapPin className="w-4 h-4 text-[#8B1538] mr-2" />
+          <span>{job.location}</span>
+        </div>
+        <div className="flex items-center">
+          <Clock className="w-4 h-4 text-[#8B1538] mr-2" />
+          <span>{job.experience}</span>
+        </div>
+        <div className="flex items-center">
+          <DollarSign className="w-4 h-4 text-[#8B1538] mr-2" />
+          <span>{job.salary}</span>
+        </div>
+        <div className="flex items-center">
+          <Users className="w-4 h-4 text-[#8B1538] mr-2" />
+          <span>Posté il y a {job.posted}</span>
+        </div>
+      </div>
+
+      <div className="mt-4 pt-4 border-t border-[#B8956A]/20">
+        <button 
+          className="w-full bg-[#8B1538] text-white py-2 px-4 rounded-lg hover:bg-[#3A3A3C] transition-colors font-semibold"
+        >
+          Voir l'offre complète
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+const JobModal = ({ job, onClose }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    cvFile: null,
+    coverLetter: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Candidature envoyée avec succès ! Nous reviendrons vers toi sous 5 jours ouvrés.');
+    onClose();
+  };
+
+  if (!job) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 20 }}
+        className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 bg-white border-b border-[#B8956A]/20 p-6 flex justify-between items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-[#3A3A3C] mb-2">{job.title}</h2>
+            <p className="text-[#B8956A]">{job.entity} • {job.department}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="text-[#3A3A3C] hover:text-[#8B1538] text-3xl"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="p-8">
+          <div className="grid md:grid-cols-4 gap-4 mb-8">
+            <div className="bg-[#F5F1E8] p-4 rounded-lg text-center">
+              <MapPin className="w-6 h-6 text-[#8B1538] mx-auto mb-2" />
+              <div className="text-xs text-[#3A3A3C] mb-1">Localisation</div>
+              <div className="font-bold text-[#3A3A3C]">{job.location}</div>
+            </div>
+            <div className="bg-[#F5F1E8] p-4 rounded-lg text-center">
+              <Briefcase className="w-6 h-6 text-[#8B1538] mx-auto mb-2" />
+              <div className="text-xs text-[#3A3A3C] mb-1">Type</div>
+              <div className="font-bold text-[#3A3A3C]">{job.contract}</div>
+            </div>
+            <div className="bg-[#F5F1E8] p-4 rounded-lg text-center">
+              <Clock className="w-6 h-6 text-[#8B1538] mx-auto mb-2" />
+              <div className="text-xs text-[#3A3A3C] mb-1">Expérience</div>
+              <div className="font-bold text-[#3A3A3C]">{job.experience}</div>
+            </div>
+            <div className="bg-[#F5F1E8] p-4 rounded-lg text-center">
+              <DollarSign className="w-6 h-6 text-[#8B1538] mx-auto mb-2" />
+              <div className="text-xs text-[#3A3A3C] mb-1">Salaire</div>
+              <div className="font-bold text-[#3A3A3C]">{job.salary}</div>
+            </div>
+          </div>
+
+          <div className="space-y-6 mb-8">
+            <div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-3">Description du poste</h3>
+              <p className="text-[#3A3A3C]">{job.description}</p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-3">Missions principales</h3>
+              <ul className="space-y-2">
+                {job.missions.map((mission, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-[#8B1538] mr-2">•</span>
+                    <span className="text-[#3A3A3C]">{mission}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-3">Profil recherché</h3>
+              <ul className="space-y-2">
+                {job.requirements.map((req, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-[#8B1538] mr-2">•</span>
+                    <span className="text-[#3A3A3C]">{req}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-3">Ce que nous offrons</h3>
+              <ul className="space-y-2">
+                {job.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-[#8B1538] mr-2">•</span>
+                    <span className="text-[#3A3A3C]">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-[#B8956A]/20 pt-8">
+            <h3 className="text-2xl font-bold text-[#3A3A3C] mb-6">Postuler à cette offre</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">Prénom *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">Nom *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">Email *</label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">Téléphone *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">CV (PDF, max 5 Mo) *</label>
+                <input
+                  type="file"
+                  required
+                  accept=".pdf"
+                  onChange={(e) => setFormData({...formData, cvFile: e.target.files[0]})}
+                  className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-[#3A3A3C] mb-2">Lettre de motivation *</label>
+                <textarea
+                  required
+                  rows={6}
+                  value={formData.coverLetter}
+                  onChange={(e) => setFormData({...formData, coverLetter: e.target.value})}
+                  placeholder="Explique pourquoi tu es le candidat idéal pour ce poste..."
+                  className="w-full px-4 py-3 border border-[#B8956A]/30 rounded-lg focus:outline-none focus:border-[#8B1538]"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#8B1538] text-white py-4 px-8 rounded-lg hover:bg-[#3A3A3C] transition-colors font-semibold text-lg flex items-center justify-center"
+              >
+                <Send className="w-5 h-5 mr-2" />
+                Envoyer ma candidature
+              </button>
+            </form>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const Jobs = () => {
+  const [filters, setFilters] = useState({
+    search: '',
+    entity: 'Toutes',
+    contract: 'Tous',
+    location: 'Toutes'
+  });
+
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  const allJobs = [
+    {
+      id: 1,
+      entity: 'RBF',
+      title: 'Ingénieur Génie Civil',
+      department: 'BTP & Fournitures',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '5+ ans',
+      salary: '800K - 1,2M FCFA',
+      posted: '2 jours',
+      summary: 'Pilotage de projets de construction d\'envergure, gestion d\'équipes techniques et relation clients.',
+      description: 'RBF recherche un Ingénieur Génie Civil expérimenté pour piloter des projets d\'infrastructure majeurs au Burkina Faso.',
+      missions: [
+        'Piloter des projets de construction de A à Z (études, exécution, réception)',
+        'Manager des équipes techniques de 20+ personnes',
+        'Assurer la relation client et le reporting projet',
+        'Garantir le respect des délais, budgets et normes qualité',
+        'Superviser les contrôles qualité et sécurité sur chantiers'
+      ],
+      requirements: [
+        'Diplôme d\'Ingénieur Génie Civil (2iE, ESTP ou équivalent)',
+        'Minimum 5 ans d\'expérience en pilotage de chantiers BTP',
+        'Maîtrise AutoCAD, MS Project, lecture de plans',
+        'Excellentes capacités de management et communication',
+        'Permis de conduire B obligatoire'
+      ],
+      benefits: [
+        'Salaire attractif + primes performance',
+        'Véhicule de fonction',
+        'Assurance santé familiale',
+        'Formations continues',
+        'Perspectives d\'évolution rapides'
+      ]
+    },
+    {
+      id: 2,
+      entity: 'RIC',
+      title: 'Consultant Junior Stratégie',
+      department: 'Conseil',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '0-2 ans',
+      salary: '400K - 600K FCFA',
+      posted: '5 jours',
+      summary: 'Accompagnement PME ouest-africaines sur missions de conseil stratégique et organisationnel.',
+      description: 'RIC recrute un Consultant Junior pour accompagner des PME dans leur transformation et croissance.',
+      missions: [
+        'Réaliser des diagnostics d\'entreprises (finance, organisation, marché)',
+        'Participer à l\'élaboration de stratégies de développement',
+        'Animer des ateliers avec clients',
+        'Rédiger des livrables (rapports, présentations)',
+        'Contribuer au développement commercial de RIC'
+      ],
+      requirements: [
+        'Bac+5 en Management, Stratégie, Économie (HEC, ESSEC, IAE...)',
+        '0 à 2 ans d\'expérience (stages acceptés)',
+        'Excellente maîtrise Excel et PowerPoint',
+        'Capacités analytiques et esprit de synthèse',
+        'Aisance relationnelle et goût pour le terrain'
+      ],
+      benefits: [
+        'Formation continue par des seniors',
+        'Missions variées et stimulantes',
+        'Évolution rapide vers Consultant Senior',
+        'Déplacements CEDEAO',
+        'Participation aux bénéfices'
+      ]
+    },
+    {
+      id: 3,
+      entity: 'REV\'I',
+      title: 'Responsable Production Agricole',
+      department: 'Agriculture',
+      location: 'Bama',
+      contract: 'CDI',
+      experience: '7+ ans',
+      salary: '700K - 1M FCFA',
+      posted: '1 semaine',
+      summary: 'Management de la production agricole sur 800 hectares (céréales, maraîchage) avec équipes de 50 personnes.',
+      description: 'REV\'I recherche un Responsable Production Agricole pour piloter nos fermes modernes.',
+      missions: [
+        'Superviser la production sur 800 ha (planification, suivi, récolte)',
+        'Manager 50 employés agricoles permanents',
+        'Optimiser les rendements et la qualité',
+        'Gérer les approvisionnements (semences, intrants, matériel)',
+        'Assurer la conformité aux normes bio et sécurité alimentaire'
+      ],
+      requirements: [
+        'Ingénieur Agronome (IDR Bobo, SupAgro ou équivalent)',
+        '7+ ans en production agricole à échelle industrielle',
+        'Connaissance agriculture de précision et irrigation',
+        'Leadership confirmé et gestion d\'équipes',
+        'Permis B, disponibilité pour vie en zone rurale'
+      ],
+      benefits: [
+        'Logement de fonction sur site',
+        'Primes sur production',
+        'Formation continue techniques modernes',
+        'Assurance santé complète',
+        'Participation aux résultats'
+      ]
+    },
+    {
+      id: 4,
+      entity: 'RBA',
+      title: 'Formateur Marketing Digital',
+      department: 'Formation',
+      location: 'Ouagadougou',
+      contract: 'CDD 12 mois',
+      experience: '3+ ans',
+      salary: '500K - 700K FCFA',
+      posted: '3 jours',
+      summary: 'Animation de formations en marketing digital, réseaux sociaux et e-commerce pour étudiants et professionnels.',
+      description: 'RBA recrute un Formateur Marketing Digital passionné par la pédagogie.',
+      missions: [
+        'Animer des formations courtes et certifiantes (25 à 80h)',
+        'Concevoir des supports pédagogiques innovants',
+        'Évaluer les compétences des apprenants',
+        'Accompagner les projets professionnels des étudiants',
+        'Assurer une veille permanente sur les tendances digitales'
+      ],
+      requirements: [
+        'Bac+3 minimum en Marketing Digital, Communication',
+        '3+ ans d\'expérience opérationnelle en marketing digital',
+        'Maîtrise Facebook Ads, Google Ads, SEO, Analytics',
+        'Expérience en formation d\'adultes souhaitée',
+        'Excellentes qualités pédagogiques et relationnelles'
+      ],
+      benefits: [
+        'Environnement académique stimulant',
+        'Flexibilité dans l\'organisation',
+        'Accès plateforme e-learning',
+        'Formations formateurs',
+        'Possible CDI après CDD'
+      ]
+    },
+    {
+      id: 5,
+      entity: 'Groupe',
+      title: 'Chargé(e) de Communication Groupe',
+      department: 'Communication',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '3-5 ans',
+      salary: '500K - 750K FCFA',
+      posted: '1 semaine',
+      summary: 'Gestion de la communication corporate du Groupe Rishom : presse, digital, événements, relations publiques.',
+      description: 'Le Groupe Rishom recrute un(e) Chargé(e) de Communication pour gérer sa communication globale.',
+      missions: [
+        'Élaborer et mettre en œuvre la stratégie de communication du Groupe',
+        'Gérer les relations presse et médias',
+        'Animer les réseaux sociaux du Groupe (LinkedIn, Facebook, Twitter)',
+        'Organiser les événements corporate (AG, cérémonies, inaugurations)',
+        'Produire des contenus (communiqués, articles, vidéos)'
+      ],
+      requirements: [
+        'Bac+3/5 en Communication, Journalisme, RP',
+        '3 à 5 ans d\'expérience en communication d\'entreprise',
+        'Excellente plume en français, maîtrise outils PAO/vidéo',
+        'Réseau médias burkinabè apprécié',
+        'Créativité, réactivité, capacité à travailler en transverse'
+      ],
+      benefits: [
+        'Poste stratégique au cœur du Groupe',
+        'Visibilité importante',
+        'Budget communication conséquent',
+        'Formation continue',
+        'Perspectives d\'évolution'
+      ]
+    },
+    {
+      id: 6,
+      entity: 'RBF',
+      title: 'Chef de Parc Matériel',
+      department: 'Location d\'engins',
+      location: 'Bobo-Dioulasso',
+      contract: 'CDI',
+      experience: '5+ ans',
+      salary: '600K - 900K FCFA',
+      posted: '4 jours',
+      summary: 'Gestion d\'un parc de 80 engins de chantier : planification, maintenance, optimisation de la disponibilité.',
+      description: 'RBF Bobo-Dioulasso recherche un Chef de Parc pour gérer sa flotte d\'engins.',
+      missions: [
+        'Gérer un parc de 80+ engins (tracteurs, pelleteuses, grues, etc.)',
+        'Planifier les locations et optimiser le taux d\'utilisation',
+        'Superviser la maintenance préventive et corrective',
+        'Manager une équipe de 8 mécaniciens',
+        'Négocier avec fournisseurs pièces détachées'
+      ],
+      requirements: [
+        'Bac+2/3 en Mécanique, Maintenance industrielle',
+        '5+ ans en gestion de flotte d\'engins de chantier',
+        'Connaissances techniques engins TP (hydraulique, mécanique, électricité)',
+        'Maîtrise logiciels de GMAO',
+        'Management et rigueur organisationnelle'
+      ],
+      benefits: [
+        'Poste avec responsabilités',
+        'Logement facilité Bobo-Dioulasso',
+        'Prime disponibilité parc',
+        'Formations constructeurs',
+        'Évolution vers Directeur Technique'
+      ]
+    },
+    {
+      id: 7,
+      entity: 'RIC',
+      title: 'Data Analyst',
+      department: 'Innovation',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '2-4 ans',
+      salary: '500K - 800K FCFA',
+      posted: '1 semaine',
+      summary: 'Analyse de données pour clients RIC, création de dashboards et modèles prédictifs pour la prise de décision.',
+      description: 'RIC crée un poste de Data Analyst pour développer son offre Data Analytics.',
+      missions: [
+        'Collecter, nettoyer et analyser des données clients (finance, ventes, RH)',
+        'Créer des dashboards interactifs (Power BI, Tableau)',
+        'Développer des modèles prédictifs simples (prévisions CA, churn...)',
+        'Former les clients à l\'utilisation des outils',
+        'Contribuer au développement de l\'offre RIC Data'
+      ],
+      requirements: [
+        'Bac+3/5 en Data Science, Statistiques, Informatique',
+        '2 à 4 ans d\'expérience en analyse de données',
+        'Maîtrise Python, SQL, Power BI/Tableau',
+        'Connaissances machine learning appréciées',
+        'Pédagogie et capacité à vulgariser concepts techniques'
+      ],
+      benefits: [
+        'Poste innovant dans conseil',
+        'Projets variés multi-secteurs',
+        'Formations continues (certifications)',
+        'Évolution vers Data Scientist',
+        'Télétravail partiel possible'
+      ]
+    },
+    {
+      id: 8,
+      entity: 'REV\'I',
+      title: 'Vétérinaire',
+      department: 'Élevage',
+      location: 'Bama',
+      contract: 'CDI',
+      experience: '3+ ans',
+      salary: '600K - 850K FCFA',
+      posted: '5 jours',
+      summary: 'Suivi sanitaire de nos élevages (aviculture 50K têtes, bovin 2K têtes, porcin 1,5K têtes).',
+      description: 'REV\'I recherche un Vétérinaire pour assurer la santé de nos cheptels.',
+      missions: [
+        'Assurer le suivi sanitaire quotidien des élevages',
+        'Mettre en place les programmes de vaccination et prophylaxie',
+        'Diagnostiquer et traiter les pathologies',
+        'Former les éleveurs aux bonnes pratiques',
+        'Garantir le respect des normes sanitaires et bien-être animal'
+      ],
+      requirements: [
+        'Doctorat en Médecine Vétérinaire',
+        '3+ ans d\'expérience en élevage industriel',
+        'Spécialisation aviculture ou grands animaux appréciée',
+        'Connaissance réglementation sanitaire burkinabè',
+        'Disponibilité interventions d\'urgence'
+      ],
+      benefits: [
+        'Logement de fonction',
+        'Véhicule de service',
+        'Prime astreinte',
+        'Formation continue',
+        'Environnement professionnel moderne'
+      ]
+    },
+    {
+      id: 9,
+      entity: 'RBA',
+      title: 'Conseiller Pédagogique',
+      department: 'Pédagogie',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '5+ ans',
+      salary: '550K - 800K FCFA',
+      posted: '2 semaines',
+      summary: 'Accompagnement des formateurs, conception de programmes, innovation pédagogique, assurance qualité formations.',
+      description: 'RBA recrute un Conseiller Pédagogique pour renforcer la qualité de ses formations.',
+      missions: [
+        'Accompagner les formateurs dans leurs pratiques pédagogiques',
+        'Concevoir et actualiser les programmes de formation',
+        'Piloter l\'innovation pédagogique (digital learning, classes inversées)',
+        'Assurer le contrôle qualité des formations',
+        'Former les nouveaux formateurs'
+      ],
+      requirements: [
+        'Master en Sciences de l\'Éducation, Pédagogie',
+        '5+ ans en ingénierie pédagogique ou formation d\'adultes',
+        'Connaissance approches pédagogiques innovantes',
+        'Maîtrise outils e-learning (Moodle, SCORM...)',
+        'Excellent relationnel et leadership pédagogique'
+      ],
+      benefits: [
+        'Poste clé dans institution',
+        'Autonomie et responsabilités',
+        'Budget formation conséquent',
+        'Participation conférences pédagogiques',
+        'Évolution vers Directeur Pédagogique'
+      ]
+    },
+    {
+      id: 10,
+      entity: 'Groupe',
+      title: 'Contrôleur de Gestion Groupe',
+      department: 'Finance',
+      location: 'Ouagadougou',
+      contract: 'CDI',
+      experience: '5-7 ans',
+      salary: '800K - 1,2M FCFA',
+      posted: '1 semaine',
+      summary: 'Pilotage de la performance financière du Groupe, consolidation, reporting, contrôle budgétaire des 4 entités.',
+      description: 'Le Groupe Rishom recherche un Contrôleur de Gestion pour piloter sa performance.',
+      missions: [
+        'Élaborer et suivre les budgets des 4 entités (18 Mds FCFA)',
+        'Produire le reporting mensuel consolidé Groupe',
+        'Analyser les écarts et proposer actions correctives',
+        'Construire les tableaux de bord décisionnels',
+        'Accompagner les entités dans leur pilotage financier'
+      ],
+      requirements: [
+        'Bac+5 Finance, Contrôle de gestion (ESSEC, ESCP, IAE...)',
+        '5 à 7 ans en contrôle de gestion, idéalement en groupe multi-activités',
+        'Maîtrise Excel avancé, ERP (SAP, Sage), Power BI',
+        'Excellent esprit d\'analyse et de synthèse',
+        'Rigueur, proactivité, capacité à challenger'
+      ],
+      benefits: [
+        'Poste stratégique proche Direction Générale',
+        'Vision transverse du Groupe',
+        'Salaire attractif + variable',
+        'Formations continues (certifications)',
+        'Évolution vers DAF Groupe'
+      ]
+    },
+    {
+      id: 11,
+      entity: 'RBF',
+      title: 'Stage Conducteur de Travaux',
+      department: 'BTP',
+      location: 'Ouagadougou',
+      contract: 'Stage 6 mois',
+      experience: '0 an',
+      salary: 'Gratification 150K FCFA/mois',
+      posted: '3 jours',
+      summary: 'Stage de fin d\'études pour étudiants ingénieurs : suivi de chantiers, planning, gestion équipes sous supervision.',
+      description: 'RBF offre un stage de 6 mois pour étudiants ingénieurs en dernière année.',
+      missions: [
+        'Assister le Conducteur de Travaux dans le suivi de chantiers',
+        'Participer à la planification et au contrôle qualité',
+        'Rédiger des comptes-rendus de chantier',
+        'Contribuer aux relevés et métrés',
+        'Découvrir tous les aspects du pilotage de chantier'
+      ],
+      requirements: [
+        'Étudiant en 5ème année Génie Civil (2iE, ESTP ou équivalent)',
+        'Stage obligatoire de fin d\'études',
+        'Motivation et envie d\'apprendre',
+        'Disponibilité 6 mois temps plein',
+        'Permis B apprécié'
+      ],
+      benefits: [
+        'Gratification 150K FCFA/mois',
+        'Encadrement par ingénieurs seniors',
+        'Projets réels d\'envergure',
+        'Possibilité d\'embauche post-stage',
+        'Attestation de stage + rapport validé'
+      ]
+    },
+    {
+      id: 12,
+      entity: 'RBA',
+      title: 'Alternance Assistant RH',
+      department: 'Ressources Humaines',
+      location: 'Ouagadougou',
+      contract: 'Alternance 24 mois',
+      experience: '0 an',
+      salary: '250K FCFA/mois',
+      posted: '1 semaine',
+      summary: 'Alternance Licence/Master RH : recrutement, administration personnel, formation, paie, relations sociales.',
+      description: 'RBA propose un contrat d\'alternance sur 24 mois en Ressources Humaines.',
+      missions: [
+        'Participer aux processus de recrutement (tri CV, entretiens)',
+        'Gérer l\'administration du personnel (contrats, absences, congés)',
+        'Contribuer à l\'organisation des formations',
+        'Assister sur la paie et les déclarations sociales',
+        'Participer aux actions de communication RH interne'
+      ],
+      requirements: [
+        'Étudiant en Licence 3 ou Master RH',
+        'Recherche contrat alternance 12 ou 24 mois',
+        'Bases en droit du travail burkinabè',
+        'Maîtrise Pack Office, discrétion',
+        'Sens du relationnel et de l\'organisation'
+      ],
+      benefits: [
+        'Rémunération 250K FCFA/mois',
+        'Formation complète métier RH',
+        'Encadrement DRH expérimentée',
+        'Validation diplôme + expérience',
+        'Opportunité d\'embauche'
+      ]
+    }
+  ];
+
+  const filteredJobs = allJobs.filter(job => {
+    const matchSearch = filters.search === '' || 
+      job.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+      job.department.toLowerCase().includes(filters.search.toLowerCase());
+    
+    const matchEntity = filters.entity === 'Toutes' || job.entity === filters.entity;
+    const matchContract = filters.contract === 'Tous' || job.contract === filters.contract;
+    const matchLocation = filters.location === 'Toutes' || job.location === filters.location;
+
+    return matchSearch && matchEntity && matchContract && matchLocation;
+  });
+
+  return (
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Header />
+      <HeroSection />
+      <FilterSection filters={filters} setFilters={setFilters} jobs={filteredJobs} />
+      
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {filteredJobs.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-2xl text-[#3A3A3C] mb-4">Aucune offre ne correspond à tes critères</p>
+              <button
+                onClick={() => setFilters({ search: '', entity: 'Toutes', contract: 'Tous', location: 'Toutes' })}
+                className="text-[#8B1538] underline"
+              >
+                Réinitialiser les filtres
+              </button>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredJobs.map(job => (
+                <JobCard key={job.id} job={job} onClick={setSelectedJob} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {selectedJob && (
+          <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+        )}
+      </AnimatePresence>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Jobs;
