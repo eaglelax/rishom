@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import equipmentHeroImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
+import rbfLogoWhite from "@assets/LOGOS_DEF-08_1766102890554.png";
 
 export default function EquipmentHero() {
   return (
@@ -31,6 +32,15 @@ export default function EquipmentHero() {
             </a>
             <ChevronRight className="w-4 h-4" />
             <span>Équipements de construction</span>
+          </div>
+
+          {/* Logo */}
+          <div className="mb-6">
+            <img 
+              src={rbfLogoWhite} 
+              alt="Rishom Burkina Faso" 
+              className="h-16 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">

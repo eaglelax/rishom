@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import contactHeroImage from "@assets/generated_images/rishom_reception_ouagadougou.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
 
 export default function ContactHeroSection() {
   return (
@@ -27,6 +28,15 @@ export default function ContactHeroSection() {
             </a>
             <ChevronRight className="w-4 h-4" />
             <span>Contact</span>
+          </div>
+
+          {/* Logo */}
+          <div className="mb-6">
+            <img 
+              src={groupeLogoWhite} 
+              alt="Groupe Rishom" 
+              className="h-16 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">

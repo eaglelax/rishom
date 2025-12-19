@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import reviHeroImage from "@assets/generated_images/revi_rice_agriculture_burkina.png";
+import reviLogoWhite from "@assets/LOGOS_DEF-10_1766102890554.png";
 
 export default function REVIHeroSection() {
   return (
@@ -30,8 +31,13 @@ export default function REVIHeroSection() {
             <span>REV'I</span>
           </div>
 
-          <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6">
-            <span className="text-white font-bold text-xl">REV'I</span>
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src={reviLogoWhite} 
+              alt="REV'I - Reviens à la vie" 
+              className="h-24 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">

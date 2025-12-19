@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import ricHeroImage from "@assets/generated_images/ric_consulting_meeting_burkina.png";
+import ricLogoWhite from "@assets/LOGOS_DEF-02_1766102890554.png";
 
 export default function RICHeroSection() {
   return (
@@ -30,8 +31,13 @@ export default function RICHeroSection() {
             <span>RIC</span>
           </div>
 
-          <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6">
-            <span className="text-white font-bold text-xl">RIC</span>
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src={ricLogoWhite} 
+              alt="Rishom Investment & Consulting" 
+              className="h-20 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">

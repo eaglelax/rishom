@@ -1,4 +1,5 @@
 import { Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import groupeRishomLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
 
 export default function Footer() {
   return (
@@ -7,9 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1 - About */}
           <div>
-            <div className="text-2xl font-bold text-[#8B1538] mb-4">
-              GROUPE RISHOM
-            </div>
+            <img 
+              src={groupeRishomLogoWhite} 
+              alt="Groupe Rishom" 
+              className="h-14 w-auto mb-4"
+            />
             <p className="text-white/70 text-sm mb-6">
               Acteur majeur du développement africain, le Groupe Rishom
               intervient dans 5 secteurs clés à travers ses entités

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import groupeRishomLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,9 +21,11 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="/" className="flex items-center" data-testid="logo-link">
-            <div className="text-[#8B1538] font-bold text-2xl">
-              GROUPE RISHOM
-            </div>
+            <img 
+              src={groupeRishomLogo} 
+              alt="Groupe Rishom" 
+              className="h-12 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}

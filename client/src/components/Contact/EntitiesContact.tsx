@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
+import rbfLogo from "@assets/LOGOS_DEF-07_1766102890554.png";
+import ricLogo from "@assets/LOGOS_DEF-01_1766102890554.png";
+import reviLogo from "@assets/LOGOS_DEF-09_1766102890554.png";
+import rbaLogo from "@assets/LOGOS_DEF-03_1766102890554.png";
 
 const entities = [
   {
     name: "RBF",
     fullName: "Rishom BTP & Fournitures",
     color: "#C74634",
+    logo: rbfLogo,
     phone: "+226 70 XX XX XX",
     email: "contact@rbf-burkina.com",
     address: "Zone Industrielle de Gounghin",
@@ -15,6 +20,7 @@ const entities = [
     name: "RIC",
     fullName: "Rishom Invest & Conseil",
     color: "#8B1538",
+    logo: ricLogo,
     phone: "+226 70 XX XX XX",
     email: "contact@ric-burkina.com",
     address: "Avenue Kwame N'Krumah",
@@ -23,6 +29,7 @@ const entities = [
     name: "REV'I",
     fullName: "Rishom Elevage & Valorisation",
     color: "#058B5E",
+    logo: reviLogo,
     phone: "+226 70 XX XX XX",
     email: "contact@revi-burkina.com",
     address: "Zone Agricole de Koudougou",
@@ -31,6 +38,7 @@ const entities = [
     name: "RBA",
     fullName: "Rishom Business Academy",
     color: "#2E5A9C",
+    logo: rbaLogo,
     phone: "+226 70 XX XX XX",
     email: "contact@rba-burkina.com",
     address: "Secteur 30, Ouagadougou",
@@ -67,11 +75,12 @@ export default function ContactEntitiesContact() {
             >
               <Card className="h-full hover:shadow-2xl transition-all duration-300 border-none">
                 <CardContent className="p-8">
-                  <div
-                    className="inline-block px-4 py-2 rounded-full text-white font-bold mb-4"
-                    style={{ backgroundColor: entity.color }}
-                  >
-                    {entity.name}
+                  <div className="h-16 flex items-start mb-4">
+                    <img 
+                      src={entity.logo} 
+                      alt={entity.fullName}
+                      className="h-14 w-auto object-contain"
+                    />
                   </div>
                   <h3 className="text-2xl font-semibold text-[#1A1A1A] mb-6">
                     {entity.fullName}

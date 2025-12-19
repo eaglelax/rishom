@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import certificationsHeroImage from "@assets/generated_images/iso_certification_ceremony_burkina.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
 
 export default function CertificationsHeroSection() {
   return (
@@ -27,6 +28,15 @@ export default function CertificationsHeroSection() {
             </a>
             <ChevronRight className="w-4 h-4" />
             <span>Certifications</span>
+          </div>
+
+          {/* Logo */}
+          <div className="mb-6">
+            <img 
+              src={groupeLogoWhite} 
+              alt="Groupe Rishom" 
+              className="h-16 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">

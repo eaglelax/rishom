@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight, Building2, Briefcase, Sprout, GraduationCap } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import rbfLogo from "@assets/LOGOS_DEF-07_1766102890554.png";
+import ricLogo from "@assets/LOGOS_DEF-01_1766102890554.png";
+import reviLogo from "@assets/LOGOS_DEF-09_1766102890554.png";
+import rbaLogo from "@assets/LOGOS_DEF-03_1766102890554.png";
+import groupeLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
 
 const entities = [
   {
     name: "RBF",
     fullName: "Rishom BTP & Fournitures",
     color: "#C74634",
-    icon: Building2,
+    logo: rbfLogo,
     description: "Leader en équipements BTP et solutions de construction",
     href: "/rbf",
   },
@@ -15,7 +20,7 @@ const entities = [
     name: "RIC",
     fullName: "Rishom Invest & Conseil",
     color: "#8B1538",
-    icon: Briefcase,
+    logo: ricLogo,
     description: "Conseil stratégique et investissement pour la croissance",
     href: "/ric",
   },
@@ -23,7 +28,7 @@ const entities = [
     name: "REV'I",
     fullName: "Rishom Elevage & Valorisation",
     color: "#058B5E",
-    icon: Sprout,
+    logo: reviLogo,
     description: "Excellence en agro-business et valorisation agricole",
     href: "/revi",
   },
@@ -31,7 +36,7 @@ const entities = [
     name: "RBA",
     fullName: "Rishom Business Academy",
     color: "#2E5A9C",
-    icon: GraduationCap,
+    logo: rbaLogo,
     description: "Formation professionnelle et développement des compétences",
     href: "/rba",
   },
@@ -39,7 +44,7 @@ const entities = [
     name: "GROUPE",
     fullName: "Rishom Group",
     color: "#8B1538",
-    icon: Building2,
+    logo: groupeLogo,
     description: "Holding et coordination stratégique du groupe",
     href: "/groupe",
   },
@@ -66,7 +71,6 @@ export default function EntitiesGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {entities.map((entity, index) => {
-            const Icon = entity.icon;
             return (
               <motion.div
                 key={entity.name}
@@ -80,13 +84,11 @@ export default function EntitiesGrid() {
                   data-testid={`entity-card-${entity.name.toLowerCase()}`}
                 >
                   <CardHeader>
-                    <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${entity.color}15` }}
-                    >
-                      <Icon
-                        className="w-8 h-8"
-                        style={{ color: entity.color }}
+                    <div className="h-20 flex items-center justify-center mb-4">
+                      <img 
+                        src={entity.logo} 
+                        alt={entity.fullName}
+                        className="h-16 w-auto object-contain"
                       />
                     </div>
                     <CardTitle

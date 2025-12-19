@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
 import teamImage from "@assets/generated_images/rishom_team_photo_burkina.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
 
 export default function CareersHeroSection() {
   return (
@@ -28,6 +29,15 @@ export default function CareersHeroSection() {
             </a>
             <ChevronRight className="w-4 h-4" />
             <span>Carrières</span>
+          </div>
+
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <img 
+              src={groupeLogoWhite} 
+              alt="Groupe Rishom" 
+              className="h-16 w-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
