@@ -78,9 +78,14 @@ export default function EntitiesGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -12,
+                  transition: { duration: 0.3 }
+                }}
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Card
-                  className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group border-none"
+                  className="h-full transition-all duration-300 cursor-pointer group border-none hover:shadow-[0_20px_40px_rgba(139,21,56,0.15)]"
                   data-testid={`entity-card-${entity.name.toLowerCase()}`}
                 >
                   <CardHeader>

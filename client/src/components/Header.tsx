@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import groupeRishomLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
     { label: "À propos", href: "/a-propos" },
@@ -16,15 +26,28 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+    <motion.header 
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/98 backdrop-blur-sm shadow-lg' 
+          : 'bg-white shadow-sm'
+      }`}
+      initial={false}
+      animate={{ 
+        height: isScrolled ? "64px" : "80px"
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="container mx-auto px-4 h-full">
+        <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <a href="/" className="flex items-center" data-testid="logo-link">
-            <img 
+            <motion.img 
               src={groupeRishomLogo} 
               alt="Groupe Rishom" 
-              className="h-12 w-auto"
+              className="w-auto transition-all"
+              animate={{ height: isScrolled ? "36px" : "48px" }}
+              transition={{ duration: 0.3 }}
             />
           </a>
 
@@ -88,6 +111,6 @@ export default function Header() {
           </nav>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }

@@ -1,0 +1,338 @@
+1. EFFETS DE SCROLL (Subtils et élégants)
+Copy// Ajoute dans les sections principales
+<motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
+  {/* Contenu */}
+</motion.div>
+
+// Effet parallaxe léger sur Hero sections
+<div 
+  className="absolute inset-0 bg-cover bg-center"
+  style={{ 
+    backgroundImage: `url(${image})`,
+    transform: `translateY(${scrollY * 0.5}px)` // Calcul du scroll
+  }}
+/>
+2. MICRO-INTERACTIONS sur les BOUTONS
+Copy// Bouton avec effet de hover sophistiqué
+<motion.button
+  className="bg-[#8B1538] text-white py-4 px-8 rounded-lg font-semibold relative overflow-hidden"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+>
+  <motion.span
+    className="absolute inset-0 bg-gradient-to-r from-[#B8956A] to-[#8B1538]"
+    initial={{ x: "-100%" }}
+    whileHover={{ x: 0 }}
+    transition={{ duration: 0.3 }}
+  />
+  <span className="relative z-10">Découvrir</span>
+</motion.button>
+3. CARTES avec EFFET 3D (Tilt subtil)
+Copy// Sur les cartes de services/produits
+<motion.div
+  className="bg-white p-8 rounded-lg shadow-lg"
+  whileHover={{ 
+    y: -10,
+    boxShadow: "0 20px 40px rgba(139, 21, 56, 0.15)",
+    transition: { duration: 0.3 }
+  }}
+  style={{
+    transformStyle: "preserve-3d",
+    transform: "perspective(1000px)"
+  }}
+>
+  {/* Contenu carte */}
+</motion.div>
+4. CHIFFRES ANIMÉS (Counter-up)
+Copy// Pour les statistiques qui s'incrémentent
+import { useInView } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
+
+const AnimatedCounter = ({ end, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      let start = 0;
+      const duration = 2000;
+      const increment = end / (duration / 16);
+      
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+      
+      return () => clearInterval(timer);
+    }
+  }, [isInView, end]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
+
+// Utilisation
+<div className="text-5xl font-bold text-[#8B1538]">
+  <AnimatedCounter end={18} suffix=" Mds" />
+</div>
+5. BARRE DE PROGRESSION au SCROLL
+Copy// Composant ProgressBar dans TopBar
+const ScrollProgress = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollPx = document.documentElement.scrollTop;
+      const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollPx / winHeightPx) * 100;
+      setScrollProgress(scrolled);
+    };
+
+    window.addEventListener('scroll', updateProgress);
+    return () => window.removeEventListener('scroll', updateProgress);
+  }, []);
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8B1538] to-[#B8956A] z-50"
+      style={{ scaleX: scrollProgress / 100, transformOrigin: "0%" }}
+    />
+  );
+};
+6. IMAGES avec EFFET REVEAL (Apparition progressive)
+Copy// Pour les images importantes
+<div className="relative overflow-hidden rounded-lg">
+  <motion.div
+    className="absolute inset-0 bg-[#8B1538] z-10"
+    initial={{ x: 0 }}
+    whileInView={{ x: "100%" }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
+  />
+  <img 
+    src={imageSrc} 
+    alt={alt}
+    className="w-full h-full object-cover"
+  />
+</div>
+7. TEXTE avec EFFET TYPING (Pour slogans)
+Copy// Effet machine à écrire sur titre principal
+const TypewriterText = ({ text }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[index]);
+        setIndex(index + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text]);
+
+  return <span>{displayText}<span className="animate-pulse">|</span></span>;
+};
+8. NAVIGATION avec STICKY HEADER qui se réduit
+Copy// Header qui change de taille au scroll
+const [isScrolled, setIsScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 100);
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+<motion.header
+  className={`fixed top-0 w-full z-40 transition-all ${
+    isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
+  }`}
+  initial={false}
+  animate={{ 
+    height: isScrolled ? "60px" : "80px",
+    backgroundColor: isScrolled ? "rgba(255,255,255,0.98)" : "transparent"
+  }}
+>
+  {/* Contenu header */}
+</motion.header>
+9. LOADER de PAGE (Élégant)
+Copy// Composant PageLoader
+const PageLoader = () => {
+  return (
+    <motion.div
+      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="flex space-x-2"
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      >
+        <div className="w-4 h-4 bg-[#8B1538] rounded-full" />
+        <div className="w-4 h-4 bg-[#C74634] rounded-full" />
+        <div className="w-4 h-4 bg-[#058B5E] rounded-full" />
+        <div className="w-4 h-4 bg-[#2E5A9C] rounded-full" />
+      </motion.div>
+    </motion.div>
+  );
+};
+10. EFFETS sur TÉMOIGNAGES (Carousel amélioré)
+Copy// Carousel témoignages avec swipe
+<motion.div
+  drag="x"
+  dragConstraints={{ left: -1000, right: 0 }}
+  className="flex space-x-8"
+  whileTap={{ cursor: "grabbing" }}
+>
+  {testimonials.map((item, index) => (
+    <motion.div
+      key={index}
+      className="min-w-[400px] bg-white p-6 rounded-lg shadow-lg"
+      whileHover={{ scale: 1.05 }}
+    >
+      {/* Contenu témoignage */}
+    </motion.div>
+  ))}
+</motion.div>
+11. TRANSITIONS de PAGE fluides
+Copy// Dans App.tsx avec AnimatePresence
+import { AnimatePresence } from 'framer-motion';
+
+<AnimatePresence mode="wait">
+  <Route path="/page" component={() => (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3 }}
+    >
+      <PageComponent />
+    </motion.div>
+  )} />
+</AnimatePresence>
+12. GRILLE ANIMÉE (Pour logos partenaires, certifications)
+Copy<div className="grid grid-cols-4 gap-8">
+  {items.map((item, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{ scale: 1.1, rotate: 5 }}
+    >
+      {/* Logo ou certificat */}
+    </motion.div>
+  ))}
+</div>
+13. GRADIENT ANIMÉ sur HERO
+Copy/* Dans index.css */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    #8B1538,
+    #C74634,
+    #058B5E,
+    #2E5A9C
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+14. EFFET GLASS MORPHISM (Pour modales/popups)
+Copy<div className="backdrop-blur-xl bg-white/30 border border-white/20 rounded-2xl shadow-2xl p-8">
+  {/* Contenu avec effet verre */}
+</div>
+15. HOVER sur IMAGES avec OVERLAY
+Copy<div className="relative overflow-hidden group">
+  <img src={src} alt={alt} className="transition-transform duration-500 group-hover:scale-110" />
+  <motion.div
+    className="absolute inset-0 bg-gradient-to-t from-[#8B1538] to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6"
+  >
+    <div className="text-white">
+      <h3 className="text-2xl font-bold mb-2">{title}</h3>
+      <p>{description}</p>
+    </div>
+  </motion.div>
+</div>
+16. SKELETON LOADING (Pendant chargement contenu)
+Copyconst SkeletonCard = () => (
+  <div className="animate-pulse bg-gray-200 rounded-lg p-6">
+    <div className="h-6 bg-gray-300 rounded w-3/4 mb-4" />
+    <div className="h-4 bg-gray-300 rounded w-full mb-2" />
+    <div className="h-4 bg-gray-300 rounded w-5/6" />
+  </div>
+);
+17. TOOLTIPS ÉLÉGANTS
+Copy<div className="relative group">
+  <button>Hover me</button>
+  <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-[#3A3A3C] text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+    Information utile
+  </div>
+</div>
+18. MASONRY LAYOUT pour Galerie Projets
+Copy// Utilise react-masonry-css
+import Masonry from 'react-masonry-css';
+
+<Masonry
+  breakpointCols={{ default: 3, 1024: 2, 640: 1 }}
+  className="flex -ml-4"
+  columnClassName="pl-4 bg-clip-padding"
+>
+  {projects.map((project, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mb-4"
+    >
+      {/* Carte projet */}
+    </motion.div>
+  ))}
+</Masonry>
+RÉSUMÉ des EFFETS À PRIORISER (Par ordre d'importance) :
+✅ Essentiels (Impact max, effort min)
+Animations au scroll (fade-in + slide-up)
+Hover sur boutons (scale + gradient)
+Hover sur cartes (lift + shadow)
+Sticky header qui se réduit
+Compteurs animés pour statistiques
+🎯 Recommandés (Valeur ajoutée pro)
+Barre de progression du scroll
+Images avec reveal
+Transitions de page fluides
+Skeleton loading
+Effet glass sur modales
+💎 Bonus (Touche finale)
+Parallaxe léger sur hero
+Gradient animé subtil
+Carousel avec swipe
+Grid animée pour logos
+Tooltips élégants
+Règle d'or : Moins c'est plus. Choisis 5-7 effets et applique-les de manière cohérente sur tout le site plutôt que d'en faire trop sur quelques pages.
+
