@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import rbfHeroImage from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
 
 export default function RBFHeroSection() {
   return (
@@ -8,8 +9,8 @@ export default function RBFHeroSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
-          alt="BTP RBF"
+          src={rbfHeroImage}
+          alt="Chantier BTP RBF Ouagadougou"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C74634]/95 to-[#C74634]/70" />

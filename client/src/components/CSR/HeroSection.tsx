@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import csrHeroImage from "@assets/generated_images/csr_action_rural_burkina.png";
 
 export default function CSRHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600&q=80"
-          alt="RSE Groupe Rishom"
+          src={csrHeroImage}
+          alt="Action RSE Groupe Rishom au Burkina Faso"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

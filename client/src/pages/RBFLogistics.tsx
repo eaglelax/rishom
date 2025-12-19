@@ -4,11 +4,12 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Truck, Package, MapPin, Clock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logisticsHeroImage from "@assets/generated_images/rbf_logistics_trucks_burkina.png";
 
 const HeroSection = () => (
   <section className="relative h-[60vh] flex items-center">
     <div className="absolute inset-0 bg-gradient-to-br from-[#C74634] to-[#3A3A3C] opacity-95" />
-    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay" style={{ backgroundImage: `url(${logisticsHeroImage})` }} />
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

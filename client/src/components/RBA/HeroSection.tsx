@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import rbaHeroImage from "@assets/generated_images/rba_campus_ouagadougou_burkina.png";
 
 export default function RBAHeroSection() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80"
-          alt="Formation RBA"
+          src={rbaHeroImage}
+          alt="Campus RBA Ouagadougou"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#2E5A9C]/95 to-[#2E5A9C]/70" />

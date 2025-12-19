@@ -1,30 +1,34 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
+import entrepreneurImage from "@assets/generated_images/burkinabe_entrepreneur_futuristic_vision.png";
+import dataAnalystImage from "@assets/generated_images/ric_data_analyst_burkinabe_woman.png";
+import alumnusImage from "@assets/generated_images/rba_alumnus_male_portrait_burkina.png";
+import alumnaImage from "@assets/generated_images/rba_alumna_female_portrait_burkina.png";
 
 const leaders = [
   {
     name: "Amadou TRAORE",
     position: "Président Directeur Général",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    image: entrepreneurImage,
     bio: "Visionnaire et entrepreneur, Amadou a fondé le Groupe Rishom avec la mission de contribuer au développement économique de l'Afrique.",
   },
   {
     name: "Fatima OUEDRAOGO",
     position: "Directrice Générale Adjointe",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+    image: dataAnalystImage,
     bio: "Expert en stratégie et finance, Fatima pilote le développement stratégique du groupe et supervise les opérations des entités.",
   },
   {
     name: "Ibrahim KONE",
     position: "Directeur des Opérations",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    image: alumnusImage,
     bio: "Fort de 20 ans d'expérience dans le BTP et l'industrie, Ibrahim assure l'excellence opérationnelle de nos projets.",
   },
   {
     name: "Aissata SANKARA",
     position: "Directrice des Ressources Humaines",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+    image: alumnaImage,
     bio: "Passionnée par le développement des talents, Aissata coordonne la politique RH du groupe et la formation de nos équipes.",
   },
 ];

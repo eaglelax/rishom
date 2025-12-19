@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Calendar } from "lucide-react";
+import roadConstructionImage from "@assets/generated_images/rbf_road_construction_burkina.png";
+import completedBuildingImage from "@assets/generated_images/rbf_completed_building_project_ouaga.png";
+import irrigationProjectImage from "@assets/generated_images/rbf_irrigation_project_burkina.png";
 
 const projects = [
   {
@@ -8,7 +11,7 @@ const projects = [
     title: "Autoroute Ouagadougou-Bobo",
     location: "Burkina Faso",
     date: "2024",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80",
+    image: roadConstructionImage,
     description: "Fourniture de 45 engins de terrassement",
   },
   {
@@ -16,7 +19,7 @@ const projects = [
     title: "Construction Aéroport International",
     location: "Ouagadougou",
     date: "2023-2024",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80",
+    image: completedBuildingImage,
     description: "Équipement complet du chantier",
   },
   {
@@ -24,7 +27,7 @@ const projects = [
     title: "Barrage hydroélectrique",
     location: "Bagré",
     date: "2023",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80",
+    image: irrigationProjectImage,
     description: "Location longue durée de 30 engins",
   },
 ];

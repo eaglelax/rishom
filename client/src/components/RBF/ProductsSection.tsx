@@ -2,26 +2,30 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import excavatorImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
+import fleetImage from "@assets/generated_images/rbf_equipment_fleet_operators_burkina.png";
+import warehouseImage from "@assets/generated_images/rbf_warehouse_burkina_faso.png";
+import logisticsImage from "@assets/generated_images/rbf_logistics_trucks_burkina.png";
 
 const products = [
   {
     category: "Engins de terrassement",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80",
+    image: excavatorImage,
     items: ["Bulldozers", "Pelles mécaniques", "Chargeuses", "Niveleuses"],
   },
   {
     category: "Engins de levage",
-    image: "https://images.unsplash.com/photo-1590675514671-0b8f1d6e60d0?w=600&q=80",
+    image: fleetImage,
     items: ["Grues mobiles", "Chariots élévateurs", "Nacelles", "Portiques"],
   },
   {
     category: "Matériel de compactage",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80",
+    image: warehouseImage,
     items: ["Compacteurs", "Rouleaux", "Plaques vibrantes", "Pilonneuses"],
   },
   {
     category: "Transport & Malaxage",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80",
+    image: logisticsImage,
     items: ["Camions-bennes", "Bétonnières", "Pompes à béton", "Dumpers"],
   },
 ];

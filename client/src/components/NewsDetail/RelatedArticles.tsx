@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, ChevronRight } from "lucide-react";
+import graduationImage from "@assets/generated_images/rba_graduation_ceremony_burkina.png";
+import poultryImage from "@assets/generated_images/revi_poultry_farm_modern_burkina.png";
+import infrastructureImage from "@assets/generated_images/infrastructure_project_burkina_rishom.png";
 
 const relatedArticles = [
   {
     id: 3,
     title: "200 jeunes formés aux métiers du BTP",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80",
+    image: graduationImage,
     date: "5 Décembre 2025",
     category: "RBA",
     categoryColor: "#2E5A9C",
@@ -14,7 +17,7 @@ const relatedArticles = [
   {
     id: 5,
     title: "Expansion de nos activités d'élevage",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80",
+    image: poultryImage,
     date: "28 Novembre 2025",
     category: "REV'I",
     categoryColor: "#058B5E",
@@ -22,7 +25,7 @@ const relatedArticles = [
   {
     id: 4,
     title: "Livraison du projet d'infrastructure à Ouagadougou",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&q=80",
+    image: infrastructureImage,
     date: "1 Décembre 2025",
     category: "RBF",
     categoryColor: "#C74634",

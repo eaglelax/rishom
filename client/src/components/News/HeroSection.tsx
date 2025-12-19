@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import newsHeroImage from "@assets/generated_images/corporate_event_ouagadougou_rishom.png";
 
 export default function NewsHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=80"
-          alt="Actualités Groupe Rishom"
+          src={newsHeroImage}
+          alt="Événement Groupe Rishom Ouagadougou"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

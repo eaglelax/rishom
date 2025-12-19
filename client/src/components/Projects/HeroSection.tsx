@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import projectsHeroImage from "@assets/generated_images/infrastructure_project_burkina_rishom.png";
 
 export default function ProjectsHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80"
-          alt="Projets Groupe Rishom"
+          src={projectsHeroImage}
+          alt="Projet infrastructure Groupe Rishom Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

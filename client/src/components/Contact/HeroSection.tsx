@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import contactHeroImage from "@assets/generated_images/rishom_reception_ouagadougou.png";
 
 export default function ContactHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
-          alt="Contact Groupe Rishom"
+          src={contactHeroImage}
+          alt="Accueil Groupe Rishom Ouagadougou"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

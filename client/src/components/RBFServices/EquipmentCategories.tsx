@@ -2,11 +2,15 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import excavatorImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
+import fleetImage from "@assets/generated_images/rbf_equipment_fleet_operators_burkina.png";
+import constructionImage from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
+import maintenanceImage from "@assets/generated_images/rbf_maintenance_workshop_burkina.png";
 
 const categories = [
   {
     name: "Engins de terrassement",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80",
+    image: excavatorImage,
     description: "Équipements lourds pour travaux de terrassement et excavation",
     equipment: [
       { name: "Bulldozers", models: "Cat D6, D7, D8, D9" },
@@ -24,7 +28,7 @@ const categories = [
   },
   {
     name: "Engins de compactage",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80",
+    image: fleetImage,
     description: "Solutions de compactage pour tous types de sols",
     equipment: [
       { name: "Compacteurs à cylindres", models: "CS54, CS76, CS78" },
@@ -42,7 +46,7 @@ const categories = [
   },
   {
     name: "Équipements de bétonnage",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80",
+    image: constructionImage,
     description: "Matériel complet pour production et mise en œuvre du béton",
     equipment: [
       { name: "Centrales à béton", models: "25 à 120 m³/h" },
@@ -60,7 +64,7 @@ const categories = [
   },
   {
     name: "Équipements de levage",
-    image: "https://images.unsplash.com/photo-1590675514671-0b8f1d6e60d0?w=600&q=80",
+    image: maintenanceImage,
     description: "Solutions de levage sécurisées pour vos chantiers",
     equipment: [
       { name: "Grues mobiles", models: "25T à 500T" },

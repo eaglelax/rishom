@@ -4,11 +4,12 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Leaf, Droplet, Sun, Users, Recycle, Heart, TrendingUp, CheckCircle2, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import sustainabilityHeroImage from "@assets/generated_images/solar_panels_rishom_burkina_sustainability.png";
 
 const HeroSection = () => (
   <section className="relative h-[60vh] flex items-center">
     <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
-    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay" style={{ backgroundImage: `url(${sustainabilityHeroImage})` }} />
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

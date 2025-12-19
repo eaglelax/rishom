@@ -1,34 +1,38 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, Calendar } from "lucide-react";
+import foodFactoryImage from "@assets/generated_images/revi_food_factory_burkina.png";
+import partnershipImage from "@assets/generated_images/business_partnership_burkina.png";
+import trainingImage from "@assets/generated_images/rba_professional_training_session.png";
+import infrastructureImage from "@assets/generated_images/infrastructure_project_burkina_rishom.png";
 
 const news = [
   {
     id: 1,
     title: "Lancement de notre nouvelle usine de transformation agricole",
     date: "15 Décembre 2025",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80",
+    image: foodFactoryImage,
     category: "REV'I",
   },
   {
     id: 2,
     title: "Partenariat stratégique avec des investisseurs européens",
     date: "10 Décembre 2025",
-    image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80",
+    image: partnershipImage,
     category: "RIC",
   },
   {
     id: 3,
     title: "Formation de 200 jeunes aux métiers du BTP",
     date: "5 Décembre 2025",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+    image: trainingImage,
     category: "RBA",
   },
   {
     id: 4,
     title: "Livraison du projet d'infrastructure à Ouagadougou",
     date: "1 Décembre 2025",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80",
+    image: infrastructureImage,
     category: "RBF",
   },
 ];

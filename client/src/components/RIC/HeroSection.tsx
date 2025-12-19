@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import ricHeroImage from "@assets/generated_images/ric_consulting_meeting_burkina.png";
 
 export default function RICHeroSection() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80"
-          alt="Conseil RIC"
+          src={ricHeroImage}
+          alt="Conseil stratégique RIC Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/95 to-[#8B1538]/70" />

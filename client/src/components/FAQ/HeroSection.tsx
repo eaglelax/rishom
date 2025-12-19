@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Search } from "lucide-react";
+import faqHeroImage from "@assets/generated_images/customer_service_rishom_burkina.png";
 
 export default function FAQHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80"
-          alt="FAQ Groupe Rishom"
+          src={faqHeroImage}
+          alt="Service client Groupe Rishom Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import teamImage from "@assets/generated_images/rishom_team_photo_burkina.png";
 
 export default function JoinUsSection() {
   return (
@@ -8,8 +9,8 @@ export default function JoinUsSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80"
-          alt="Équipe Rishom"
+          src={teamImage}
+          alt="Équipe Rishom Burkina Faso"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#8B1538]/80" />

@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Users, Calendar } from "lucide-react";
+import waterProjectImage from "@assets/generated_images/csr_water_project_burkina.png";
+import youthTrainingImage from "@assets/generated_images/csr_youth_training_burkina.png";
+import reforestationImage from "@assets/generated_images/csr_reforestation_project_burkina.png";
+import healthCenterImage from "@assets/generated_images/csr_health_center_burkina.png";
 
 const projects = [
   {
@@ -9,7 +13,7 @@ const projects = [
     location: "Province du Yatenga",
     beneficiaries: "5 000 personnes",
     date: "2024-2025",
-    image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&q=80",
+    image: waterProjectImage,
     description: "Construction de 5 forages équipés de pompes solaires dans des villages ruraux.",
     pillar: "Communautaire",
     color: "#C74634",
@@ -20,7 +24,7 @@ const projects = [
     location: "Ouagadougou & Bobo-Dioulasso",
     beneficiaries: "300 jeunes",
     date: "2024",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+    image: youthTrainingImage,
     description: "Programme de formation gratuite aux métiers du BTP avec garantie d'emploi.",
     pillar: "Éducation",
     color: "#8B1538",
@@ -31,7 +35,7 @@ const projects = [
     location: "Région du Centre-Nord",
     beneficiaries: "10 villages",
     date: "2023-2025",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80",
+    image: reforestationImage,
     description: "Plantation de 50 000 arbres avec accompagnement des communautés locales.",
     pillar: "Environnemental",
     color: "#058B5E",
@@ -42,7 +46,7 @@ const projects = [
     location: "Zone rurale de Koudougou",
     beneficiaries: "8 000 personnes",
     date: "2024-2026",
-    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80",
+    image: healthCenterImage,
     description: "Construction et équipement de 3 centres de santé avec personnel formé.",
     pillar: "Social",
     color: "#2E5A9C",

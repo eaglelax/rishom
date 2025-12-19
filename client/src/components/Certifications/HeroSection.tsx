@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import certificationsHeroImage from "@assets/generated_images/iso_certification_ceremony_burkina.png";
 
 export default function CertificationsHeroSection() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80"
-          alt="Certifications Groupe Rishom"
+          src={certificationsHeroImage}
+          alt="Cérémonie certification ISO Groupe Rishom Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

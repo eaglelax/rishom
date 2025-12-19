@@ -1,13 +1,19 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
+import partnershipImage from "@assets/generated_images/business_partnership_burkina.png";
+import graduationImage from "@assets/generated_images/rba_graduation_ceremony_burkina.png";
+import infrastructureImage from "@assets/generated_images/infrastructure_project_burkina_rishom.png";
+import poultryImage from "@assets/generated_images/revi_poultry_farm_modern_burkina.png";
+import sustainabilityImage from "@assets/generated_images/rishom_sustainability_award_burkina.png";
+import excavatorImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
 
 const articles = [
   {
     id: 2,
     title: "Partenariat stratégique avec des investisseurs européens",
     excerpt: "RIC signe un accord majeur pour accompagner 50 PME burkinabè dans leur développement.",
-    image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80",
+    image: partnershipImage,
     date: "10 Décembre 2025",
     readTime: "4 min",
     category: "RIC",
@@ -17,7 +23,7 @@ const articles = [
     id: 3,
     title: "200 jeunes formés aux métiers du BTP",
     excerpt: "RBA célèbre la diplomation de sa plus grande promotion avec un taux d'insertion de 85%.",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+    image: graduationImage,
     date: "5 Décembre 2025",
     readTime: "3 min",
     category: "RBA",
@@ -27,7 +33,7 @@ const articles = [
     id: 4,
     title: "Livraison du projet d'infrastructure à Ouagadougou",
     excerpt: "RBF achève la construction d'un complexe commercial moderne de 10 000 m².",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80",
+    image: infrastructureImage,
     date: "1 Décembre 2025",
     readTime: "5 min",
     category: "RBF",
@@ -37,7 +43,7 @@ const articles = [
     id: 5,
     title: "Expansion de nos activités d'élevage",
     excerpt: "REV'I annonce l'ouverture de deux nouvelles fermes dans la région du Centre-Nord.",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80",
+    image: poultryImage,
     date: "28 Novembre 2025",
     readTime: "4 min",
     category: "REV'I",
@@ -47,7 +53,7 @@ const articles = [
     id: 6,
     title: "Le Groupe Rishom primé pour son engagement RSE",
     excerpt: "Reconnaissance nationale pour nos actions en faveur du développement durable.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+    image: sustainabilityImage,
     date: "20 Novembre 2025",
     readTime: "3 min",
     category: "Groupe",
@@ -57,7 +63,7 @@ const articles = [
     id: 7,
     title: "Nouvelle gamme d'équipements BTP disponible",
     excerpt: "RBF élargit son catalogue avec des engins de dernière génération.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80",
+    image: excavatorImage,
     date: "15 Novembre 2025",
     readTime: "4 min",
     category: "RBF",

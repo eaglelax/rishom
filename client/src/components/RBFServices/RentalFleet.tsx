@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import excavatorImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
+import fleetImage from "@assets/generated_images/rbf_equipment_fleet_operators_burkina.png";
+import constructionImage from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
 
 const fleet = [
   {
@@ -9,7 +12,7 @@ const fleet = [
     machines: [
       {
         name: "Pelle hydraulique 20T",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&q=80",
+        image: excavatorImage,
         daily: "250 000 FCFA",
         weekly: "1 500 000 FCFA",
         monthly: "5 000 000 FCFA",
@@ -17,7 +20,7 @@ const fleet = [
       },
       {
         name: "Bulldozer Cat D6",
-        image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=80",
+        image: constructionImage,
         daily: "300 000 FCFA",
         weekly: "1 800 000 FCFA",
         monthly: "6 000 000 FCFA",
@@ -25,7 +28,7 @@ const fleet = [
       },
       {
         name: "Chargeuse 950H",
-        image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&q=80",
+        image: fleetImage,
         daily: "200 000 FCFA",
         weekly: "1 200 000 FCFA",
         monthly: "4 000 000 FCFA",
@@ -39,7 +42,7 @@ const fleet = [
     machines: [
       {
         name: "Rouleau vibrant 10T",
-        image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&q=80",
+        image: fleetImage,
         daily: "150 000 FCFA",
         weekly: "900 000 FCFA",
         monthly: "3 000 000 FCFA",
@@ -47,7 +50,7 @@ const fleet = [
       },
       {
         name: "Compacteur pneumatique",
-        image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=80",
+        image: constructionImage,
         daily: "120 000 FCFA",
         weekly: "700 000 FCFA",
         monthly: "2 500 000 FCFA",
@@ -61,7 +64,7 @@ const fleet = [
     machines: [
       {
         name: "Grue mobile 50T",
-        image: "https://images.unsplash.com/photo-1590675514671-0b8f1d6e60d0?w=400&q=80",
+        image: excavatorImage,
         daily: "400 000 FCFA",
         weekly: "2 400 000 FCFA",
         monthly: "8 000 000 FCFA",
@@ -69,7 +72,7 @@ const fleet = [
       },
       {
         name: "Nacelle 20m",
-        image: "https://images.unsplash.com/photo-1590675514671-0b8f1d6e60d0?w=400&q=80",
+        image: fleetImage,
         daily: "100 000 FCFA",
         weekly: "600 000 FCFA",
         monthly: "2 000 000 FCFA",

@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import reviHeroImage from "@assets/generated_images/revi_rice_agriculture_burkina.png";
 
 export default function REVIHeroSection() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
-          alt="Agriculture REV'I"
+          src={reviHeroImage}
+          alt="Agriculture REV'I Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#058B5E]/95 to-[#058B5E]/70" />

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import headquartersImage from "@assets/generated_images/rishom_headquarters_ouagadougou.png";
 
 export default function AboutSection() {
   return (
@@ -60,8 +61,8 @@ export default function AboutSection() {
             className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
-              alt="Siège Groupe Rishom"
+              src={headquartersImage}
+              alt="Siège Groupe Rishom Ouagadougou"
               className="w-full h-full object-cover"
               loading="lazy"
             />

@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import materialsHeroImage from "@assets/generated_images/rbf_warehouse_materials_ouagadougou.png";
 
 export default function MaterialsHero() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=80"
-          alt="Matériaux de construction RBF"
+          src={materialsHeroImage}
+          alt="Entrepôt matériaux RBF Ouagadougou"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C74634]/95 to-[#C74634]/70" />

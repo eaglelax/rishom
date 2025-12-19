@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import inaugurationImage from "@assets/generated_images/rishom_inauguration_ceremony_ouaga.png";
 
 const featuredArticle = {
   id: 1,
   title: "Le Groupe Rishom inaugure sa nouvelle usine de transformation agricole",
   excerpt: "Un investissement majeur de 80 millions FCFA pour renforcer la souveraineté alimentaire du Burkina Faso et créer 200 emplois directs dans la région.",
-  image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80",
+  image: inaugurationImage,
   date: "15 Décembre 2025",
   readTime: "5 min",
   category: "REV'I",

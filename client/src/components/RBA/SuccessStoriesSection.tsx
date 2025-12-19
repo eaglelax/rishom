@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
+import alumnusImage from "@assets/generated_images/rba_alumnus_male_portrait_burkina.png";
+import alumnaImage from "@assets/generated_images/rba_alumna_female_portrait_burkina.png";
+import entrepreneurImage from "@assets/generated_images/rba_entrepreneur_portrait_burkina.png";
 
 const stories = [
   {
     id: 1,
     name: "Abdoulaye K.",
     program: "Conduite d'engins BTP",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    image: alumnusImage,
     testimonial: "Grâce à la formation RBA, j'ai obtenu mon certificat et je travaille maintenant sur de grands chantiers. Ma vie a changé.",
     company: "RBF",
   },
@@ -15,7 +18,7 @@ const stories = [
     id: 2,
     name: "Fatimata S.",
     program: "Comptabilité",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+    image: alumnaImage,
     testimonial: "Les formateurs sont excellents et le contenu très pratique. J'ai trouvé un emploi avant même la fin de ma formation.",
     company: "Cabinet d'audit",
   },
@@ -23,7 +26,7 @@ const stories = [
     id: 3,
     name: "Ibrahim T.",
     program: "Entrepreneuriat",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
+    image: entrepreneurImage,
     testimonial: "La formation m'a donné les clés pour créer ma propre entreprise. Aujourd'hui, j'emploie 5 personnes.",
     company: "Entrepreneur",
   },

@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
+import teamImage from "@assets/generated_images/rishom_team_photo_burkina.png";
 
 export default function CareersHeroSection() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80"
-          alt="Carrières Groupe Rishom"
+          src={teamImage}
+          alt="Carrières Groupe Rishom Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B1538]/90 to-[#8B1538]/60" />

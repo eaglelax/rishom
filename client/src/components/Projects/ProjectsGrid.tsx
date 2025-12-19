@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Calendar, Building2 } from "lucide-react";
+import roadConstructionImage from "@assets/generated_images/rbf_road_construction_burkina.png";
+import headquartersImage from "@assets/generated_images/rishom_headquarters_ouagadougou.png";
+import poultryImage from "@assets/generated_images/revi_poultry_farm_modern_burkina.png";
+import completedBuildingImage from "@assets/generated_images/rbf_completed_building_project_ouaga.png";
+import campusImage from "@assets/generated_images/rba_campus_ouagadougou_burkina.png";
+import foodFactoryImage from "@assets/generated_images/revi_food_factory_burkina.png";
+import complexImage from "@assets/generated_images/rishom_complex_aerial_ouagadougou.png";
+import irrigationImage from "@assets/generated_images/rbf_irrigation_project_burkina.png";
 
 const projects = [
   {
@@ -11,7 +19,7 @@ const projects = [
     location: "Burkina Faso",
     date: "2023-2024",
     budget: "150M FCFA",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    image: roadConstructionImage,
     description: "Construction d'une autoroute moderne reliant les deux principales villes du pays.",
     color: "#C74634",
   },
@@ -23,7 +31,7 @@ const projects = [
     location: "Ouagadougou",
     date: "2024",
     budget: "80M FCFA",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    image: headquartersImage,
     description: "Investissement dans un complexe commercial moderne de 5000m².",
     color: "#8B1538",
   },
@@ -35,7 +43,7 @@ const projects = [
     location: "Koudougou",
     date: "2023-2024",
     budget: "45M FCFA",
-    image: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80",
+    image: poultryImage,
     description: "Construction d'une ferme avicole produisant 50 000 poulets par mois.",
     color: "#058B5E",
   },
@@ -47,7 +55,7 @@ const projects = [
     location: "Ouagadougou",
     date: "2022-2024",
     budget: "250M FCFA",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
+    image: completedBuildingImage,
     description: "Extension et modernisation du terminal international.",
     color: "#C74634",
   },
@@ -59,7 +67,7 @@ const projects = [
     location: "Bobo-Dioulasso",
     date: "2024",
     budget: "30M FCFA",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
+    image: campusImage,
     description: "Nouveau campus pouvant accueillir 500 apprenants simultanément.",
     color: "#2E5A9C",
   },
@@ -71,7 +79,7 @@ const projects = [
     location: "Fada N'Gourma",
     date: "2023",
     budget: "60M FCFA",
-    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
+    image: foodFactoryImage,
     description: "Usine de transformation avec capacité de 10 tonnes par jour.",
     color: "#058B5E",
   },
@@ -83,7 +91,7 @@ const projects = [
     location: "Ouagadougou",
     date: "2023-2025",
     budget: "120M FCFA",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    image: complexImage,
     description: "Hôtel 4 étoiles de 80 chambres avec centre de conférences.",
     color: "#8B1538",
   },
@@ -95,7 +103,7 @@ const projects = [
     location: "Bagré",
     date: "2021-2024",
     budget: "300M FCFA",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
+    image: irrigationImage,
     description: "Participation à la construction d'un barrage produisant 15 MW.",
     color: "#C74634",
   },
@@ -107,7 +115,7 @@ const projects = [
     location: "National",
     date: "2024-2025",
     budget: "25M FCFA",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+    image: campusImage,
     description: "Formation de 1000 jeunes aux énergies renouvelables.",
     color: "#2E5A9C",
   },

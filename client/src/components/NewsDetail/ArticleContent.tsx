@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import factoryInteriorImage from "@assets/generated_images/revi_food_processing_burkina.png";
 
 export default function ArticleContent() {
   return (
@@ -65,8 +66,8 @@ export default function ArticleContent() {
           {/* Image in content */}
           <figure className="my-12">
             <img
-              src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&q=80"
-              alt="Intérieur de l'usine"
+              src={factoryInteriorImage}
+              alt="Intérieur de l'usine de transformation au Burkina"
               className="w-full h-96 object-cover rounded-xl shadow-lg"
             />
             <figcaption className="text-center text-sm text-[#707070] mt-4">

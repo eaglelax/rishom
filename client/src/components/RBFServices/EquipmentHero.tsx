@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import equipmentHeroImage from "@assets/generated_images/rbf_excavator_equipment_burkina.png";
 
 export default function EquipmentHero() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
-          alt="Équipements de construction RBF"
+          src={equipmentHeroImage}
+          alt="Équipements de construction RBF Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C74634]/95 to-[#C74634]/70" />

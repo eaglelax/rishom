@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import cementImage from "@assets/generated_images/rbf_cement_bags_warehouse_burkina.png";
+import rebarImage from "@assets/generated_images/rbf_rebar_steel_depot_burkina.png";
+import warehouseImage from "@assets/generated_images/rbf_warehouse_materials_ouagadougou.png";
+import pvcImage from "@assets/generated_images/rbf_pvc_pipes_warehouse_ouaga.png";
 
 const materials = [
   {
@@ -12,7 +16,7 @@ const materials = [
       { name: "Ciment blanc", unit: "Sac 25kg", price: "8 500 FCFA", stock: "En stock" },
       { name: "Chaux hydraulique", unit: "Sac 25kg", price: "4 800 FCFA", stock: "En stock" },
     ],
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
+    image: cementImage,
   },
   {
     category: "Fers à béton",
@@ -24,7 +28,7 @@ const materials = [
       { name: "Fer HA Ø12", unit: "Barre 12m", price: "40 000 FCFA", stock: "En stock" },
       { name: "Treillis soudé", unit: "Panneau 6x2.4m", price: "35 000 FCFA", stock: "En stock" },
     ],
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80",
+    image: rebarImage,
   },
   {
     category: "Agrégats",
@@ -36,7 +40,7 @@ const materials = [
       { name: "Tout-venant", unit: "m³", price: "12 000 FCFA", stock: "En stock" },
       { name: "Latérite", unit: "m³", price: "8 000 FCFA", stock: "En stock" },
     ],
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80",
+    image: warehouseImage,
   },
   {
     category: "Matériaux de finition",
@@ -47,7 +51,7 @@ const materials = [
       { name: "Peinture acrylique", unit: "Pot 25L", price: "45 000 FCFA", stock: "En stock" },
       { name: "Enduit extérieur", unit: "Sac 25kg", price: "12 000 FCFA", stock: "En stock" },
     ],
-    image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80",
+    image: pvcImage,
   },
 ];
 

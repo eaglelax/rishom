@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import rentalHeroImage from "@assets/generated_images/rbf_equipment_fleet_operators_burkina.png";
 
 export default function RentalHero() {
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1590675514671-0b8f1d6e60d0?w=1600&q=80"
-          alt="Location d'engins RBF"
+          src={rentalHeroImage}
+          alt="Parc de location d'engins RBF Burkina"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C74634]/95 to-[#C74634]/70" />

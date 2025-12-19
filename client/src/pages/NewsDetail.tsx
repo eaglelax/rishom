@@ -4,6 +4,7 @@ import ArticleHeader from "@/components/NewsDetail/ArticleHeader";
 import ArticleContent from "@/components/NewsDetail/ArticleContent";
 import RelatedArticles from "@/components/NewsDetail/RelatedArticles";
 import Footer from "@/components/Footer";
+import foodFactoryImage from "@assets/generated_images/revi_food_factory_burkina.png";
 
 export default function NewsDetail() {
   const article = {
@@ -13,7 +14,7 @@ export default function NewsDetail() {
     date: "15 Décembre 2025",
     readTime: "5 min",
     author: "Service Communication",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80",
+    image: foodFactoryImage,
   };
 
   return (

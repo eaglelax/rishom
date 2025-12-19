@@ -3,11 +3,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Target, Compass, Rocket, Users, CheckCircle2 } from "lucide-react";
+import strategyHeroImage from "@assets/generated_images/ric_strategy_session_burkina.png";
 
 const HeroSection = () => (
   <section className="relative h-[60vh] flex items-center">
     <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] to-[#3A3A3C] opacity-95" />
-    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80')] bg-cover bg-center mix-blend-overlay" />
+    <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay" style={{ backgroundImage: `url(${strategyHeroImage})` }} />
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
