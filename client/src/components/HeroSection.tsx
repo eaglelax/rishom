@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, Pause, Play } from "lucide-react";
 import { Link } from "wouter";
 
-import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 import rbfLogoWhite from "@assets/LOGOS_DEF-08_1766102890554.png";
-import ricLogoWhite from "@assets/LOGOS_DEF-02_1766102890554.png";
+import ricLogoWhite from "@assets/LOGOS_DEF-10_1766165412964.png";
 import reviLogoWhite from "@assets/LOGOS_DEF-10_1766102890554.png";
 import rbaLogoWhite from "@assets/LOGOS_DEF-04_1766102890554.png";
 

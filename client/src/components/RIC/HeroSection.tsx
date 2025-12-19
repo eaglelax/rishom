@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import ricHeroImage from "@assets/generated_images/ric_consulting_meeting_burkina.png";
-import ricLogoWhite from "@assets/LOGOS_DEF-02_1766102890554.png";
+import ricLogoWhite from "@assets/LOGOS_DEF-10_1766165412964.png";
 
 export default function RICHeroSection() {
   return (

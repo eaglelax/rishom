@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import csrHeroImage from "@assets/generated_images/csr_action_rural_burkina.png";
-import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 
 export default function CSRHeroSection() {
   return (

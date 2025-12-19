@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import rbfLogo from "@assets/LOGOS_DEF-07_1766102890554.png";
-import ricLogo from "@assets/LOGOS_DEF-01_1766102890554.png";
+import ricLogo from "@assets/LOGOS_DEF-09_1766165412954.png";
 import reviLogo from "@assets/LOGOS_DEF-09_1766102890554.png";
 import rbaLogo from "@assets/LOGOS_DEF-03_1766102890554.png";
-import groupeLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
+import groupeLogo from "@assets/LOGOS_DEF-06_1766165412965.png";
 
 const entities = [
   {

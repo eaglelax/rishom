@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import groupeLogoWhite from '@assets/LOGOS_DEF-06_1766102890554.png';
+import groupeLogoWhite from '@assets/LOGOS_DEF-12_1766165412964.png';
 
 export default function Group() {
   const subsidiaries = [

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Search } from "lucide-react";
 import faqHeroImage from "@assets/generated_images/customer_service_rishom_burkina.png";
-import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 
 export default function FAQHeroSection() {
   return (

@@ -1,5 +1,5 @@
 import { Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import groupeRishomLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeRishomLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 
 export default function Footer() {
   return (

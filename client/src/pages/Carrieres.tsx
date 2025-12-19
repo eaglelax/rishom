@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import heroImage from '@assets/generated_images/careers_page_hero_image.png';
-import groupeLogoWhite from '@assets/LOGOS_DEF-06_1766102890554.png';
+import groupeLogoWhite from '@assets/LOGOS_DEF-12_1766165412964.png';
 
 interface Job {
   id: number;

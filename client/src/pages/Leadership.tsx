@@ -12,7 +12,7 @@ import dgRicImage from '@assets/generated_images/dg_ric_karim_ouedraogo.png';
 import dgReviImage from '@assets/generated_images/dg_revi_fatimata_traore.png';
 import dgRbaImage from '@assets/generated_images/dg_rba_ibrahim_compaore.png';
 import drhImage from '@assets/generated_images/drh_aicha_zanre_portrait.png';
-import groupeLogoWhite from '@assets/LOGOS_DEF-06_1766102890554.png';
+import groupeLogoWhite from '@assets/LOGOS_DEF-12_1766165412964.png';
 
 const HeroSection = () => (
   <section className="relative h-[60vh] flex items-center">

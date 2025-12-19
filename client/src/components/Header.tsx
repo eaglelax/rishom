@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, Search, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import groupeRishomLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
+import groupeRishomLogo from "@assets/LOGOS_DEF-06_1766165412965.png";
 
 interface DropdownItem {
   label: string;

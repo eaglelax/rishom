@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import projectsHeroImage from "@assets/generated_images/infrastructure_project_burkina_rishom.png";
-import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 
 export default function ProjectsHeroSection() {
   return (

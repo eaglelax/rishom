@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
 import teamImage from "@assets/generated_images/rishom_team_photo_burkina.png";
-import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
 
 export default function CareersHeroSection() {
   return (

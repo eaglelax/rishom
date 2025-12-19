@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
 import rbfLogo from "@assets/LOGOS_DEF-07_1766102890554.png";
-import ricLogo from "@assets/LOGOS_DEF-01_1766102890554.png";
+import ricLogo from "@assets/LOGOS_DEF-09_1766165412954.png";
 import reviLogo from "@assets/LOGOS_DEF-09_1766102890554.png";
 import rbaLogo from "@assets/LOGOS_DEF-03_1766102890554.png";
 
