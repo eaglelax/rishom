@@ -367,7 +367,7 @@ export default function HeroSection() {
               <img 
                 src={entityLogos[currentSlide.entity]} 
                 alt={currentSlide.entity}
-                className="h-16 md:h-20 w-auto mx-auto"
+                className="h-48 md:h-60 w-auto mx-auto"
               />
             </motion.div>
 
