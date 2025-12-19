@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import groupeRishomLogo from "@assets/LOGOS_DEF-05_1766102890554.png";
+
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
+interface MenuItem {
+  label: string;
+  href: string;
+  dropdown?: DropdownItem[];
+}
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +28,39 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { label: "À propos", href: "/a-propos" },
-    { label: "Nos entités", href: "/#entities" },
-    { label: "Projets", href: "/projets" },
-    { label: "Actualités", href: "/actualites" },
+    { 
+      label: "Nos entités", 
+      href: "/groupe",
+      dropdown: [
+        { label: "Groupe Rishom", href: "/groupe" },
+        { label: "RBF - BTP & Fournitures", href: "/rbf" },
+        { label: "RIC - Ingénierie & Conseil", href: "/ric" },
+        { label: "REV'I - Agrobusiness", href: "/revi" },
+        { label: "RBA - Business Academy", href: "/rba" },
+      ]
+    },
+    { 
+      label: "Projets", 
+      href: "/projets",
+      dropdown: [
+        { label: "Tous les projets", href: "/projets" },
+        { label: "Projets BTP", href: "/rbf" },
+        { label: "Projets Conseil", href: "/ric" },
+        { label: "Projets Agricoles", href: "/revi/projets" },
+        { label: "Formations", href: "/rba/programmes" },
+      ]
+    },
+    { 
+      label: "Actualités", 
+      href: "/actualites",
+      dropdown: [
+        { label: "Toutes les actualités", href: "/actualites" },
+        { label: "Communiqués de presse", href: "/presse" },
+        { label: "Événements", href: "/actualites" },
+      ]
+    },
     { label: "Carrières", href: "/carrieres" },
     { label: "Contact", href: "/contact" },
   ];
@@ -40,7 +80,6 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 h-full">
         <div className="flex items-center justify-between h-full">
-          {/* Logo */}
           <a href="/" className="flex items-center" data-testid="logo-link">
             <motion.img 
               src={groupeRishomLogo} 
@@ -51,21 +90,53 @@ export default function Header() {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => (
-              <a
+              <div
                 key={item.href}
-                href={item.href}
-                className="text-[#3A3A3C] hover:text-[#8B1538] transition-colors font-medium text-sm"
-                data-testid={`nav-${item.label.toLowerCase()}`}
+                className="relative"
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.label}
-              </a>
+                <a
+                  href={item.href}
+                  className="flex items-center gap-1 text-[#3A3A3C] hover:text-[#8B1538] transition-colors font-medium text-sm py-2"
+                  data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {item.label}
+                  {item.dropdown && (
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
+                  )}
+                </a>
+
+                <AnimatePresence>
+                  {item.dropdown && activeDropdown === item.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 pt-2"
+                    >
+                      <div className="bg-white rounded-md shadow-xl border border-border min-w-[220px] py-2">
+                        {item.dropdown.map((subItem) => (
+                          <a
+                            key={subItem.href}
+                            href={subItem.href}
+                            className="block px-4 py-2.5 text-sm text-[#3A3A3C] hover:bg-[#8B1538]/5 hover:text-[#8B1538] transition-colors"
+                            data-testid={`nav-dropdown-${subItem.label.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </nav>
 
-          {/* Search & Mobile Menu */}
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
@@ -92,20 +163,35 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="lg:hidden pb-4 border-t">
-            <div className="flex flex-col gap-4 pt-4">
+          <nav className="lg:hidden pb-4 border-t bg-white">
+            <div className="flex flex-col gap-2 pt-4">
               {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-[#3A3A3C] hover:text-[#8B1538] transition-colors font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                  data-testid={`mobile-nav-${item.label.toLowerCase()}`}
-                >
-                  {item.label}
-                </a>
+                <div key={item.href}>
+                  <a
+                    href={item.href}
+                    className="block text-[#3A3A3C] hover:text-[#8B1538] transition-colors font-medium py-2"
+                    onClick={() => !item.dropdown && setIsMenuOpen(false)}
+                    data-testid={`mobile-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {item.label}
+                  </a>
+                  {item.dropdown && (
+                    <div className="pl-4 border-l-2 border-[#8B1538]/20 ml-2 space-y-1">
+                      {item.dropdown.map((subItem) => (
+                        <a
+                          key={subItem.href}
+                          href={subItem.href}
+                          className="block text-sm text-[#3A3A3C]/80 hover:text-[#8B1538] transition-colors py-1.5"
+                          onClick={() => setIsMenuOpen(false)}
+                          data-testid={`mobile-nav-dropdown-${subItem.label.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          {subItem.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </nav>
