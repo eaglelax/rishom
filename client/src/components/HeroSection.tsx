@@ -255,37 +255,19 @@ const carouselSlides: CarouselSlide[] = [
 
 const slideVariants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 1.1
+    x: direction > 0 ? 300 : -300,
+    opacity: 0
   }),
   center: {
     zIndex: 1,
     x: 0,
-    opacity: 1,
-    scale: 1
+    opacity: 1
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 0.95
+    x: direction < 0 ? 300 : -300,
+    opacity: 0
   })
-};
-
-const textVariants = {
-  enter: {
-    y: 50,
-    opacity: 0
-  },
-  center: {
-    y: 0,
-    opacity: 1
-  },
-  exit: {
-    y: -50,
-    opacity: 0
-  }
 };
 
 export default function HeroSection() {
@@ -327,9 +309,8 @@ export default function HeroSection() {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.5 },
-            scale: { duration: 0.5 }
+            x: { type: "tween", duration: 0.4, ease: "easeOut" },
+            opacity: { duration: 0.4 }
           }}
           className="absolute inset-0"
         >
@@ -351,51 +332,35 @@ export default function HeroSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            variants={textVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="text-center max-w-5xl mx-auto"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="mb-6"
-            >
+            <div className="mb-6">
               <img 
                 src={entityLogos[currentSlide.entity]} 
                 alt={currentSlide.entity}
                 className="h-48 md:h-60 w-auto mx-auto"
               />
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
+            <h1
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
               style={{ textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
             >
               {currentSlide.title}
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+            <p
               className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-10"
               style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.5)" }}
             >
               {currentSlide.subtitle}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-            >
+            <div>
               <Link href={currentSlide.link}>
                 <Button
                   size="lg"
@@ -407,7 +372,7 @@ export default function HeroSection() {
                   <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
