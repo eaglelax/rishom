@@ -4,6 +4,20 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, Pause, Play } from "lucide-react";
 import { Link } from "wouter";
 
+import groupeLogoWhite from "@assets/LOGOS_DEF-06_1766102890554.png";
+import rbfLogoWhite from "@assets/LOGOS_DEF-08_1766102890554.png";
+import ricLogoWhite from "@assets/LOGOS_DEF-02_1766102890554.png";
+import reviLogoWhite from "@assets/LOGOS_DEF-10_1766102890554.png";
+import rbaLogoWhite from "@assets/LOGOS_DEF-04_1766102890554.png";
+
+const entityLogos: Record<string, string> = {
+  "RBF": rbfLogoWhite,
+  "RIC": ricLogoWhite,
+  "REV'I": reviLogoWhite,
+  "RBA": rbaLogoWhite,
+  "GROUPE": groupeLogoWhite,
+};
+
 import heroRbfConstruction from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
 import heroRbfWarehouse from "@assets/generated_images/rbf_warehouse_burkina_faso.png";
 import heroRicConsulting from "@assets/generated_images/ric_consulting_meeting_burkina.png";
@@ -350,12 +364,11 @@ export default function HeroSection() {
               transition={{ delay: 0.3, duration: 0.4 }}
               className="mb-6"
             >
-              <span 
-                className="inline-block px-6 py-2 rounded-full text-white font-bold text-sm tracking-wider"
-                style={{ backgroundColor: currentSlide.entityColor }}
-              >
-                {currentSlide.entity}
-              </span>
+              <img 
+                src={entityLogos[currentSlide.entity]} 
+                alt={currentSlide.entity}
+                className="h-16 md:h-20 w-auto mx-auto"
+              />
             </motion.div>
 
             <motion.h1
