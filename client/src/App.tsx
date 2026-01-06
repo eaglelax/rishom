@@ -76,6 +76,21 @@ const Group = lazy(() => import("@/pages/Group"));
 
 const NotFound = lazy(() => import("@/pages/not-found"));
 
+// Admin pages
+const AdminLogin = lazy(() => import("@/pages/admin/Login"));
+const AdminDashboard = lazy(() => import("@/pages/admin/Dashboard"));
+const AdminCarousel = lazy(() => import("@/pages/admin/Carousel"));
+const AdminNews = lazy(() => import("@/pages/admin/News"));
+const AdminTeam = lazy(() => import("@/pages/admin/Team"));
+const AdminPartners = lazy(() => import("@/pages/admin/Partners"));
+const AdminTestimonials = lazy(() => import("@/pages/admin/Testimonials"));
+const AdminFaq = lazy(() => import("@/pages/admin/Faq"));
+const AdminJobs = lazy(() => import("@/pages/admin/Jobs"));
+const AdminMessages = lazy(() => import("@/pages/admin/Messages"));
+const AdminStatistics = lazy(() => import("@/pages/admin/Statistics"));
+const AdminEntities = lazy(() => import("@/pages/admin/Entities"));
+const AdminServices = lazy(() => import("@/pages/admin/Services"));
+
 function Router() {
   return (
     <Suspense fallback={<PageLoader />}>
@@ -139,6 +154,21 @@ function Router() {
         <Route path="/offres-emploi" component={OffresEmploi} />
         <Route path="/devis" component={Quote} />
         <Route path="/groupe" component={Group} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" component={AdminLogin} />
+        <Route path="/admin/dashboard" component={AdminDashboard} />
+        <Route path="/admin/carousel" component={AdminCarousel} />
+        <Route path="/admin/news" component={AdminNews} />
+        <Route path="/admin/team" component={AdminTeam} />
+        <Route path="/admin/partners" component={AdminPartners} />
+        <Route path="/admin/testimonials" component={AdminTestimonials} />
+        <Route path="/admin/faq" component={AdminFaq} />
+        <Route path="/admin/jobs" component={AdminJobs} />
+        <Route path="/admin/messages" component={AdminMessages} />
+        <Route path="/admin/statistics" component={AdminStatistics} />
+        <Route path="/admin/entities" component={AdminEntities} />
+        <Route path="/admin/services/:entity?" component={AdminServices} />
 
         <Route component={NotFound} />
       </Switch>

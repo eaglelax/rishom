@@ -1,39 +1,69 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
+
+// Images de fallback locales
 import entrepreneurImage from "@assets/generated_images/burkinabe_entrepreneur_futuristic_vision.png";
 import dataAnalystImage from "@assets/generated_images/ric_data_analyst_burkinabe_woman.png";
 import alumnusImage from "@assets/generated_images/rba_alumnus_male_portrait_burkina.png";
 import alumnaImage from "@assets/generated_images/rba_alumna_female_portrait_burkina.png";
 
-const leaders = [
-  {
-    name: "Amadou TRAORE",
-    position: "Président Directeur Général",
-    image: entrepreneurImage,
-    bio: "Visionnaire et entrepreneur, Amadou a fondé le Groupe Rishom avec la mission de contribuer au développement économique de l'Afrique.",
-  },
-  {
-    name: "Fatima OUEDRAOGO",
-    position: "Directrice Générale Adjointe",
-    image: dataAnalystImage,
-    bio: "Expert en stratégie et finance, Fatima pilote le développement stratégique du groupe et supervise les opérations des entités.",
-  },
-  {
-    name: "Ibrahim KONE",
-    position: "Directeur des Opérations",
-    image: alumnusImage,
-    bio: "Fort de 20 ans d'expérience dans le BTP et l'industrie, Ibrahim assure l'excellence opérationnelle de nos projets.",
-  },
-  {
-    name: "Aissata SANKARA",
-    position: "Directrice des Ressources Humaines",
-    image: alumnaImage,
-    bio: "Passionnée par le développement des talents, Aissata coordonne la politique RH du groupe et la formation de nos équipes.",
-  },
-];
+interface LeadershipMember {
+  id: string;
+  name: string;
+  position: string;
+  bio: string | null;
+  photoUrl: string | null;
+  linkedinUrl: string | null;
+  displayOrder: number;
+}
+
+// Fallback images par index
+const fallbackImages = [entrepreneurImage, dataAnalystImage, alumnusImage, alumnaImage];
 
 export default function AboutLeadershipSection() {
+  const [leaders, setLeaders] = useState<LeadershipMember[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLeaders = async () => {
+      try {
+        const response = await fetch("/api/team");
+        if (response.ok) {
+          const data = await response.json();
+          setLeaders(data);
+        }
+      } catch (error) {
+        console.error("Erreur chargement équipe:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchLeaders();
+  }, []);
+
+  const getImageUrl = (member: LeadershipMember, index: number): string => {
+    if (member.photoUrl && (member.photoUrl.startsWith("/images/") || member.photoUrl.startsWith("/uploads/") || member.photoUrl.startsWith("http"))) {
+      return member.photoUrl;
+    }
+    return fallbackImages[index % fallbackImages.length];
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="w-12 h-12 border-4 border-[#8B1538] border-t-transparent rounded-full animate-spin" />
+        </div>
+      </section>
+    );
+  }
+
+  if (leaders.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
@@ -55,7 +85,7 @@ export default function AboutLeadershipSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {leaders.map((leader, index) => (
             <motion.div
-              key={leader.name}
+              key={leader.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -64,7 +94,7 @@ export default function AboutLeadershipSection() {
               <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-none overflow-hidden">
                 <div className="relative h-80">
                   <img
-                    src={leader.image}
+                    src={getImageUrl(leader, index)}
                     alt={leader.name}
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -78,14 +108,18 @@ export default function AboutLeadershipSection() {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <p className="text-[#3A3A3C] mb-4">{leader.bio}</p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-[#8B1538] hover:text-[#C4526D] transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                    <span className="font-semibold">Profil LinkedIn</span>
-                  </a>
+                  {leader.bio && <p className="text-[#3A3A3C] mb-4">{leader.bio}</p>}
+                  {leader.linkedinUrl && (
+                    <a
+                      href={leader.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#8B1538] hover:text-[#C4526D] transition-colors"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                      <span className="font-semibold">Profil LinkedIn</span>
+                    </a>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

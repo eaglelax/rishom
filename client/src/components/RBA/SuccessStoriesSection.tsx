@@ -1,38 +1,87 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
+
+// Images de fallback
 import alumnusImage from "@assets/generated_images/rba_alumnus_male_portrait_burkina.png";
 import alumnaImage from "@assets/generated_images/rba_alumna_female_portrait_burkina.png";
 import entrepreneurImage from "@assets/generated_images/rba_entrepreneur_portrait_burkina.png";
 
-const stories = [
-  {
-    id: 1,
-    name: "Abdoulaye K.",
-    program: "Conduite d'engins BTP",
-    image: alumnusImage,
-    testimonial: "Grâce à la formation RBA, j'ai obtenu mon certificat et je travaille maintenant sur de grands chantiers. Ma vie a changé.",
-    company: "RBF",
-  },
-  {
-    id: 2,
-    name: "Fatimata S.",
-    program: "Comptabilité",
-    image: alumnaImage,
-    testimonial: "Les formateurs sont excellents et le contenu très pratique. J'ai trouvé un emploi avant même la fin de ma formation.",
-    company: "Cabinet d'audit",
-  },
-  {
-    id: 3,
-    name: "Ibrahim T.",
-    program: "Entrepreneuriat",
-    image: entrepreneurImage,
-    testimonial: "La formation m'a donné les clés pour créer ma propre entreprise. Aujourd'hui, j'emploie 5 personnes.",
-    company: "Entrepreneur",
-  },
-];
+interface Testimonial {
+  id: string;
+  name: string;
+  position: string | null;
+  company: string | null;
+  testimonialText: string;
+  photoUrl: string | null;
+  entityId: string | null;
+  displayOrder: number;
+}
+
+interface Entity {
+  id: string;
+  shortName: string;
+}
+
+// Fallback images par index
+const fallbackImages = [alumnusImage, alumnaImage, entrepreneurImage];
 
 export default function RBASuccessStoriesSection() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [entities, setEntities] = useState<Entity[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [rbaEntityId, setRbaEntityId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Récupérer les entités pour trouver RBA
+        const entitiesRes = await fetch("/api/entities");
+        if (entitiesRes.ok) {
+          const entitiesData: Entity[] = await entitiesRes.json();
+          setEntities(entitiesData);
+          const rbaEntity = entitiesData.find(e => e.shortName.toUpperCase() === "RBA");
+          if (rbaEntity) {
+            setRbaEntityId(rbaEntity.id);
+            // Récupérer les témoignages de RBA
+            const testimonialsRes = await fetch(`/api/testimonials/entity/${rbaEntity.id}`);
+            if (testimonialsRes.ok) {
+              const data = await testimonialsRes.json();
+              setTestimonials(data);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Erreur chargement témoignages:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const getImageUrl = (testimonial: Testimonial, index: number): string => {
+    if (testimonial.photoUrl && (testimonial.photoUrl.startsWith("/images/") || testimonial.photoUrl.startsWith("/uploads/") || testimonial.photoUrl.startsWith("http"))) {
+      return testimonial.photoUrl;
+    }
+    return fallbackImages[index % fallbackImages.length];
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="w-12 h-12 border-4 border-[#2E5A9C] border-t-transparent rounded-full animate-spin" />
+        </div>
+      </section>
+    );
+  }
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
@@ -52,9 +101,9 @@ export default function RBASuccessStoriesSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stories.map((story, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
-              key={story.id}
+              key={testimonial.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -64,21 +113,25 @@ export default function RBASuccessStoriesSection() {
                 <CardContent className="p-8">
                   <Quote className="w-12 h-12 text-[#2E5A9C]/20 mb-4" />
                   <p className="text-[#3A3A3C] mb-6 italic">
-                    "{story.testimonial}"
+                    "{testimonial.testimonialText}"
                   </p>
                   <div className="flex items-center gap-4">
                     <img
-                      src={story.image}
-                      alt={story.name}
+                      src={getImageUrl(testimonial, index)}
+                      alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover"
                       loading="lazy"
                     />
                     <div>
                       <h4 className="font-semibold text-[#2E5A9C] text-lg">
-                        {story.name}
+                        {testimonial.name}
                       </h4>
-                      <p className="text-sm text-[#707070]">{story.program}</p>
-                      <p className="text-sm text-[#707070]">{story.company}</p>
+                      {testimonial.position && (
+                        <p className="text-sm text-[#707070]">{testimonial.position}</p>
+                      )}
+                      {testimonial.company && (
+                        <p className="text-sm text-[#707070]">{testimonial.company}</p>
+                      )}
                     </div>
                   </div>
                 </CardContent>

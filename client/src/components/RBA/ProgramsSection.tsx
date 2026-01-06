@@ -1,47 +1,79 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Hammer, Calculator, Users, Laptop, ClipboardList, Briefcase } from "lucide-react";
+import {
+  Hammer, Calculator, Users, Laptop, ClipboardList, Briefcase,
+  GraduationCap, BookOpen, Award, Wrench, Settings,
+  type LucideIcon
+} from "lucide-react";
 
-const programs = [
-  {
-    icon: Hammer,
-    title: "Métiers du BTP",
-    description: "Maçonnerie, plomberie, électricité, conduite d'engins et gestion de chantiers.",
-    duration: "3 à 12 mois",
-  },
-  {
-    icon: Calculator,
-    title: "Comptabilité & Gestion",
-    description: "Comptabilité générale, gestion financière, audit et contrôle de gestion.",
-    duration: "6 à 18 mois",
-  },
-  {
-    icon: Users,
-    title: "Management",
-    description: "Leadership, gestion d'équipe, ressources humaines et développement organisationnel.",
-    duration: "3 à 9 mois",
-  },
-  {
-    icon: Laptop,
-    title: "Informatique",
-    description: "Bureautique, développement web, maintenance informatique et cybersécurité.",
-    duration: "6 à 12 mois",
-  },
-  {
-    icon: ClipboardList,
-    title: "Agro-business",
-    description: "Techniques agricoles modernes, gestion d'exploitation et transformation agricole.",
-    duration: "4 à 10 mois",
-  },
-  {
-    icon: Briefcase,
-    title: "Entrepreneuriat",
-    description: "Création d'entreprise, business plan, marketing et gestion commerciale.",
-    duration: "2 à 6 mois",
-  },
-];
+interface RbaProgram {
+  id: string;
+  title: string;
+  description: string | null;
+  duration: string | null;
+  iconName: string | null;
+  imageUrl: string | null;
+  displayOrder: number;
+}
+
+// Mapping des noms d'icônes vers les composants Lucide
+const iconMap: Record<string, LucideIcon> = {
+  "hammer": Hammer,
+  "calculator": Calculator,
+  "users": Users,
+  "laptop": Laptop,
+  "clipboard-list": ClipboardList,
+  "clipboardlist": ClipboardList,
+  "briefcase": Briefcase,
+  "graduation-cap": GraduationCap,
+  "book-open": BookOpen,
+  "award": Award,
+  "wrench": Wrench,
+  "settings": Settings,
+};
 
 export default function RBAProgramsSection() {
+  const [programs, setPrograms] = useState<RbaProgram[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const response = await fetch("/api/rba/programs");
+        if (response.ok) {
+          const data = await response.json();
+          setPrograms(data);
+        }
+      } catch (error) {
+        console.error("Erreur chargement programmes:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPrograms();
+  }, []);
+
+  const getIcon = (iconName: string | null): LucideIcon => {
+    if (!iconName) return GraduationCap;
+    const normalizedName = iconName.toLowerCase().replace(/_/g, "-");
+    return iconMap[normalizedName] || GraduationCap;
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="w-12 h-12 border-4 border-[#2E5A9C] border-t-transparent rounded-full animate-spin" />
+        </div>
+      </section>
+    );
+  }
+
+  if (programs.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
@@ -62,10 +94,10 @@ export default function RBAProgramsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => {
-            const Icon = program.icon;
+            const Icon = getIcon(program.iconName);
             return (
               <motion.div
-                key={program.title}
+                key={program.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -73,20 +105,32 @@ export default function RBAProgramsSection() {
               >
                 <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-none bg-[#F5F1E8]">
                   <CardHeader>
-                    <div className="w-16 h-16 rounded-full bg-[#2E5A9C]/10 flex items-center justify-center mb-4">
-                      <Icon className="w-8 h-8 text-[#2E5A9C]" />
-                    </div>
+                    {program.imageUrl ? (
+                      <img
+                        src={program.imageUrl}
+                        alt={program.title}
+                        className="w-full h-40 object-cover rounded-lg mb-4"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-[#2E5A9C]/10 flex items-center justify-center mb-4">
+                        <Icon className="w-8 h-8 text-[#2E5A9C]" />
+                      </div>
+                    )}
                     <CardTitle className="text-2xl text-[#2E5A9C]">
                       {program.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-[#3A3A3C] mb-4">{program.description}</p>
-                    <div className="inline-block bg-[#2E5A9C]/10 px-4 py-2 rounded-full">
-                      <span className="text-[#2E5A9C] font-semibold text-sm">
-                        Durée : {program.duration}
-                      </span>
-                    </div>
+                    {program.description && (
+                      <p className="text-[#3A3A3C] mb-4">{program.description}</p>
+                    )}
+                    {program.duration && (
+                      <div className="inline-block bg-[#2E5A9C]/10 px-4 py-2 rounded-full">
+                        <span className="text-[#2E5A9C] font-semibold text-sm">
+                          Durée : {program.duration}
+                        </span>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>

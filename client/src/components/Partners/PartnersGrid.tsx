@@ -1,112 +1,107 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
-const partnerCategories = [
-  {
-    category: "Partenaires Institutionnels",
-    color: "#8B1538",
-    partners: [
-      {
-        name: "Banque Africaine de Développement",
-        type: "Financement",
-        description: "Partenaire financier pour nos projets d'infrastructure",
-        since: "2020",
-      },
-      {
-        name: "Ministère de l'Agriculture",
-        type: "Institutionnel",
-        description: "Collaboration sur les projets agro-business",
-        since: "2019",
-      },
-      {
-        name: "Chambre de Commerce",
-        type: "Réseau",
-        description: "Membre actif et partenaire pour l'entrepreneuriat",
-        since: "2018",
-      },
-    ],
-  },
-  {
-    category: "Partenaires Techniques",
-    color: "#C74634",
-    partners: [
-      {
-        name: "Caterpillar",
-        type: "Équipementier",
-        description: "Fourniture d'engins BTP de dernière génération",
-        since: "2021",
-      },
-      {
-        name: "Schneider Electric",
-        type: "Technologie",
-        description: "Solutions énergétiques et automatisation",
-        since: "2022",
-      },
-      {
-        name: "John Deere",
-        type: "Agricole",
-        description: "Équipements agricoles et maintenance",
-        since: "2020",
-      },
-    ],
-  },
-  {
-    category: "Partenaires Financiers",
-    color: "#2E5A9C",
-    partners: [
-      {
-        name: "Banque Atlantique",
-        type: "Bancaire",
-        description: "Financement de projets et solutions cash management",
-        since: "2019",
-      },
-      {
-        name: "Coris Bank",
-        type: "Bancaire",
-        description: "Partenaire bancaire principal du groupe",
-        since: "2018",
-      },
-      {
-        name: "Proparco",
-        type: "Investissement",
-        description: "Investisseur dans nos projets de développement",
-        since: "2023",
-      },
-    ],
-  },
-  {
-    category: "Partenaires Académiques",
-    color: "#058B5E",
-    partners: [
-      {
-        name: "Université de Ouagadougou",
-        type: "Académique",
-        description: "Formation et recherche-développement",
-        since: "2020",
-      },
-      {
-        name: "Institut 2IE",
-        type: "Enseignement supérieur",
-        description: "Stages et projets de fin d'études",
-        since: "2021",
-      },
-      {
-        name: "AFPA France",
-        type: "Formation",
-        description: "Transfert de compétences et certifications",
-        since: "2022",
-      },
-    ],
-  },
-];
+interface Partner {
+  id: string;
+  name: string;
+  description: string | null;
+  logoUrl: string | null;
+  websiteUrl: string | null;
+  categoryId: string | null;
+  partnerSince: string | null;
+  displayOrder: number;
+}
+
+interface PartnerCategory {
+  id: string;
+  name: string;
+  color: string | null;
+  displayOrder: number;
+}
+
+interface GroupedPartners {
+  category: PartnerCategory;
+  partners: Partner[];
+}
 
 export default function PartnersGrid() {
+  const [groupedPartners, setGroupedPartners] = useState<GroupedPartners[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [partnersRes, categoriesRes] = await Promise.all([
+          fetch("/api/partners"),
+          fetch("/api/partners/categories")
+        ]);
+
+        if (partnersRes.ok && categoriesRes.ok) {
+          const partners: Partner[] = await partnersRes.json();
+          const categories: PartnerCategory[] = await categoriesRes.json();
+
+          // Grouper les partenaires par catégorie
+          const grouped = categories
+            .sort((a, b) => a.displayOrder - b.displayOrder)
+            .map(category => ({
+              category,
+              partners: partners
+                .filter(p => p.categoryId === category.id)
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+            }))
+            .filter(g => g.partners.length > 0);
+
+          // Ajouter les partenaires sans catégorie
+          const uncategorized = partners.filter(p => !p.categoryId);
+          if (uncategorized.length > 0) {
+            grouped.push({
+              category: { id: "other", name: "Autres Partenaires", color: "#8B1538", displayOrder: 999 },
+              partners: uncategorized
+            });
+          }
+
+          setGroupedPartners(grouped);
+        }
+      } catch (error) {
+        console.error("Erreur chargement partenaires:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const formatYear = (dateStr: string | null): string => {
+    if (!dateStr) return "";
+    try {
+      const date = new Date(dateStr);
+      return date.getFullYear().toString();
+    } catch {
+      return dateStr;
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="w-12 h-12 border-4 border-[#8B1538] border-t-transparent rounded-full animate-spin" />
+        </div>
+      </section>
+    );
+  }
+
+  if (groupedPartners.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
-        {partnerCategories.map((category, catIndex) => (
+        {groupedPartners.map((group) => (
           <motion.div
-            key={category.category}
+            key={group.category.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -115,15 +110,15 @@ export default function PartnersGrid() {
           >
             <h2
               className="text-3xl md:text-4xl font-bold mb-8"
-              style={{ color: category.color }}
+              style={{ color: group.category.color || "#8B1538" }}
             >
-              {category.category}
+              {group.category.name}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {category.partners.map((partner, index) => (
+              {group.partners.map((partner, index) => (
                 <motion.div
-                  key={partner.name}
+                  key={partner.id}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -131,21 +126,42 @@ export default function PartnersGrid() {
                 >
                   <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-none">
                     <CardContent className="p-6">
-                      <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                        <h3 className="text-xl font-bold text-[#1A1A1A]">
-                          {partner.name}
-                        </h3>
-                        <span
-                          className="px-3 py-1 rounded-full text-white text-xs font-semibold whitespace-nowrap"
-                          style={{ backgroundColor: category.color }}
-                        >
-                          {partner.type}
-                        </span>
+                      <div className="flex items-start gap-4 mb-3">
+                        {partner.logoUrl && (
+                          <img
+                            src={partner.logoUrl}
+                            alt={partner.name}
+                            className="w-16 h-16 object-contain"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = "none";
+                            }}
+                          />
+                        )}
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-[#1A1A1A]">
+                            {partner.websiteUrl ? (
+                              <a
+                                href={partner.websiteUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#8B1538] transition-colors"
+                              >
+                                {partner.name}
+                              </a>
+                            ) : (
+                              partner.name
+                            )}
+                          </h3>
+                        </div>
                       </div>
-                      <p className="text-[#3A3A3C] mb-4">{partner.description}</p>
-                      <p className="text-sm text-[#707070]">
-                        Partenaire depuis <span className="font-semibold">{partner.since}</span>
-                      </p>
+                      {partner.description && (
+                        <p className="text-[#3A3A3C] mb-4">{partner.description}</p>
+                      )}
+                      {partner.partnerSince && (
+                        <p className="text-sm text-[#707070]">
+                          Partenaire depuis <span className="font-semibold">{formatYear(partner.partnerSince)}</span>
+                        </p>
+                      )}
                     </CardContent>
                   </Card>
                 </motion.div>
