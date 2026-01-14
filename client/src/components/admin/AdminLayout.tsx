@@ -24,6 +24,10 @@ import {
   Heart,
   Globe,
   ChevronDown,
+  Package,
+  FolderKanban,
+  FileText,
+  Layers,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -41,6 +45,7 @@ const navItems: NavItem[] = [
   { title: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { title: "Carousel", href: "/admin/carousel", icon: Images },
   { title: "Actualités", href: "/admin/news", icon: Newspaper },
+  { title: "Communiqués", href: "/admin/press-releases", icon: FileText },
   {
     title: "Entités",
     href: "/admin/entities",
@@ -53,6 +58,27 @@ const navItems: NavItem[] = [
       { title: "Programmes RBA", href: "/admin/programs/rba" },
     ],
   },
+  {
+    title: "Produits",
+    href: "/admin/products",
+    icon: Package,
+    children: [
+      { title: "Tous les produits", href: "/admin/products" },
+      { title: "Produits RBF", href: "/admin/products/rbf" },
+      { title: "Produits REVI", href: "/admin/products/revi" },
+    ],
+  },
+  {
+    title: "Projets",
+    href: "/admin/projects",
+    icon: FolderKanban,
+    children: [
+      { title: "Tous les projets", href: "/admin/projects" },
+      { title: "Projets RBF", href: "/admin/projects/rbf" },
+      { title: "Projets RIC", href: "/admin/projects/ric" },
+      { title: "Projets REVI", href: "/admin/projects/revi" },
+    ],
+  },
   { title: "Équipe", href: "/admin/team", icon: Users },
   { title: "Partenaires", href: "/admin/partners", icon: Handshake },
   { title: "Témoignages", href: "/admin/testimonials", icon: MessageSquareQuote },
@@ -63,6 +89,7 @@ const navItems: NavItem[] = [
   { title: "Timeline", href: "/admin/timeline", icon: Clock },
   { title: "Valeurs", href: "/admin/values", icon: Heart },
   { title: "Réseaux sociaux", href: "/admin/social", icon: Globe },
+  { title: "Pages", href: "/admin/pages", icon: Layers },
   { title: "Paramètres", href: "/admin/settings", icon: Settings },
 ];
 
@@ -72,6 +99,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const [user, setUser] = useState<{ username: string; role: string } | null>(null);
+  const [groupeLogo, setGroupeLogo] = useState<string | null>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("admin_user");
@@ -81,6 +109,25 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       setLocation("/admin/login");
     }
   }, [setLocation]);
+
+  // Charger le logo du groupe
+  useEffect(() => {
+    const fetchLogo = async () => {
+      try {
+        const response = await fetch("/api/entities");
+        if (response.ok) {
+          const entities = await response.json();
+          const groupe = entities.find((e: { code: string }) => e.code === "GROUPE");
+          if (groupe?.logoUrl) {
+            setGroupeLogo(groupe.logoUrl);
+          }
+        }
+      } catch (error) {
+        console.error("Erreur chargement logo:", error);
+      }
+    };
+    fetchLogo();
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("admin_token");
@@ -135,8 +182,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="h-16 flex items-center justify-between px-4 border-b">
           {isSidebarOpen ? (
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#8B1538] to-[#C74634] rounded-xl flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-lg">R</span>
+              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                {groupeLogo ? (
+                  <img src={groupeLogo} alt="Rishom" className="h-10 w-auto max-w-[80px] object-contain" />
+                ) : (
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#8B1538] to-[#C74634] rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-white font-bold text-lg">R</span>
+                  </div>
+                )}
               </div>
               <div>
                 <h1 className="font-bold text-gray-900">Rishom</h1>
@@ -144,8 +197,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </div>
             </div>
           ) : (
-            <div className="w-10 h-10 bg-gradient-to-br from-[#8B1538] to-[#C74634] rounded-xl flex items-center justify-center mx-auto">
-              <span className="text-white font-bold text-lg">R</span>
+            <div className="w-10 h-10 flex items-center justify-center mx-auto">
+              {groupeLogo ? (
+                <img src={groupeLogo} alt="Rishom" className="h-10 w-auto object-contain" />
+              ) : (
+                <div className="w-10 h-10 bg-gradient-to-br from-[#8B1538] to-[#C74634] rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">R</span>
+                </div>
+              )}
             </div>
           )}
           <button

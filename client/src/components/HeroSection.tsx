@@ -4,28 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, Pause, Play } from "lucide-react";
 import { Link } from "wouter";
 
-// Logos des entités (assets locaux)
-import groupeLogoWhite from "@assets/LOGOS_DEF-12_1766165412964.png";
-import rbfLogoWhite from "@assets/LOGOS_DEF-08_1766102890554.png";
-import ricLogoWhite from "@assets/LOGOS_DEF-10_1766165412964.png";
-import reviLogoWhite from "@assets/LOGOS_DEF-10_1766102890554.png";
-import rbaLogoWhite from "@assets/LOGOS_DEF-04_1766102890554.png";
-
-// Images de fallback
+// Images de fallback (pour le cas où la BD est vide)
 import heroRbfConstruction from "@assets/generated_images/rbf_construction_site_ouagadougou.png";
 import heroRicConsulting from "@assets/generated_images/ric_consulting_meeting_burkina.png";
 import heroReviAgriculture from "@assets/generated_images/revi_rice_agriculture_burkina.png";
 import heroRbaCampus from "@assets/generated_images/rba_campus_ouagadougou_burkina.png";
 import heroGroupTeam from "@assets/generated_images/rishom_team_photo_burkina.png";
-
-const entityLogos: Record<string, string> = {
-  "RBF": rbfLogoWhite,
-  "RIC": ricLogoWhite,
-  "REV'I": reviLogoWhite,
-  "REVI": reviLogoWhite,
-  "RBA": rbaLogoWhite,
-  "GROUPE": groupeLogoWhite,
-};
 
 // Images de fallback par entité
 const fallbackImages: Record<string, string> = {
@@ -35,6 +19,30 @@ const fallbackImages: Record<string, string> = {
   "REV'I": heroReviAgriculture,
   "RBA": heroRbaCampus,
   "GROUPE": heroGroupTeam,
+};
+
+// Descriptions par défaut pour les entités
+const defaultDescriptions: Record<string, { title: string; subtitle: string }> = {
+  "GROUPE": {
+    title: "Groupe Rishom",
+    subtitle: "Bâtir l'avenir, ensemble"
+  },
+  "RBF": {
+    title: "Rishom BTP & Fournitures",
+    subtitle: "Construction et fournitures de qualité"
+  },
+  "RIC": {
+    title: "Rishom Invest & Conseil",
+    subtitle: "Conseil et investissement stratégique"
+  },
+  "REVI": {
+    title: "Rishom Élevage & Valorisation",
+    subtitle: "Agriculture et élevage durables"
+  },
+  "RBA": {
+    title: "Rishom Business Academy",
+    subtitle: "Formation professionnelle d'excellence"
+  },
 };
 
 interface CarouselSlide {
@@ -47,76 +55,127 @@ interface CarouselSlide {
   linkUrl: string | null;
   ctaText: string | null;
   displayOrder: number;
+  entityId?: string | null;
+}
+
+interface Entity {
+  id: string;
+  code: string;
+  fullName: string;
+  shortName: string;
+  colorPrimary: string;
+  logoUrl: string | null;
+  logoWhiteUrl: string | null;
+  pageSlug: string | null;
 }
 
 const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
+  enter: {
     opacity: 0
-  }),
+  },
   center: {
     zIndex: 1,
-    x: 0,
     opacity: 1
   },
-  exit: (direction: number) => ({
+  exit: {
     zIndex: 0,
-    x: direction < 0 ? 300 : -300,
     opacity: 0
-  })
+  }
+};
+
+const textVariants = {
+  enter: {
+    opacity: 0,
+    y: 10
+  },
+  center: {
+    opacity: 1,
+    y: 0
+  },
+  exit: {
+    opacity: 0,
+    y: -10
+  }
 };
 
 // Détermine l'entité à partir du titre ou de l'URL
-function getEntityFromSlide(slide: CarouselSlide): string {
+function getEntityCodeFromSlide(slide: CarouselSlide): string {
   const title = slide.title.toUpperCase();
   const link = (slide.linkUrl || "").toLowerCase();
 
   if (title.includes("RBF") || link.includes("/rbf")) return "RBF";
   if (title.includes("RIC") || link.includes("/ric")) return "RIC";
-  if (title.includes("REV'I") || title.includes("REVI") || link.includes("/revi")) return "REV'I";
+  if (title.includes("REV'I") || title.includes("REVI") || link.includes("/revi")) return "REVI";
   if (title.includes("RBA") || link.includes("/rba")) return "RBA";
   return "GROUPE";
 }
 
 export default function HeroSection() {
-  const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [slides, setSlides] = useState<CarouselSlide[]>([]);
+  const [entities, setEntities] = useState<Entity[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Charger les slides depuis l'API
+  // Charger les entités et les slides depuis l'API
   useEffect(() => {
-    const fetchSlides = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch("/api/carousel");
-        if (response.ok) {
-          const data = await response.json();
-          if (data.length > 0) {
-            setSlides(data);
-          }
+        // Charger les entités
+        const entitiesRes = await fetch("/api/entities");
+        const entitiesData = entitiesRes.ok ? await entitiesRes.json() : [];
+        setEntities(entitiesData);
+
+        // Charger les slides du carousel
+        const carouselRes = await fetch("/api/carousel");
+        const carouselData = carouselRes.ok ? await carouselRes.json() : [];
+
+        if (carouselData.length > 0) {
+          setSlides(carouselData);
+        } else if (entitiesData.length > 0) {
+          // Si pas de slides, créer des slides à partir des entités
+          const defaultSlides: CarouselSlide[] = entitiesData
+            .sort((a: Entity, b: Entity) => a.code === "GROUPE" ? -1 : b.code === "GROUPE" ? 1 : 0)
+            .map((entity: Entity, index: number) => ({
+              id: entity.id,
+              title: defaultDescriptions[entity.code]?.title || entity.fullName,
+              subtitle: defaultDescriptions[entity.code]?.subtitle || entity.shortName,
+              imageUrl: fallbackImages[entity.code] || heroGroupTeam,
+              imageAltText: entity.fullName,
+              colorCode: entity.colorPrimary,
+              linkUrl: `/${entity.pageSlug || entity.code.toLowerCase()}`,
+              ctaText: "Découvrir",
+              displayOrder: index,
+              entityId: entity.id,
+            }));
+          setSlides(defaultSlides);
         }
       } catch (error) {
-        console.error("Erreur chargement carousel:", error);
+        console.error("Erreur chargement données:", error);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchSlides();
+    fetchData();
   }, []);
 
-  const paginate = useCallback((newDirection: number) => {
+  // Récupérer les infos d'une entité par son code
+  const getEntityByCode = (code: string): Entity | undefined => {
+    return entities.find(e => e.code === code || e.code === code.replace("'", ""));
+  };
+
+  const paginate = useCallback((direction: number) => {
     if (slides.length === 0) return;
-    setCurrentIndex(([prev]) => {
-      let next = prev + newDirection;
+    setCurrentIndex((prev) => {
+      let next = prev + direction;
       if (next >= slides.length) next = 0;
       if (next < 0) next = slides.length - 1;
-      return [next, newDirection];
+      return next;
     });
   }, [slides.length]);
 
   const goToSlide = (index: number) => {
-    const newDirection = index > currentIndex ? 1 : -1;
-    setCurrentIndex([index, newDirection]);
+    setCurrentIndex(index);
   };
 
   useEffect(() => {
@@ -137,32 +196,32 @@ export default function HeroSection() {
   }
 
   const currentSlide = slides[currentIndex];
-  const entity = getEntityFromSlide(currentSlide);
-  const entityColor = currentSlide.colorCode || "#8B1538";
+  const entityCode = getEntityCodeFromSlide(currentSlide);
+  const entity = getEntityByCode(entityCode);
+  const entityColor = currentSlide.colorCode || entity?.colorPrimary || "#8B1538";
 
-  // Utiliser l'image de la BD, sinon fallback
-  const imageUrl = currentSlide.imageUrl.startsWith("/images/") || currentSlide.imageUrl.startsWith("/uploads/")
+  // Logo: utiliser celui de l'entité (depuis la BD) ou le logo blanc
+  const logoUrl = entity?.logoWhiteUrl || entity?.logoUrl || null;
+
+  // Image: utiliser celle du slide, sinon fallback
+  const imageUrl = currentSlide.imageUrl && (currentSlide.imageUrl.startsWith("/") || currentSlide.imageUrl.startsWith("http"))
     ? currentSlide.imageUrl
-    : fallbackImages[entity] || heroGroupTeam;
+    : fallbackImages[entityCode] || heroGroupTeam;
 
   return (
     <section className="relative h-[85vh] min-h-[600px] overflow-hidden bg-[#3A3A3C]">
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentIndex}
-          custom={direction}
           variants={slideVariants}
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{
-            x: { type: "tween", duration: 0.4, ease: "easeOut" },
-            opacity: { duration: 0.4 }
-          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[5000ms] ease-out hover:scale-105"
+            className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -179,19 +238,23 @@ export default function HeroSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-center max-w-5xl mx-auto"
+            variants={textVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-center max-w-5xl mx-auto will-change-transform"
           >
-            <div className="mb-6">
-              <img
-                src={entityLogos[entity] || groupeLogoWhite}
-                alt={entity}
-                className="h-48 md:h-60 w-auto mx-auto"
-              />
-            </div>
+            {logoUrl && (
+              <div className="mb-6">
+                <img
+                  src={logoUrl}
+                  alt={entity?.fullName || entityCode}
+                  className="h-48 md:h-60 w-auto mx-auto"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                />
+              </div>
+            )}
 
             <h1
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
@@ -262,8 +325,9 @@ export default function HeroSection() {
 
         <div className="flex gap-2">
           {slides.map((slide, index) => {
-            const slideEntity = getEntityFromSlide(slide);
-            const slideColor = slide.colorCode || "#8B1538";
+            const slideEntityCode = getEntityCodeFromSlide(slide);
+            const slideEntity = getEntityByCode(slideEntityCode);
+            const slideColor = slide.colorCode || slideEntity?.colorPrimary || "#8B1538";
             return (
               <button
                 key={slide.id}

@@ -1,13 +1,14 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const filters = [
-  { id: "all", label: "Tous les projets" },
-  { id: "rbf", label: "BTP", color: "#C74634" },
-  { id: "ric", label: "Investissement", color: "#8B1538" },
-  { id: "revi", label: "Agro-business", color: "#058B5E" },
-  { id: "rba", label: "Formation", color: "#2E5A9C" },
-];
+interface Entity {
+  id: string;
+  code: string;
+  shortName: string;
+  colorPrimary: string;
+  description: string | null;
+}
 
 interface FilterSectionProps {
   activeFilter: string;
@@ -15,6 +16,34 @@ interface FilterSectionProps {
 }
 
 export default function ProjectsFilterSection({ activeFilter, onFilterChange }: FilterSectionProps) {
+  const [entities, setEntities] = useState<Entity[]>([]);
+
+  useEffect(() => {
+    const fetchEntities = async () => {
+      try {
+        const response = await fetch("/api/entities");
+        if (response.ok) {
+          const data: Entity[] = await response.json();
+          // Exclure GROUPE
+          setEntities(data.filter(e => e.code !== "GROUPE"));
+        }
+      } catch (error) {
+        console.error("Erreur chargement entités:", error);
+      }
+    };
+    fetchEntities();
+  }, []);
+
+  // Construire les filtres dynamiquement depuis les entités
+  const filters = [
+    { id: "all", label: "Tous les projets", color: "#8B1538" },
+    ...entities.map(e => ({
+      id: e.code.toLowerCase(),
+      label: e.shortName,
+      color: e.colorPrimary || "#8B1538"
+    }))
+  ];
+
   return (
     <section className="py-12 bg-white border-b">
       <div className="container mx-auto px-4">
@@ -35,7 +64,7 @@ export default function ProjectsFilterSection({ activeFilter, onFilterChange }: 
                   : "hover:shadow-md"
               }`}
               style={
-                activeFilter === filter.id && filter.color
+                activeFilter === filter.id
                   ? { backgroundColor: filter.color, color: "white" }
                   : {}
               }

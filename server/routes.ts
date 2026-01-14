@@ -7,7 +7,7 @@ import fs from "fs";
 import { db } from "./db";
 import * as queries from "./queries";
 import * as schema from "@shared/schema";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 // Configuration Multer pour l'upload d'images
 const uploadDir = path.join(process.cwd(), "client", "public", "uploads");
@@ -747,10 +747,30 @@ export async function registerRoutes(
     }
   });
 
+  app.post("/api/admin/values", async (req, res) => {
+    try {
+      await db.insert(schema.companyValues).values(req.body);
+      res.json({ message: "Valeur créée avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
   app.put("/api/admin/values/:id", async (req, res) => {
     try {
       await queries.updateValue(req.params.id, req.body);
       res.json({ message: "Valeur mise à jour avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/values/:id", async (req, res) => {
+    try {
+      await db.delete(schema.companyValues).where(eq(schema.companyValues.id, req.params.id));
+      res.json({ message: "Valeur supprimée avec succès" });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ message: "Erreur serveur" });
@@ -771,10 +791,30 @@ export async function registerRoutes(
     }
   });
 
+  app.post("/api/admin/social", async (req, res) => {
+    try {
+      await db.insert(schema.socialMediaLinks).values(req.body);
+      res.json({ message: "Lien créé avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
   app.put("/api/admin/social/:id", async (req, res) => {
     try {
       await queries.updateSocialLink(req.params.id, req.body);
       res.json({ message: "Lien mis à jour avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/social/:id", async (req, res) => {
+    try {
+      await db.delete(schema.socialMediaLinks).where(eq(schema.socialMediaLinks.id, req.params.id));
+      res.json({ message: "Lien supprimé avec succès" });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ message: "Erreur serveur" });
@@ -881,6 +921,264 @@ export async function registerRoutes(
     try {
       await queries.updateMessage(req.params.id, req.body);
       res.json({ message: "Message mis à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // CONFIGURATION DU SITE
+  // ============================================
+
+  app.get("/api/admin/settings", async (req, res) => {
+    try {
+      const config = await queries.getSiteConfiguration();
+      res.json(config || null);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/settings", async (req, res) => {
+    try {
+      await db.insert(schema.siteConfiguration).values(req.body);
+      const config = await queries.getSiteConfiguration();
+      res.json(config);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/settings", async (req, res) => {
+    try {
+      const config = await queries.getSiteConfiguration();
+      if (config) {
+        await queries.updateSiteConfiguration(config.id, req.body);
+        res.json({ message: "Configuration mise à jour" });
+      } else {
+        await db.insert(schema.siteConfiguration).values(req.body);
+        res.json({ message: "Configuration créée" });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // CATÉGORIES DE PRODUITS
+  // ============================================
+
+  app.get("/api/admin/product-categories", async (req, res) => {
+    try {
+      const categories = await db.select().from(schema.productCategories).orderBy(schema.productCategories.displayOrder);
+      res.json(categories);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/admin/product-categories/entity/:entityId", async (req, res) => {
+    try {
+      const categories = await db.select().from(schema.productCategories)
+        .where(eq(schema.productCategories.entityId, req.params.entityId))
+        .orderBy(schema.productCategories.displayOrder);
+      res.json(categories);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/product-categories", async (req, res) => {
+    try {
+      await db.insert(schema.productCategories).values(req.body);
+      res.json({ message: "Catégorie créée avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/product-categories/:id", async (req, res) => {
+    try {
+      await db.update(schema.productCategories).set(req.body).where(eq(schema.productCategories.id, req.params.id));
+      res.json({ message: "Catégorie mise à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/product-categories/:id", async (req, res) => {
+    try {
+      await db.delete(schema.productCategories).where(eq(schema.productCategories.id, req.params.id));
+      res.json({ message: "Catégorie supprimée" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // PRODUITS
+  // ============================================
+
+  app.get("/api/admin/products", async (req, res) => {
+    try {
+      const products = await db.select().from(schema.products).orderBy(schema.products.displayOrder);
+      res.json(products);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/admin/products/entity/:entityId", async (req, res) => {
+    try {
+      const products = await db.select().from(schema.products)
+        .where(eq(schema.products.entityId, req.params.entityId))
+        .orderBy(schema.products.displayOrder);
+      res.json(products);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/products", async (req, res) => {
+    try {
+      await db.insert(schema.products).values(req.body);
+      res.json({ message: "Produit créé avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/products/:id", async (req, res) => {
+    try {
+      await db.update(schema.products).set(req.body).where(eq(schema.products.id, req.params.id));
+      res.json({ message: "Produit mis à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/products/:id", async (req, res) => {
+    try {
+      await db.delete(schema.products).where(eq(schema.products.id, req.params.id));
+      res.json({ message: "Produit supprimé" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // PROJETS / RÉALISATIONS
+  // ============================================
+
+  app.get("/api/admin/projects", async (req, res) => {
+    try {
+      const projects = await db.select().from(schema.projects).orderBy(desc(schema.projects.year));
+      res.json(projects);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/admin/projects/entity/:entityId", async (req, res) => {
+    try {
+      const projects = await db.select().from(schema.projects)
+        .where(eq(schema.projects.entityId, req.params.entityId))
+        .orderBy(desc(schema.projects.year));
+      res.json(projects);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/projects", async (req, res) => {
+    try {
+      await db.insert(schema.projects).values(req.body);
+      res.json({ message: "Projet créé avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/projects/:id", async (req, res) => {
+    try {
+      await db.update(schema.projects).set(req.body).where(eq(schema.projects.id, req.params.id));
+      res.json({ message: "Projet mis à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/projects/:id", async (req, res) => {
+    try {
+      await db.delete(schema.projects).where(eq(schema.projects.id, req.params.id));
+      res.json({ message: "Projet supprimé" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // INFORMATIONS DE CONTACT
+  // ============================================
+
+  app.get("/api/admin/contact-info", async (req, res) => {
+    try {
+      const contacts = await queries.getContactInformation();
+      res.json(contacts);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/contact-info", async (req, res) => {
+    try {
+      await db.insert(schema.contactInformation).values(req.body);
+      res.json({ message: "Contact créé avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/contact-info", async (req, res) => {
+    try {
+      if (req.body.id) {
+        await queries.updateContactInfo(req.body.id, req.body);
+        res.json({ message: "Contact mis à jour" });
+      } else {
+        await db.insert(schema.contactInformation).values(req.body);
+        res.json({ message: "Contact créé" });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/contact-info/:id", async (req, res) => {
+    try {
+      await queries.updateContactInfo(req.params.id, req.body);
+      res.json({ message: "Contact mis à jour" });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ message: "Erreur serveur" });
@@ -1120,6 +1418,292 @@ export async function registerRoutes(
     try {
       const about = await db.select().from(schema.aboutSection).limit(1);
       res.json(about[0] || null);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // Réseaux sociaux publics
+  app.get("/api/social", async (req, res) => {
+    try {
+      const socialLinks = await db.select().from(schema.socialMediaLinks).orderBy(schema.socialMediaLinks.displayOrder);
+      res.json(socialLinks.filter((s: { isActive: boolean }) => s.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // PAGES STATIQUES (Admin)
+  // ============================================
+
+  app.get("/api/admin/pages", async (req, res) => {
+    try {
+      const pages = await db.select().from(schema.pagesContent).orderBy(schema.pagesContent.pageSlug);
+      res.json(pages);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/admin/pages/:slug", async (req, res) => {
+    try {
+      const page = await db.select().from(schema.pagesContent).where(eq(schema.pagesContent.pageSlug, req.params.slug));
+      if (page.length === 0) {
+        return res.status(404).json({ message: "Page non trouvée" });
+      }
+      res.json(page[0]);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/pages", async (req, res) => {
+    try {
+      await db.insert(schema.pagesContent).values(req.body);
+      res.json({ message: "Page créée avec succès" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/pages/:id", async (req, res) => {
+    try {
+      await db.update(schema.pagesContent).set(req.body).where(eq(schema.pagesContent.id, req.params.id));
+      res.json({ message: "Page mise à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/pages/:id", async (req, res) => {
+    try {
+      await db.delete(schema.pagesContent).where(eq(schema.pagesContent.id, req.params.id));
+      res.json({ message: "Page supprimée" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // Pages publiques
+  app.get("/api/pages/:slug", async (req, res) => {
+    try {
+      const page = await db.select().from(schema.pagesContent)
+        .where(eq(schema.pagesContent.pageSlug, req.params.slug));
+      if (page.length === 0 || !page[0].isPublished) {
+        return res.status(404).json({ message: "Page non trouvée" });
+      }
+      res.json(page[0]);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // PRODUITS PUBLICS
+  // ============================================
+
+  app.get("/api/products", async (req, res) => {
+    try {
+      const products = await db.select().from(schema.products)
+        .where(eq(schema.products.isActive, true))
+        .orderBy(schema.products.displayOrder);
+      res.json(products);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/products/entity/:entityId", async (req, res) => {
+    try {
+      const products = await db.select().from(schema.products)
+        .where(eq(schema.products.entityId, req.params.entityId))
+        .orderBy(schema.products.displayOrder);
+      res.json(products.filter(p => p.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/products/featured", async (req, res) => {
+    try {
+      const products = await db.select().from(schema.products)
+        .where(eq(schema.products.isFeatured, true))
+        .orderBy(schema.products.displayOrder);
+      res.json(products.filter(p => p.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/product-categories", async (req, res) => {
+    try {
+      const categories = await db.select().from(schema.productCategories)
+        .where(eq(schema.productCategories.isActive, true))
+        .orderBy(schema.productCategories.displayOrder);
+      res.json(categories);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/product-categories/entity/:entityId", async (req, res) => {
+    try {
+      const categories = await db.select().from(schema.productCategories)
+        .where(eq(schema.productCategories.entityId, req.params.entityId))
+        .orderBy(schema.productCategories.displayOrder);
+      res.json(categories.filter(c => c.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // PROJETS PUBLICS
+  // ============================================
+
+  app.get("/api/projects", async (req, res) => {
+    try {
+      const projects = await db.select().from(schema.projects)
+        .where(eq(schema.projects.isActive, true))
+        .orderBy(desc(schema.projects.year));
+      res.json(projects);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/projects/entity/:entityId", async (req, res) => {
+    try {
+      const projects = await db.select().from(schema.projects)
+        .where(eq(schema.projects.entityId, req.params.entityId))
+        .orderBy(desc(schema.projects.year));
+      res.json(projects.filter(p => p.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/projects/featured", async (req, res) => {
+    try {
+      const projects = await db.select().from(schema.projects)
+        .where(eq(schema.projects.isFeatured, true))
+        .orderBy(desc(schema.projects.year));
+      res.json(projects.filter(p => p.isActive));
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // CATÉGORIES D'ACTUALITÉS PUBLIQUES
+  // ============================================
+
+  app.get("/api/news/categories", async (req, res) => {
+    try {
+      const categories = await queries.getNewsCategories();
+      res.json(categories);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // COMMUNIQUÉS DE PRESSE PUBLICS
+  // ============================================
+
+  app.get("/api/press-releases", async (req, res) => {
+    try {
+      const releases = await db.select().from(schema.pressReleases)
+        .where(eq(schema.pressReleases.isPublished, true))
+        .orderBy(desc(schema.pressReleases.publishedAt));
+      res.json(releases);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/api/press-releases/:slug", async (req, res) => {
+    try {
+      const release = await db.select().from(schema.pressReleases)
+        .where(eq(schema.pressReleases.slug, req.params.slug));
+      if (release.length === 0) {
+        return res.status(404).json({ message: "Communiqué non trouvé" });
+      }
+      res.json(release[0]);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  // ============================================
+  // ADMIN - COMMUNIQUÉS DE PRESSE
+  // ============================================
+
+  app.get("/api/admin/press-releases", requireAuth, async (req, res) => {
+    try {
+      const releases = await db.select().from(schema.pressReleases)
+        .orderBy(desc(schema.pressReleases.publishedAt));
+      res.json(releases);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.post("/api/admin/press-releases", requireAuth, async (req, res) => {
+    try {
+      const data = {
+        ...req.body,
+        slug: req.body.slug || req.body.title.toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, ""),
+      };
+      const result = await db.insert(schema.pressReleases).values(data);
+      res.status(201).json({ message: "Communiqué créé", id: result[0].insertId });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.put("/api/admin/press-releases/:id", requireAuth, async (req, res) => {
+    try {
+      await db.update(schema.pressReleases)
+        .set(req.body)
+        .where(eq(schema.pressReleases.id, req.params.id));
+      res.json({ message: "Communiqué mis à jour" });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.delete("/api/admin/press-releases/:id", requireAuth, async (req, res) => {
+    try {
+      await db.delete(schema.pressReleases)
+        .where(eq(schema.pressReleases.id, req.params.id));
+      res.json({ message: "Communiqué supprimé" });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ message: "Erreur serveur" });

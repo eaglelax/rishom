@@ -54,6 +54,19 @@ export const entities = mysqlTable("entities", {
   logoDarkUrl: varchar("logo_dark_url", { length: 500 }),
   pageSlug: varchar("page_slug", { length: 100 }).unique(),
   aboutText: text("about_text"),
+  // Contact Information
+  address: text("address"),
+  city: varchar("city", { length: 100 }),
+  country: varchar("country", { length: 100 }),
+  postalCode: varchar("postal_code", { length: 20 }),
+  phone: varchar("phone", { length: 50 }),
+  phone2: varchar("phone_2", { length: 50 }),
+  email: varchar("email", { length: 255 }),
+  email2: varchar("email_2", { length: 255 }),
+  mapUrl: varchar("map_url", { length: 1000 }),
+  latitude: varchar("latitude", { length: 20 }),
+  longitude: varchar("longitude", { length: 20 }),
+  openingHours: text("opening_hours"),
   isActive: boolean("is_active").notNull().default(true),
   displayOrder: int("display_order").notNull().default(0),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -453,6 +466,94 @@ export const contactMessages = mysqlTable("contact_messages", {
 });
 
 // ============================================
+// 27. CATÉGORIES DE PRODUITS
+// ============================================
+export const productCategories = mysqlTable("product_categories", {
+  id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => randomUUID()),
+  entityId: varchar("entity_id", { length: 36 }),
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 100 }).notNull(),
+  description: text("description"),
+  imageUrl: varchar("image_url", { length: 500 }),
+  displayOrder: int("display_order").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+
+// ============================================
+// 28. PRODUITS
+// ============================================
+export const products = mysqlTable("products", {
+  id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => randomUUID()),
+  categoryId: varchar("category_id", { length: 36 }),
+  entityId: varchar("entity_id", { length: 36 }),
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 100 }).notNull(),
+  description: text("description"),
+  specifications: text("specifications"),
+  imageUrl: varchar("image_url", { length: 500 }),
+  galleryUrls: json("gallery_urls"), // Array of image URLs
+  price: decimal("price", { precision: 12, scale: 2 }),
+  priceCurrency: varchar("price_currency", { length: 10 }).default("XOF"),
+  isForRent: boolean("is_for_rent").notNull().default(false),
+  isForSale: boolean("is_for_sale").notNull().default(true),
+  displayOrder: int("display_order").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  isFeatured: boolean("is_featured").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+
+// ============================================
+// 29. PROJETS / RÉALISATIONS
+// ============================================
+export const projects = mysqlTable("projects", {
+  id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => randomUUID()),
+  entityId: varchar("entity_id", { length: 36 }),
+  title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 100 }).notNull(),
+  client: varchar("client", { length: 255 }),
+  location: varchar("location", { length: 255 }),
+  year: int("year"),
+  description: text("description"),
+  challenges: text("challenges"),
+  solutions: text("solutions"),
+  results: text("results"),
+  imageUrl: varchar("image_url", { length: 500 }),
+  galleryUrls: json("gallery_urls"),
+  projectType: varchar("project_type", { length: 100 }), // construction, consulting, agriculture, training
+  budget: varchar("budget", { length: 100 }),
+  duration: varchar("duration", { length: 100 }),
+  displayOrder: int("display_order").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  isFeatured: boolean("is_featured").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+
+// ============================================
+// 30. COMMUNIQUÉS DE PRESSE
+// ============================================
+export const pressReleases = mysqlTable("press_releases", {
+  id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => randomUUID()),
+  title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  category: varchar("category", { length: 100 }),
+  excerpt: text("excerpt"),
+  content: text("content"),
+  pdfUrl: varchar("pdf_url", { length: 500 }),
+  pdfSize: varchar("pdf_size", { length: 20 }),
+  imageUrl: varchar("image_url", { length: 500 }),
+  entityId: varchar("entity_id", { length: 36 }),
+  publishedAt: timestamp("published_at"),
+  isPublished: boolean("is_published").notNull().default(false),
+  displayOrder: int("display_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+
+// ============================================
 // RELATIONS
 // ============================================
 export const entitiesRelations = relations(entities, ({ many }) => ({
@@ -643,6 +744,10 @@ export type FooterContent = typeof footerContent.$inferSelect;
 export type SocialMediaLink = typeof socialMediaLinks.$inferSelect;
 export type SeoMeta = typeof seoMeta.$inferSelect;
 export type MediaFile = typeof mediaLibrary.$inferSelect;
+export type ProductCategory = typeof productCategories.$inferSelect;
+export type Product = typeof products.$inferSelect;
+export type Project = typeof projects.$inferSelect;
+export type PressRelease = typeof pressReleases.$inferSelect;
 
 // Legacy compatibility
 export const users = adminUsers;

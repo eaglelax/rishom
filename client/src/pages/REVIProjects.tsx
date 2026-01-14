@@ -1,14 +1,50 @@
+import { useState, useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Tractor, Lightbulb, Users, TrendingUp, CheckCircle2, Calendar } from "lucide-react";
-import projectsHeroImage from "@assets/generated_images/rev'i_tractor_farming_burkina.png";
+import { Tractor, Lightbulb, Users, TrendingUp, CheckCircle2, Calendar, FolderKanban, MapPin } from "lucide-react";
 
-const HeroSection = () => (
+interface Entity {
+  id: string;
+  code: string;
+  shortName: string;
+  colorPrimary: string;
+  logoUrl: string | null;
+}
+
+interface Project {
+  id: string;
+  entityId: string | null;
+  title: string;
+  slug: string;
+  client: string | null;
+  location: string | null;
+  year: number | null;
+  description: string | null;
+  challenges: string | null;
+  solutions: string | null;
+  results: string | null;
+  imageUrl: string | null;
+  projectType: string | null;
+  budget: string | null;
+  duration: string | null;
+  isFeatured: boolean;
+}
+
+interface Statistic {
+  id: string;
+  label: string;
+  value: number;
+  suffix: string | null;
+}
+
+const HeroSection = ({ entity }: { entity: Entity | null }) => (
   <section className="relative h-[60vh] flex items-center">
-    <div className="absolute inset-0 bg-gradient-to-br from-[#058B5E] to-[#3A3A3C] opacity-95" />
-    <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay" style={{ backgroundImage: `url(${projectsHeroImage})` }} />
+    <div
+      className="absolute inset-0 opacity-95"
+      style={{ background: `linear-gradient(135deg, ${entity?.colorPrimary || "#058B5E"}, #3A3A3C)` }}
+    />
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -22,120 +58,93 @@ const HeroSection = () => (
   </section>
 );
 
-const OngoingProjectsSection = () => {
-  const projects = [
-    {
-      icon: <Tractor className="w-12 h-12" />,
-      name: "Mécanisation agricole pour 500 producteurs",
-      location: "Région des Hauts-Bassins",
-      duration: "2024-2026",
-      budget: "2,5 milliards FCFA",
-      partners: "BAD, Ministère Agriculture",
-      objectives: [
-        "Acquisition de 50 tracteurs et équipements",
-        "Formation de 500 producteurs",
-        "Création de 5 CUMA (Coopératives d'Utilisation de Matériel Agricole)",
-        "Augmentation de 40% des surfaces cultivées"
-      ],
-      status: "En cours - Phase 1/3",
-      progress: 35
-    },
-    {
-      icon: <Lightbulb className="w-12 h-12" />,
-      name: "Fermes pilotes agro-écologiques",
-      location: "3 régions (Centre, Cascades, Boucle du Mouhoun)",
-      duration: "2023-2025",
-      budget: "800 millions FCFA",
-      partners: "GIZ, ONG locales",
-      objectives: [
-        "3 fermes de démonstration (50 ha chacune)",
-        "Techniques d'agroforesterie et compostage",
-        "Formation de 200 agriculteurs/an",
-        "Production de semences bio"
-      ],
-      status: "En cours - Phase 2/3",
-      progress: 65
-    },
-    {
-      icon: <Users className="w-12 h-12" />,
-      name: "Autonomisation des femmes rurales",
-      location: "Province du Namentenga",
-      duration: "2024-2027",
-      budget: "500 millions FCFA",
-      partners: "ONU Femmes, PNUD",
-      objectives: [
-        "Appui à 300 groupements féminins",
-        "Maraîchage et petit élevage",
-        "Accès au microcrédit",
-        "Alphabétisation et formation gestion"
-      ],
-      status: "Démarrage - Phase 1/3",
-      progress: 15
-    }
-  ];
+const ProjectCard = ({ project, entity, index }: { project: Project; entity: Entity | null; index: number }) => {
+  const color = entity?.colorPrimary || "#058B5E";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.15 }}
+      viewport={{ once: true }}
+      className="bg-white p-8 rounded-lg shadow-lg"
+    >
+      <div className="flex flex-col md:flex-row items-start gap-4 mb-4">
+        <div style={{ color }}>
+          <FolderKanban className="w-12 h-12" />
+        </div>
+        <div className="flex-1">
+          <h3 className="text-2xl font-bold text-[#3A3A3C] mb-2">{project.title}</h3>
+          <div className="grid md:grid-cols-2 gap-3 text-sm mb-4">
+            {project.location && (
+              <div>
+                <span className="font-semibold text-[#3A3A3C]">Localisation : </span>
+                <span className="text-[#3A3A3C]">{project.location}</span>
+              </div>
+            )}
+            {project.duration && (
+              <div>
+                <span className="font-semibold text-[#3A3A3C]">Durée : </span>
+                <span className="text-[#3A3A3C]">{project.duration}</span>
+              </div>
+            )}
+            {project.budget && (
+              <div>
+                <span className="font-semibold text-[#3A3A3C]">Budget : </span>
+                <span style={{ color }} className="font-bold">{project.budget}</span>
+              </div>
+            )}
+            {project.client && (
+              <div>
+                <span className="font-semibold text-[#3A3A3C]">Partenaires : </span>
+                <span className="text-[#3A3A3C]">{project.client}</span>
+              </div>
+            )}
+          </div>
+          {project.description && (
+            <p className="text-[#3A3A3C] mb-4">{project.description}</p>
+          )}
+          {project.solutions && (
+            <div className="mb-4">
+              <h4 className="font-semibold text-[#3A3A3C] mb-2">Objectifs :</h4>
+              <ul className="grid md:grid-cols-2 gap-2">
+                {project.solutions.split('\n').filter(Boolean).map((obj, idx) => (
+                  <li key={idx} className="flex items-start text-sm">
+                    <CheckCircle2 className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" style={{ color }} />
+                    <span className="text-[#3A3A3C]">{obj}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {project.results && (
+            <div className="pt-4 border-t border-[#B8956A]/20">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5" style={{ color }} />
+                <span className="text-sm font-semibold" style={{ color }}>{project.results}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const OngoingProjectsSection = ({ projects, entity }: { projects: Project[]; entity: Entity | null }) => {
+  // Projets en cours = année actuelle ou future
+  const currentYear = new Date().getFullYear();
+  const ongoingProjects = projects.filter(p => p.year && p.year >= currentYear - 1);
+
+  if (ongoingProjects.length === 0) return null;
 
   return (
     <section className="py-20 bg-[#F5F1E8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets en Cours</h2>
         <div className="space-y-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
-              viewport={{ once: true }}
-              className="bg-white p-8 rounded-lg shadow-lg"
-            >
-              <div className="flex flex-col md:flex-row items-start gap-4 mb-4">
-                <div className="text-[#058B5E]">{project.icon}</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-[#3A3A3C] mb-2">{project.name}</h3>
-                  <div className="grid md:grid-cols-2 gap-3 text-sm mb-4">
-                    <div>
-                      <span className="font-semibold text-[#3A3A3C]">Localisation : </span>
-                      <span className="text-[#3A3A3C]">{project.location}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#3A3A3C]">Durée : </span>
-                      <span className="text-[#3A3A3C]">{project.duration}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#3A3A3C]">Budget : </span>
-                      <span className="text-[#058B5E] font-bold">{project.budget}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#3A3A3C]">Partenaires : </span>
-                      <span className="text-[#3A3A3C]">{project.partners}</span>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-[#3A3A3C] mb-2">Objectifs :</h4>
-                    <ul className="grid md:grid-cols-2 gap-2">
-                      {project.objectives.map((obj, idx) => (
-                        <li key={idx} className="flex items-start text-sm">
-                          <CheckCircle2 className="w-4 h-4 text-[#058B5E] mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-[#3A3A3C]">{obj}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-4 border-t border-[#B8956A]/20">
-                    <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
-                      <span className="font-semibold text-[#3A3A3C]">{project.status}</span>
-                      <span className="text-[#058B5E] font-bold">{project.progress}%</span>
-                    </div>
-                    <div className="w-full bg-[#F5F1E8] rounded-full h-3">
-                      <div 
-                        className="bg-[#058B5E] h-3 rounded-full transition-all duration-500"
-                        style={{ width: `${project.progress}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          {ongoingProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} entity={entity} index={index} />
           ))}
         </div>
       </div>
@@ -143,36 +152,21 @@ const OngoingProjectsSection = () => {
   );
 };
 
-const CompletedProjectsSection = () => {
-  const completed = [
-    {
-      name: "Construction de 10 magasins de stockage",
-      location: "Région du Centre-Ouest",
-      year: "2021-2023",
-      results: "2 500 tonnes de capacité, -30% pertes post-récolte"
-    },
-    {
-      name: "Électrification solaire de 15 forages",
-      location: "Province du Yatenga",
-      year: "2022-2023",
-      results: "600 ha irrigués, 250 producteurs bénéficiaires"
-    },
-    {
-      name: "Programme semences améliorées",
-      location: "Boucle du Mouhoun",
-      year: "2020-2022",
-      results: "800 producteurs formés, rendements +45%"
-    }
-  ];
+const CompletedProjectsSection = ({ projects, entity }: { projects: Project[]; entity: Entity | null }) => {
+  const currentYear = new Date().getFullYear();
+  const completedProjects = projects.filter(p => p.year && p.year < currentYear - 1);
+  const color = entity?.colorPrimary || "#058B5E";
+
+  if (completedProjects.length === 0) return null;
 
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets Réalisés</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {completed.map((project, index) => (
+          {completedProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15 }}
@@ -180,15 +174,19 @@ const CompletedProjectsSection = () => {
               className="bg-[#F5F1E8] p-6 rounded-lg"
             >
               <div className="flex items-center mb-3">
-                <CheckCircle2 className="w-6 h-6 text-[#058B5E] mr-2" />
+                <CheckCircle2 className="w-6 h-6 mr-2" style={{ color }} />
                 <span className="text-sm font-semibold text-[#B8956A]">{project.year}</span>
               </div>
-              <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">{project.name}</h3>
-              <p className="text-sm text-[#3A3A3C] mb-3">{project.location}</p>
-              <div className="pt-3 border-t border-[#B8956A]/20">
-                <TrendingUp className="w-5 h-5 text-[#058B5E] inline mr-2" />
-                <span className="text-sm font-semibold text-[#058B5E]">{project.results}</span>
-              </div>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-2">{project.title}</h3>
+              {project.location && (
+                <p className="text-sm text-[#3A3A3C] mb-3">{project.location}</p>
+              )}
+              {project.results && (
+                <div className="pt-3 border-t border-[#B8956A]/20">
+                  <TrendingUp className="w-5 h-5 inline mr-2" style={{ color }} />
+                  <span className="text-sm font-semibold" style={{ color }}>{project.results}</span>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -197,20 +195,27 @@ const CompletedProjectsSection = () => {
   );
 };
 
-const ImpactSection = () => {
-  const impacts = [
+const ImpactSection = ({ entity, statistics }: { entity: Entity | null; statistics: Statistic[] }) => {
+  const color = entity?.colorPrimary || "#058B5E";
+
+  // Statistiques par défaut si aucune n'est trouvée
+  const defaultStats = [
     { value: "1 200+", label: "Producteurs accompagnés" },
     { value: "3 500 ha", label: "Surfaces aménagées" },
     { value: "8 500 T", label: "Production additionnelle/an" },
     { value: "45%", label: "Augmentation rendements" }
   ];
 
+  const displayStats = statistics.length > 0
+    ? statistics.map(s => ({ value: `${s.value}${s.suffix || ''}`, label: s.label }))
+    : defaultStats;
+
   return (
-    <section className="py-20 bg-[#058B5E] text-white">
+    <section className="py-20 text-white" style={{ backgroundColor: color }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold mb-12 text-center">Impact Global</h2>
         <div className="grid md:grid-cols-4 gap-8 text-center">
-          {impacts.map((impact, index) => (
+          {displayStats.map((impact, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -228,52 +233,43 @@ const ImpactSection = () => {
   );
 };
 
-const PipelineSection = () => {
-  const pipeline = [
-    {
-      name: "Unité de transformation mangues séchées",
-      status: "Étude de faisabilité",
-      launch: "T3 2025",
-      budget: "1,2 Mds FCFA"
-    },
-    {
-      name: "Ferme aquaponique moderne",
-      status: "Recherche financement",
-      launch: "T4 2025",
-      budget: "600 M FCFA"
-    },
-    {
-      name: "Plateforme e-commerce agro",
-      status: "Conception",
-      launch: "T2 2025",
-      budget: "150 M FCFA"
-    }
-  ];
+const FeaturedProjectsSection = ({ projects, entity }: { projects: Project[]; entity: Entity | null }) => {
+  const featuredProjects = projects.filter(p => p.isFeatured);
+  const color = entity?.colorPrimary || "#058B5E";
+
+  if (featuredProjects.length === 0) return null;
 
   return (
     <section className="py-20 bg-[#F5F1E8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets à Venir</h2>
+        <h2 className="text-4xl font-bold text-[#3A3A3C] mb-12 text-center">Projets Phares</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {pipeline.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
               className="bg-white p-6 rounded-lg shadow-lg"
             >
-              <div className="inline-block bg-[#058B5E] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                {project.status}
+              <div
+                className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full mb-4"
+                style={{ backgroundColor: color }}
+              >
+                {project.projectType || "Projet"}
               </div>
-              <h3 className="text-xl font-bold text-[#3A3A3C] mb-4">{project.name}</h3>
+              <h3 className="text-xl font-bold text-[#3A3A3C] mb-4">{project.title}</h3>
               <div className="space-y-2 text-sm">
-                <div className="flex items-center">
-                  <Calendar className="w-4 h-4 text-[#058B5E] mr-2" />
-                  <span className="text-[#3A3A3C]">Lancement prévu : {project.launch}</span>
-                </div>
-                <div className="text-[#058B5E] font-bold">Budget : {project.budget}</div>
+                {project.year && (
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" style={{ color }} />
+                    <span className="text-[#3A3A3C]">Lancement : {project.year}</span>
+                  </div>
+                )}
+                {project.budget && (
+                  <div className="font-bold" style={{ color }}>Budget : {project.budget}</div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -284,15 +280,68 @@ const PipelineSection = () => {
 };
 
 export default function REVIProjects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [entity, setEntity] = useState<Entity | null>(null);
+  const [statistics, setStatistics] = useState<Statistic[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Récupérer l'entité REVI
+        const entitiesRes = await fetch("/api/entities");
+        if (entitiesRes.ok) {
+          const entities: Entity[] = await entitiesRes.json();
+          const reviEntity = entities.find(e => e.code === "REVI" || e.shortName.toUpperCase() === "REV'I");
+          if (reviEntity) {
+            setEntity(reviEntity);
+
+            // Récupérer les projets de REVI
+            const projectsRes = await fetch(`/api/projects/entity/${reviEntity.id}`);
+            if (projectsRes.ok) {
+              const data = await projectsRes.json();
+              setProjects(data);
+            }
+          }
+        }
+
+        // Récupérer les statistiques
+        const statsRes = await fetch("/api/statistics");
+        if (statsRes.ok) {
+          const data = await statsRes.json();
+          setStatistics(data);
+        }
+      } catch (error) {
+        console.error("Erreur chargement données:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <TopBar />
+        <Header />
+        <div className="flex justify-center items-center py-32">
+          <div className="w-12 h-12 border-4 border-[#058B5E] border-t-transparent rounded-full animate-spin" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <TopBar />
       <Header />
-      <HeroSection />
-      <OngoingProjectsSection />
-      <CompletedProjectsSection />
-      <ImpactSection />
-      <PipelineSection />
+      <HeroSection entity={entity} />
+      <OngoingProjectsSection projects={projects} entity={entity} />
+      <CompletedProjectsSection projects={projects} entity={entity} />
+      <ImpactSection entity={entity} statistics={statistics} />
+      <FeaturedProjectsSection projects={projects} entity={entity} />
       <Footer />
     </div>
   );

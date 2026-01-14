@@ -240,14 +240,14 @@ export default function AdminJobs() {
                   <div className="space-y-2">
                     <Label>Entité</Label>
                     <Select
-                      value={formData.entityId}
-                      onValueChange={(value) => setFormData({ ...formData, entityId: value })}
+                      value={formData.entityId || "groupe"}
+                      onValueChange={(value) => setFormData({ ...formData, entityId: value === "groupe" ? "" : value })}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Groupe Rishom" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Groupe Rishom</SelectItem>
+                        <SelectItem value="groupe">Groupe Rishom</SelectItem>
                         {entities.map((entity) => (
                           <SelectItem key={entity.id} value={entity.id}>
                             {entity.shortName || entity.name}

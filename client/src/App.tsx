@@ -44,6 +44,7 @@ const RIC = lazy(() => import("@/pages/RIC"));
 const RICAudit = lazy(() => import("@/pages/RICAudit"));
 const RICStrategy = lazy(() => import("@/pages/RICStrategy"));
 const RICProjectManagement = lazy(() => import("@/pages/RICProjectManagement"));
+const RICProjects = lazy(() => import("@/pages/RICProjects"));
 const RICMarketResearch = lazy(() => import("@/pages/RICMarketResearch"));
 const RICTraining = lazy(() => import("@/pages/RICTraining"));
 const RICTestimonials = lazy(() => import("@/pages/RICTestimonials"));
@@ -90,6 +91,15 @@ const AdminMessages = lazy(() => import("@/pages/admin/Messages"));
 const AdminStatistics = lazy(() => import("@/pages/admin/Statistics"));
 const AdminEntities = lazy(() => import("@/pages/admin/Entities"));
 const AdminServices = lazy(() => import("@/pages/admin/Services"));
+const AdminSettings = lazy(() => import("@/pages/admin/Settings"));
+const AdminTimeline = lazy(() => import("@/pages/admin/Timeline"));
+const AdminValues = lazy(() => import("@/pages/admin/Values"));
+const AdminSocial = lazy(() => import("@/pages/admin/Social"));
+const AdminPrograms = lazy(() => import("@/pages/admin/Programs"));
+const AdminProducts = lazy(() => import("@/pages/admin/Products"));
+const AdminProjects = lazy(() => import("@/pages/admin/Projects"));
+const AdminPages = lazy(() => import("@/pages/admin/Pages"));
+const AdminPressReleases = lazy(() => import("@/pages/admin/PressReleases"));
 
 function Router() {
   return (
@@ -125,6 +135,7 @@ function Router() {
         <Route path="/ric/audit" component={RICAudit} />
         <Route path="/ric/strategie" component={RICStrategy} />
         <Route path="/ric/projets" component={RICProjectManagement} />
+        <Route path="/ric/projets-investissement" component={RICProjects} />
         <Route path="/ric/etudes" component={RICMarketResearch} />
         <Route path="/ric/formation" component={RICTraining} />
         <Route path="/ric/temoignages" component={RICTestimonials} />
@@ -156,6 +167,12 @@ function Router() {
         <Route path="/groupe" component={Group} />
 
         {/* Admin Routes */}
+        <Route path="/admin">
+          {() => {
+            window.location.href = "/admin/login";
+            return null;
+          }}
+        </Route>
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin/dashboard" component={AdminDashboard} />
         <Route path="/admin/carousel" component={AdminCarousel} />
@@ -169,6 +186,15 @@ function Router() {
         <Route path="/admin/statistics" component={AdminStatistics} />
         <Route path="/admin/entities" component={AdminEntities} />
         <Route path="/admin/services/:entity?" component={AdminServices} />
+        <Route path="/admin/settings" component={AdminSettings} />
+        <Route path="/admin/timeline" component={AdminTimeline} />
+        <Route path="/admin/values" component={AdminValues} />
+        <Route path="/admin/social" component={AdminSocial} />
+        <Route path="/admin/programs/:entity?" component={AdminPrograms} />
+        <Route path="/admin/products/:entity?" component={AdminProducts} />
+        <Route path="/admin/projects/:entity?" component={AdminProjects} />
+        <Route path="/admin/pages" component={AdminPages} />
+        <Route path="/admin/press-releases" component={AdminPressReleases} />
 
         <Route component={NotFound} />
       </Switch>

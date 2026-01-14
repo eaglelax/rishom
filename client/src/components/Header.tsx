@@ -2,7 +2,17 @@ import { useState, useEffect } from "react";
 import { Menu, Search, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import groupeRishomLogo from "@assets/LOGOS_DEF-06_1766165412965.png";
+
+interface Entity {
+  id: string;
+  code: string;
+  fullName: string;
+  shortName: string;
+  colorPrimary: string;
+  logoUrl: string | null;
+  pageSlug: string | null;
+  displayOrder: number;
+}
 
 interface DropdownItem {
   label: string;
@@ -19,6 +29,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [groupeLogo, setGroupeLogo] = useState<string | null>(null);
+  const [entities, setEntities] = useState<Entity[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +40,41 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Charger les entités depuis l'API
+  useEffect(() => {
+    const fetchEntities = async () => {
+      try {
+        const response = await fetch("/api/entities");
+        if (response.ok) {
+          const data: Entity[] = await response.json();
+          setEntities(data.sort((a, b) => a.displayOrder - b.displayOrder));
+          // Logo du groupe
+          const groupe = data.find(e => e.code === "GROUPE");
+          if (groupe?.logoUrl) {
+            setGroupeLogo(groupe.logoUrl);
+          }
+        }
+      } catch (error) {
+        console.error("Erreur chargement entités:", error);
+      }
+    };
+    fetchEntities();
+  }, []);
+
+  // Générer le dropdown des entités dynamiquement
+  const entitiesDropdown: DropdownItem[] = entities.map(entity => ({
+    label: entity.code === "GROUPE"
+      ? "Groupe Rishom"
+      : `${entity.code} - ${entity.shortName}`,
+    href: `/${entity.pageSlug || entity.code.toLowerCase()}`,
+  }));
+
   const menuItems: MenuItem[] = [
     { label: "À propos", href: "/a-propos" },
-    { 
-      label: "Nos entités", 
+    {
+      label: "Nos entités",
       href: "/groupe",
-      dropdown: [
+      dropdown: entitiesDropdown.length > 0 ? entitiesDropdown : [
         { label: "Groupe Rishom", href: "/groupe" },
         { label: "RBF - BTP & Fournitures", href: "/rbf" },
         { label: "RIC - Ingénierie & Conseil", href: "/ric" },
@@ -41,8 +82,8 @@ export default function Header() {
         { label: "RBA - Business Academy", href: "/rba" },
       ]
     },
-    { 
-      label: "Projets", 
+    {
+      label: "Projets",
       href: "/projets",
       dropdown: [
         { label: "Tous les projets", href: "/projets" },
@@ -52,8 +93,8 @@ export default function Header() {
         { label: "Programmes de formation", href: "/rba/programmes" },
       ]
     },
-    { 
-      label: "Actualités", 
+    {
+      label: "Actualités",
       href: "/actualites",
       dropdown: [
         { label: "Toutes les actualités", href: "/actualites" },
@@ -65,14 +106,14 @@ export default function Header() {
   ];
 
   return (
-    <motion.header 
+    <motion.header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/98 backdrop-blur-sm shadow-lg' 
+        isScrolled
+          ? 'bg-white/98 backdrop-blur-sm shadow-lg'
           : 'bg-white shadow-sm'
       }`}
       initial={false}
-      animate={{ 
+      animate={{
         height: isScrolled ? "64px" : "80px"
       }}
       transition={{ duration: 0.3 }}
@@ -80,13 +121,23 @@ export default function Header() {
       <div className="container mx-auto px-4 h-full">
         <div className="flex items-center justify-between h-full">
           <a href="/" className="flex items-center" data-testid="logo-link">
-            <motion.img 
-              src={groupeRishomLogo} 
-              alt="Groupe Rishom" 
-              className="w-auto transition-all"
-              animate={{ height: isScrolled ? "36px" : "48px" }}
-              transition={{ duration: 0.3 }}
-            />
+            {groupeLogo ? (
+              <motion.img
+                src={groupeLogo}
+                alt="Groupe Rishom"
+                className="w-auto transition-all"
+                animate={{ height: isScrolled ? "36px" : "48px" }}
+                transition={{ duration: 0.3 }}
+              />
+            ) : (
+              <motion.div
+                className="font-bold text-[#8B1538] transition-all"
+                animate={{ fontSize: isScrolled ? "20px" : "24px" }}
+                transition={{ duration: 0.3 }}
+              >
+                RISHOM
+              </motion.div>
+            )}
           </a>
 
           <nav className="hidden lg:flex items-center gap-6">
