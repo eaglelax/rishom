@@ -16,7 +16,9 @@
     # Proxy des requêtes API vers Node.js (port 5000)
     RewriteRule ^api/(.*)$ http://127.0.0.1:5000/api/$1 [P,L]
 
-    # Fichiers uploadés
+    # Fichiers uploadés (nouveau dossier + ancien pour rétrocompatibilité)
+    RewriteCond %{DOCUMENT_ROOT}/uploads/$1 -f
+    RewriteRule ^uploads/(.*)$ /uploads/$1 [L]
     RewriteRule ^uploads/(.*)$ /dist/public/uploads/$1 [L]
 
     # SPA - Toutes les autres routes vers index.html

@@ -4,7 +4,11 @@ import * as schema from "@shared/schema";
 
 // Créer le pool de connexions MySQL
 const pool = mysql.createPool({
-  uri: process.env.DATABASE_URL!,
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: parseInt(process.env.DB_PORT || "3306"),
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "rishom",
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

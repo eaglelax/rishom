@@ -10,7 +10,8 @@ import * as schema from "@shared/schema";
 import { eq, desc } from "drizzle-orm";
 
 // Configuration Multer pour l'upload d'images
-const uploadDir = path.join(process.cwd(), "client", "public", "uploads");
+// Utiliser un dossier "uploads" à la racine du projet (accessible en dev et production)
+const uploadDir = path.join(process.cwd(), "uploads");
 
 // Créer le dossier uploads s'il n'existe pas
 if (!fs.existsSync(uploadDir)) {
@@ -45,6 +46,12 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+
+  // Middleware d'authentification simple
+  const requireAuth = (req: any, res: any, next: any) => {
+    // Pour l'instant, on permet l'accès (à sécuriser plus tard)
+    next();
+  };
 
   // ============================================
   // UPLOAD D'IMAGES

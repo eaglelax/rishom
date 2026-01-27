@@ -20,6 +20,7 @@ export default function ImagePicker({
 }: ImagePickerProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imageLoadError, setImageLoadError] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const aspectRatioClasses = {
@@ -62,6 +63,7 @@ export default function ImagePicker({
       }
 
       const data = await response.json();
+      setImageLoadError(false);
       onChange(data.url);
     } catch (err) {
       setError("Erreur lors de l'upload de l'image");
@@ -97,14 +99,19 @@ export default function ImagePicker({
 
       {value ? (
         <div className="relative border rounded-lg overflow-hidden bg-gray-50">
-          <img
-            src={value}
-            alt="Aperçu"
-            className={`w-full object-cover ${aspectRatioClasses[aspectRatio]}`}
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "https://via.placeholder.com/400x200?text=Image+non+disponible";
-            }}
-          />
+          {imageLoadError ? (
+            <div className={`w-full flex flex-col items-center justify-center bg-gray-100 ${aspectRatioClasses[aspectRatio]}`}>
+              <ImageIcon className="h-8 w-8 text-gray-400 mb-2" />
+              <p className="text-sm text-gray-400">Image non disponible</p>
+            </div>
+          ) : (
+            <img
+              src={value}
+              alt="Aperçu"
+              className={`w-full object-cover ${aspectRatioClasses[aspectRatio]}`}
+              onError={() => setImageLoadError(true)}
+            />
+          )}
           <div className="absolute top-2 right-2 flex gap-2">
             <Button
               type="button"

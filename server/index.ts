@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -59,6 +60,18 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Désactiver le cache navigateur pour toutes les routes API
+app.use("/api", (_req, res, next) => {
+  res.set("Cache-Control", "no-cache, no-store, must-revalidate");
+  res.set("Pragma", "no-cache");
+  res.set("Expires", "0");
+  next();
+});
+
+// Servir les fichiers uploadés (nouveau dossier + ancien dossier pour rétrocompatibilité)
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+app.use("/uploads", express.static(path.join(process.cwd(), "client", "public", "uploads")));
 
 (async () => {
   await registerRoutes(httpServer, app);

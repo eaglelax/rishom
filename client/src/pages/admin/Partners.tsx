@@ -385,7 +385,7 @@ export default function AdminPartners() {
                           alt={partner.name}
                           className="max-h-full max-w-full object-contain"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = "https://via.placeholder.com/150x60?text=Logo";
+                            (e.target as HTMLImageElement).style.opacity = "0";
                           }}
                         />
                       ) : (

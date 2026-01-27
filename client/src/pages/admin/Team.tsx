@@ -337,7 +337,7 @@ export default function AdminTeam() {
                         alt={member.fullName}
                         className="w-16 h-16 object-cover rounded-full"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = "https://via.placeholder.com/64x64";
+                          (e.target as HTMLImageElement).style.opacity = "0";
                         }}
                       />
                     ) : (

@@ -358,7 +358,7 @@ export default function AdminCarousel() {
                           alt={slide.imageAltText || slide.title}
                           className="w-16 h-10 object-cover rounded"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = "https://via.placeholder.com/64x40";
+                            (e.target as HTMLImageElement).style.opacity = "0";
                           }}
                         />
                       </TableCell>

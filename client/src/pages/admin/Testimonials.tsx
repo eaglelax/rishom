@@ -319,7 +319,7 @@ export default function AdminTestimonials() {
                           alt={testimonial.authorName}
                           className="w-12 h-12 object-cover rounded-full"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = "https://via.placeholder.com/48x48";
+                            (e.target as HTMLImageElement).style.opacity = "0";
                           }}
                         />
                       ) : (
